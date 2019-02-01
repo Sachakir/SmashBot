@@ -15,20 +15,15 @@ function lines_from(file)
   return lines
 end
 
-
 local p = io.popen('find "'..'textes'..'" -type f')
 local fichiers = {}
 for fichier in p:lines() do
-    print(fichier)
     fichiers[fichier:sub(8,-5)] = fichier
-    -- table.insert(fichiers, fichier)
 end
 
--- tests the functions above
 local file = fichiers['Mario']
 local lines = lines_from(file)
 
--- print all line numbers and their contents
 for k,v in pairs(lines) do
   print('line[' .. k .. ']', v)
 end
