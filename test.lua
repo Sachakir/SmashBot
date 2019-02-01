@@ -1,4 +1,7 @@
 dark = require("dark")
+quentin = require("quentin")
+
+print(quentin.ok())
 
 --print(dark.version)
 --[[
