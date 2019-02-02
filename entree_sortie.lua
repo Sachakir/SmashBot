@@ -61,7 +61,7 @@ M.obtenir_les_lignes_de = obtenir_les_lignes_de
 M.ecrire_dans_la_bd = ecrire_dans_la_bd
 M.obtenir_objet_de_personnage_par_clef = obtenir_objet_de_personnage_par_clef
 
---[[test = {
+test = {
     ["Mario"] = {
         ["Nom"] = "Mario",
         ["Couleur"] = "rouge",
@@ -74,11 +74,7 @@ M.obtenir_objet_de_personnage_par_clef = obtenir_objet_de_personnage_par_clef
     }
 }
 
-print(obtenir_objet_de_personnage_par_clef(test, "Vetement"))
-local info = obtenir_objet_de_personnage_par_clef(test, "Vetement")
-print(info['slip'])
+--ecrire_dans_la_bd(test)
 
-ecrire_dans_la_bd(test)
-]]--
 
 return M
