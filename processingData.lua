@@ -1,8 +1,8 @@
 dark = require("dark")
-lol = require("Base_de_donnees/BD")
 entree_sortie = require("entree_sortie")
--- On recupere les pipeline
+-- On recupere les pipelines
 pUnivers = require("patternUnivers")
+pCameoSerie = require("serieCameo")
 
 function have_tag(seq, tag)
     return #seq[tag] ~= 0
@@ -24,21 +24,22 @@ function string_tag(seq, tag)
 end
 
 local data = {}
-local listNames = {"DKTest.txt","FoxTest.txt"}
-
 local fichiers = obtenir_tous_les_textes()
-local file = fichiers[Personnage]
 
-
-for name,text in pairs(fichiers) do
-	-- On applique le seq sur notre texte
-	local seq = dark.sequence(text)
+for nom,texte in pairs(fichiers) do
+    personage_tab = {}
+	local seq = dark.sequence(texte)
 	pUnivers(seq)
-	--print(serialize(seq["#cre"]))
-	print(string_tag(seq, "#cre"))
-	print(string_tag(seq, "#fa"))
-	print(string_tag(seq, "#date"))
-	--P(seq)
+    pCameoSerie(seq)
+    personage_tab["createur"] = string_tag(seq, "#cre")
+    personage_tab["date"] = string_tag(seq, "#date")
+    personage_tab["premiere_apparition"] = string_tag(seq, "#fa")
+    personage_tab["serie"] = string_tag(seq, "#serie")
+    personage_tab["cameo"] = string_tag(seq, "#appearance")
+    data[nom] = personage_tab
 end
 
-
+ecrire_dans_la_bd(data)
+tab = { "Mario", "Luigi", "Yoshi", "Peach" }
+print(serialize(entree_sortie.obtenir_tous_les_noms()))
+print(serialize(tab))

@@ -29,6 +29,15 @@ function obtenir_tous_les_textes()
     return fichiers
 end
 
+function obtenir_tous_les_noms()
+    local p = io.popen('find "'..'textes'..'" -type f')
+    local nom = {}
+    for fichier in p:lines() do
+        table.insert(nom,fichier:sub(8,-5))
+    end
+    return nom
+end
+
 -- retourne les lignes de texte d'un personnage
 function obtenir_les_lignes_de(personnage)
     local fichiers = obtenir_tous_les_textes()
@@ -64,6 +73,7 @@ M.obtenir_tous_les_textes = obtenir_tous_les_textes
 M.obtenir_les_lignes_de = obtenir_les_lignes_de
 M.ecrire_dans_la_bd = ecrire_dans_la_bd
 M.obtenir_objet_de_personnage_par_clef = obtenir_objet_de_personnage_par_clef
+M.obtenir_tous_les_noms = obtenir_tous_les_noms
 
 test = {
     ["Mario"] = {

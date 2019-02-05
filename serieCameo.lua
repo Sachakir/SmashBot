@@ -26,7 +26,6 @@ end
 local P = dark.pipeline()
 
 P:basic()
-P:lexicon("#unit", { "centimètres", "mètres", "mètres carrés", "kilomètres" })
 
 local title = dark.pattern([[
     [#title
@@ -40,30 +39,30 @@ local afterTitle = dark.pattern([[
     ]
 ]])
 
-local regle_serie = dark.pattern([[    
+P:pattern([[    
         (heros|personnage|symbole|protagoniste) #w*? (serie|franchise|saga) [#serie (/^[A-Z][A-Za-z]*$/) #w*?  ] (et | dans | "de" | "." | ",")
     ]
 ]])
 
 --personnage #w*? (serie|franchise) [#serie (/[A-Z][a-z]*/) (/[A-Za-z][a-z]*/)+?  ] ( de | /[.]/ | /[,]/)
 
-local regle_universe = dark.pattern([[
+P:pattern([[
         introduit #w*? dans #w*? [#uni (/[A-Z][a-z]*/) (/[A-Za-z][a-z]*/)+? ] ( de | /[.]/ | /[,]/)
 ]])
 
 --introduit #w* dans /%u*/ [#uni #W*(de|/[.,]/)
 
-local regle_universe2 = dark.pattern([[
+P:pattern([[
     [#uni2
         suite #w*? #W* /[.,]/
     ]
 ]])
 
-local regle_appearance = dark.pattern([[
+P:pattern([[
         /[a-z]ppar[a-z]*/ #w*? dans #w*? [#appearance (/^[A-Z][A-Za-z]*$/) #w*? ] ("et" | "dans" | "de" | "." | ",")
 ]])
 
-local regle_cameo = dark.pattern([[
+P:pattern([[
         cameo dans #w*? [#cameo #title ] #afterTitle
 ]])
 
@@ -73,32 +72,5 @@ local regle_appearance2 = dark.pattern([[
     ]
 ]])
 
-
-local f = io.open("Link.txt", "r")
-local line = f:read("*all")
-
-local seq = dark.sequence(line)
-P(seq)
-title(seq)
-afterTitle(seq)
-regle_serie(seq)
-regle_universe(seq)
-regle_appearance(seq)
-
-print(seq)
-print(serialize(seq[3]))
-for k,v in pairs(seq[3]) do
-    print(k, v)
-end
-
-local taps = {
-    ["#serie"] = "yellow",
-    ["#appearance"] = "blue",
-    ["#uni"] = "red",
-}
-
-print(seq:tostring(taps))
-print(serialize(seq["#monument"]))
-print(have_tag(seq, "#monument"))
-print(string_tag(seq, "#monument"))
+return P
 
