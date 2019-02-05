@@ -51,6 +51,8 @@ local regle_3 = dark.pattern([[
 ]])
 
 --[[
+^ début du mot
+$ fin du mot
 ? = 0..1
 * = 0..inf
 + = 1..inf

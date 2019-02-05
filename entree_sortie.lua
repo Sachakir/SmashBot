@@ -1,5 +1,4 @@
 dark = require("dark")
-lol = require("Base_de_donnees/BD")
 
 local M = {}
 
@@ -33,7 +32,7 @@ end
 -- retourne les lignes de texte d'un personnage
 function obtenir_les_lignes_de(personnage)
     local fichiers = obtenir_tous_les_textes()
-    local file = fichiers[Personnage]
+    local file = fichiers[personnage]
     local lines = lines_from(file)
     return lines
 end
@@ -70,16 +69,18 @@ test = {
     ["Mario"] = {
         ["Nom"] = "Mario",
         ["Couleur"] = "rouge",
-    },
-    ["Physique"] = {
-        ["Nom"] = "Mario",
-        ["Vetement"] = {
-            ['slip'] = 'ok',
+        ["Physique"] = {
+            ["Nom"] = "Mario",
+            ["Vetement"] = {
+                ['slip'] = 'ok',
+            },
         },
-    }
+        ["date"] = "1981",
+        ["createur"] = "Miyamoto",
+    },
 }
 
---ecrire_dans_la_bd(test)
+ecrire_dans_la_bd(test)
 
 
 return M
