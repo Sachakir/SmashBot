@@ -1,5 +1,4 @@
 dark = require("dark")
-lol = require("Base_de_donnees/BD")
 
 local M = {}
 
@@ -65,16 +64,18 @@ test = {
     ["Mario"] = {
         ["Nom"] = "Mario",
         ["Couleur"] = "rouge",
-    },
-    ["Physique"] = {
-        ["Nom"] = "Mario",
-        ["Vetement"] = {
-            ['slip'] = 'ok',
+        ["Physique"] = {
+            ["Nom"] = "Mario",
+            ["Vetement"] = {
+                ['slip'] = 'ok',
+            },
         },
-    }
+        ["date"] = "1981",
+        ["createur"] = "Miyamoto",
+    },
 }
 
---ecrire_dans_la_bd(test)
+ecrire_dans_la_bd(test)
 
 
 return M
