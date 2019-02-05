@@ -2,30 +2,34 @@ dark = require("dark")
 
 local M = {}
 
+-- verifie si le fichier existe
 function file_exists(file)
     local f = io.open(file, "rb")
     if f then f:close() end
     return f ~= nil
 end
 
+-- returne les lignes de texte d'un fichier
 function lines_from(file)
     if not file_exists(file) then return {} end
-    lines = {}
+    lines = ""
     for line in io.lines(file) do 
-        lines[#lines + 1] = line
+        lines = lines..line
     end
     return lines
 end
 
+-- retourne la liste contenant les fichiers de texte
 function obtenir_tous_les_textes()
     local p = io.popen('find "'..'textes'..'" -type f')
     local fichiers = {}
     for fichier in p:lines() do
-        fichiers[fichier:sub(8,-5)] = fichier
+        fichiers[fichier:sub(8,-5)] = lines_from(fichier)
     end
     return fichiers
 end
 
+-- retourne les lignes de texte d'un personnage
 function obtenir_les_lignes_de(personnage)
     local fichiers = obtenir_tous_les_textes()
     local file = fichiers[personnage]
@@ -33,6 +37,7 @@ function obtenir_les_lignes_de(personnage)
     return lines
 end
 
+-- ecriture de l objet contenant les informations dans la database
 function ecrire_dans_la_bd(objet)
     local db_file = io.open("Base_de_donnees/BD.lua", "wb")
     io.output(db_file)
