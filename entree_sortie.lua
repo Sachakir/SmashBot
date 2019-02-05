@@ -28,7 +28,7 @@ end
 
 function obtenir_les_lignes_de(personnage)
     local fichiers = obtenir_tous_les_textes()
-    local file = fichiers[Personnage]
+    local file = fichiers[personnage]
     local lines = lines_from(file)
     return lines
 end
