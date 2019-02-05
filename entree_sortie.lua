@@ -10,9 +10,9 @@ end
 
 function lines_from(file)
     if not file_exists(file) then return {} end
-    lines = {}
+    lines = ""
     for line in io.lines(file) do 
-        lines[#lines + 1] = line
+        lines = lines..line
     end
     return lines
 end
