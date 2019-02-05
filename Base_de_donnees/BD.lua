@@ -1,6 +1,8 @@
 return {
   Mario = {
+    date = "1981",
     Couleur = "rouge",
+    Nom = "Mario",
     Physique = {
       Vetement = {
         slip = "ok",
@@ -8,7 +10,5 @@ return {
       Nom = "Mario",
     },
     createur = "Miyamoto",
-    date = "1981",
-    Nom = "Mario",
   },
 }
