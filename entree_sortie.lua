@@ -21,7 +21,7 @@ function obtenir_tous_les_textes()
     local p = io.popen('find "'..'textes'..'" -type f')
     local fichiers = {}
     for fichier in p:lines() do
-        fichiers[fichier:sub(8,-5)] = fichier
+        fichiers[fichier:sub(8,-5)] = lines_from(fichier)
     end
     return fichiers
 end
