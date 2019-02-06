@@ -1,56 +1,56 @@
 return {
   Yoshi = {
     createur = "Kazumi Totaka",
+    ["premiere_apparition"] = "SNES",
     serie = "Smash",
     cameo = "Super Mario World",
-    ["premiere_apparition"] = "SNES",
+  },
+  Link = {
+    ["premiere_apparition"] = "Mario",
+    serie = "The Legend of Zelda",
+    cameo = "Super Mario Bros",
   },
   Fox = {
     cameo = "Super Smash Bros",
-    serie = "Star Fox",
     ["premiere_apparition"] = "Star Fox",
+    serie = "Star Fox",
     date = "1993",
   },
-  ["Samus sombre"] = {
-    cameo = "Super Smash Bros",
-    serie = "Metroid",
+  ["Donkey Kong"] = {
+    createur = "Donkey Kong",
+    ["premiere_apparition"] = "Kong",
+    cameo = "Donkey Kong",
   },
-  Ness = {
-    cameo = "Nintendo jeu",
-    serie = "EarthBound",
+  Luigi = {
+    cameo = "Mario Bros",
+    ["premiere_apparition"] = "Luigi",
+  },
+  Pikachu = {
+    ["premiere_apparition"] = "Red",
+    serie = "Pokemon",
+    cameo = "Super Smash Bros",
+  },
+  Samus = {
+    ["premiere_apparition"] = "Metroid",
+    serie = "Metroid",
+    cameo = "Metroid",
   },
   Mario = {
     createur = "Shigeru Miyamoto",
     serie = "Mario",
     cameo = "Super Mario Bros",
   },
-  Pikachu = {
-    serie = "Pokemon",
-    cameo = "Super Smash Bros",
-    ["premiere_apparition"] = "Red",
-  },
-  ["Donkey Kong"] = {
-    createur = "Donkey Kong",
-    cameo = "Donkey Kong",
-    ["premiere_apparition"] = "Kong",
-  },
-  Luigi = {
-    cameo = "Mario Bros",
-    ["premiere_apparition"] = "Luigi",
+  Ness = {
+    serie = "EarthBound",
+    cameo = "Nintendo jeu",
   },
   Kirby = {
     createur = "Masahiro Sakurai",
-    cameo = "Super Smash Bros",
     ["premiere_apparition"] = "Game Boy Kirby",
+    cameo = "Super Smash Bros",
   },
-  Link = {
-    serie = "The Legend of Zelda",
-    cameo = "Super Mario Bros",
-    ["premiere_apparition"] = "Mario",
-  },
-  Samus = {
+  ["Samus sombre"] = {
     serie = "Metroid",
-    cameo = "Metroid",
-    ["premiere_apparition"] = "Metroid",
+    cameo = "Super Smash Bros",
   },
 }
