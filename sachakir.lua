@@ -70,7 +70,5 @@ for i, phrase in ipairs(phrases) do
 	P(seq2)
 end
 
-local M = {}
-M.regles = P
-return M
+return P
 --Tag : #lienFamille
