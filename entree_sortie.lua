@@ -41,9 +41,7 @@ end
 -- retourne les lignes de texte d'un personnage
 function obtenir_les_lignes_de(personnage)
     local fichiers = obtenir_tous_les_textes()
-    local file = fichiers[personnage]
-    local lines = lines_from(file)
-    return lines
+    return fichiers[personnage]
 end
 
 -- ecriture de l objet contenant les informations dans la database
@@ -90,7 +88,7 @@ test = {
     },
 }
 
-ecrire_dans_la_bd(test)
+--ecrire_dans_la_bd(test)
 
 
 return M

@@ -1,4 +1,5 @@
 dark = require("dark")
+data_traitement = require("entree_sortie")
 
 local M = {}
 local P = dark.pipeline()
@@ -11,7 +12,7 @@ local P = dark.pipeline()
 P:basic()
 
 -- Nom perso
-P:lexicon("#nom", { "Mario", "Luigi", "Yoshi", "Peach" })
+P:lexicon("#nom", obtenir_tous_les_noms())
 
 -- Date de création & Createur
 P:pattern([[
