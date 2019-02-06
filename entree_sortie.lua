@@ -88,7 +88,7 @@ test = {
     },
 }
 
-ecrire_dans_la_bd(test)
+--ecrire_dans_la_bd(test)
 
 
 return M

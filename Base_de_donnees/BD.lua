@@ -1,47 +1,56 @@
 return {
-  Luigi = {
-    cameo = "Mario Bros",
-  },
-  ["Samus sombre"] = {
-    serie = "Metroid",
-    cameo = "Super Smash Bros",
-  },
-  Samus = {
-    cameo = "Metroid",
-  },
-  Kirby = {
-    cameo = "Super Smash Bros",
-    ["premiere_apparition"] = "Game Boy Kirby",
-  },
-  Fox = {
-    cameo = "Super Smash Bros",
-    date = "1993",
-    ["premiere_apparition"] = "Star Fox",
-  },
-  ["Donkey Kong"] = {
-    cameo = "Donkey Kong",
-    date = "1981",
-    ["premiere_apparition"] = "Donkey Kong",
-  },
-  Pikachu = {
-    cameo = "Super Smash Bros",
-  },
   Yoshi = {
+    createur = "Kazumi Totaka",
+    serie = "Smash",
     cameo = "Super Mario World",
     ["premiere_apparition"] = "SNES",
   },
+  Fox = {
+    cameo = "Super Smash Bros",
+    serie = "Star Fox",
+    ["premiere_apparition"] = "Star Fox",
+    date = "1993",
+  },
+  ["Samus sombre"] = {
+    cameo = "Super Smash Bros",
+    serie = "Metroid",
+  },
+  Ness = {
+    cameo = "Nintendo jeu",
+    serie = "EarthBound",
+  },
   Mario = {
-    cameo = "Donkey Kong",
-    serie = "Mario",
     createur = "Shigeru Miyamoto",
-    ["premiere_apparition"] = "Donkey Kong",
-    date = "1981",
+    serie = "Mario",
+    cameo = "Super Mario Bros",
+  },
+  Pikachu = {
+    serie = "Pokemon",
+    cameo = "Super Smash Bros",
+    ["premiere_apparition"] = "Red",
+  },
+  ["Donkey Kong"] = {
+    createur = "Donkey Kong",
+    cameo = "Donkey Kong",
+    ["premiere_apparition"] = "Kong",
+  },
+  Luigi = {
+    cameo = "Mario Bros",
+    ["premiere_apparition"] = "Luigi",
+  },
+  Kirby = {
+    createur = "Masahiro Sakurai",
+    cameo = "Super Smash Bros",
+    ["premiere_apparition"] = "Game Boy Kirby",
   },
   Link = {
     serie = "The Legend of Zelda",
     cameo = "Super Mario Bros",
+    ["premiere_apparition"] = "Mario",
   },
-  Ness = {
-    cameo = "Nintendo jeu",
+  Samus = {
+    serie = "Metroid",
+    cameo = "Metroid",
+    ["premiere_apparition"] = "Metroid",
   },
 }
