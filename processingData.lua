@@ -4,11 +4,11 @@ entree_sortie = require("entree_sortie")
 pUnivers = require("patternUnivers")
 pCameoSerie = require("serieCameo")
 
-function have_tag(seq, tag)
+local function have_tag(seq, tag)
     return #seq[tag] ~= 0
 end
 
-function string_tag(seq, tag)
+local function string_tag(seq, tag)
     if not have_tag(seq, tag) then
         return
     end
@@ -23,11 +23,19 @@ function string_tag(seq, tag)
     return table.concat(res, " ")
 end
 
+local function enlever_accents(texte)
+  texte = texte:gsub("['`^~\"]", " ")
+  text = texte:gsub("['`^~\"]", "")
+  return(texte)
+end
+
 local data = {}
 local fichiers = obtenir_tous_les_textes()
 
 for nom,texte in pairs(fichiers) do
     personage_tab = {}
+    texte = texte:gsub("%p", " %0 ")
+    texte = enlever_accents(texte)
 	local seq = dark.sequence(texte)
 	pUnivers(seq)
     pCameoSerie(seq)
@@ -40,6 +48,5 @@ for nom,texte in pairs(fichiers) do
 end
 
 ecrire_dans_la_bd(data)
-tab = { "Mario", "Luigi", "Yoshi", "Peach" }
-print(serialize(entree_sortie.obtenir_tous_les_noms()))
-print(serialize(tab))
+print(obtenir_les_lignes_de("Mario"))
+
