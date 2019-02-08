@@ -14,12 +14,12 @@ function string_tag(seq, tag)
     end
     local pos = seq[tag][1]
     local deb, fin = pos[1], pos[2]
-    
+
     local res = {}
     for i = deb,fin do
         res[#res+1] = seq[i].token
     end
-    
+
     return table.concat(res, " ")
 end
 
@@ -29,7 +29,7 @@ P:basic()
 
 local title = dark.pattern([[
     [#title
-        (/[A-Z][a-z]*/) (/[A-Za-z][a-z]*/)+? 
+        (/[A-Z][a-z]*/) (/[A-Za-z][a-z]*/)+?
     ]
 ]])
 
@@ -39,7 +39,7 @@ local afterTitle = dark.pattern([[
     ]
 ]])
 
-P:pattern([[    
+P:pattern([[
         (heros|personnage|symbole|protagoniste) #w*? (serie|franchise|saga) [#serie (/^[A-Z][A-Za-z]*$/) #w*?  ] (et | dans | "de" | "." | ",")
     ]
 ]])
@@ -59,6 +59,11 @@ P:pattern([[
 ]])
 
 P:pattern([[
+        [#serie #W ] #w+? (heros|personnage|symbole|protagoniste)  #w*? (serie|franchise|saga) eponyme
+    ]
+]])
+
+P:pattern([[
         /[a-z]ppar[a-z]*/ #w*? dans #w*? [#appearance (/^[A-Z][A-Za-z]*$/) #w*? ] ("et" | "dans" | "de" | "." | ",")
 ]])
 
@@ -73,4 +78,3 @@ local regle_appearance2 = dark.pattern([[
 ]])
 
 return P
-
