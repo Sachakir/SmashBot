@@ -37,6 +37,31 @@ P:pattern([[
 P:pattern([[
         premiere apparition #w{0,12}? "," sorti en [#date #d ] ","
 ]])
+P:pattern([[
+        apparu #w{0,12}? ( #p | #d )*? #w{0,3}? "(" [#date #d ] 
+]])
+P:pattern([[
+        apparu #w{0,8}? en [#date #d] avec
+]])
+P:pattern([[
+        issu du jeu #W+ "(" [#date #d]
+]])
+P:pattern([[
+        compagnon de #W+ depuis #W+ "(" [#date #d]
+]])
+P:pattern([[
+        debuts dans #w{0,4}? #W+ en [#date #d]
+]])
+P:pattern([[
+        celebre #w{0,6}? #W+ "(" [#date #d]
+]])
+P:pattern([[
+        vu le jour #w{0,6}? #W+ en [#date #d]
+]])
+P:pattern([[
+        /^[Dd]epuis$/ ses debuts en [#date #d]
+]])
+
 
 local taps = {
     ["#fa"] = "green",

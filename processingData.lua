@@ -41,8 +41,6 @@ local function enlever_accents(texte)
     texte = texte:gsub("û", "u")
     texte = texte:gsub("ù", "u")
 	texte = texte:gsub("'", " ")
-	texte = texte:gsub("-", "")
-
     return texte
 end
 
@@ -56,7 +54,7 @@ local taps = {
 
 local data = {}
 local fichiers = obtenir_tous_les_textes()
-local test_nom = "Luigi"
+local test_nom = "Samus"
 
 for nom,texte in pairs(fichiers) do
     personage_tab = {}
