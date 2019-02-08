@@ -3,6 +3,7 @@ entree_sortie = require("entree_sortie")
 -- On recupere les pipelines
 pUnivers = require("patternUnivers")
 pCameoSerie = require("serieCameo")
+relations = require("relations")
 
 local function have_tag(seq, tag)
     return #seq[tag] ~= 0
@@ -50,6 +51,7 @@ local taps = {
     ["#fa"] = "green",
     ["#serie"] = "red",
     ["#appearance"] = "purple",
+    ["#lienFamille"] = "red"
 }
 
 local data = {}
@@ -63,6 +65,8 @@ for nom,texte in pairs(fichiers) do
 	local seq = dark.sequence(texte)
 	pUnivers(seq)
     pCameoSerie(seq)
+    relations(seq)
+    personage_tab["lienFamille"] = string_tag(seq,"#lienF")
     personage_tab["createur"] = string_tag(seq, "#cre")
     personage_tab["date"] = string_tag(seq, "#date")
     personage_tab["premiere_apparition"] = string_tag(seq, "#fa")
@@ -81,6 +85,7 @@ test = enlever_accents(test)
 seq_test = dark.sequence(test)
 pUnivers(seq_test)
 pCameoSerie(seq_test)
+relations(seq_test)
 print(seq_test:tostring(taps))
 
 

@@ -39,7 +39,23 @@ end
 
 local P = dark.pipeline()
 P:basic()
-P:lexicon("#personnage", { "Donkey Kong", "Mario", "Pauline","Luigi","Yoshi" })--TODO a ajouter plus de mots
+P:lexicon("#personnage", 
+	{ 	"Mario","Donkey Kong","Link","Samus","Samus Sombre",
+		"Yoshi","Kirby","Fox","Pikachu","Luigi","Ness",
+		"Captain Falcon","Rondoudou","Peach","Daisy","Bowser",
+		"Ice Climbers","Sheik","Zelda","Dr. Mario","Pichu",
+		"Falco","Marth","Lucina","Link Enfant","Ganondorf",
+		"Mewtwo","Roy","Chrom","Mr. Game & Watch","Meta Knight",
+		"Pit","Pit Malefique","Samus Sans Armure","Wario","Snake",
+		"Ike","Dresseur De Pokemon","Diddy Kong","Lucas","Sonic",
+		"Roi Dadidou","Olimar","Lucario","R.O.B.","Link Cartoon",
+		"Wolf","Villageois","Mega Man","Entraineuse Wii Fit",
+		"Harmonie & Luma","Little Mac","Amphinobi",
+		"Combattant Mii","Palutena","Pac-Man","Daraen","Shulk",
+		"Bowser Jr.","Duo Duck Hunt","Ryu","Ken","Cloud","Corrin",
+		"Bayonetta","Inkling","Ridley","Simon","Richter",
+		"King K. Rool","Marie","Felinferno","Plante Pirahna"
+	})
 P:lexicon("#famille", { "pere", "mere", "frere","soeur","famille","parents","bebe","Bebe" })--TODO a ajouter plus de mots
 
 P:pattern([[
@@ -59,7 +75,7 @@ local taps = {
     ["#lienFamille"] = "blue"
 }
 
-text = es.obtenir_les_lignes_de("Mario")
+text = es.obtenir_les_lignes_de("Luigi")
 text = text:gsub("%p"," %0 ")--Separation des virgules et des points...
 
 local seq = dark.sequence(text)
@@ -68,6 +84,7 @@ local phrases = alltag(seq, "#phrase")--phrases est la liste des phrases du text
 for i, phrase in ipairs(phrases) do
 	local seq2 = dark.sequence(phrase)
 	P(seq2)
+	--print(seq2:tostring(taps))
 end
 
 return P
