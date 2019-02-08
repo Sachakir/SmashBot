@@ -40,6 +40,8 @@ local function enlever_accents(texte)
     texte = texte:gsub("ü", "u")
     texte = texte:gsub("û", "u")
     texte = texte:gsub("ù", "u")
+	texte = texte:gsub("'", " ")
+	texte = texte:gsub("-", "")
     return texte
 end
 

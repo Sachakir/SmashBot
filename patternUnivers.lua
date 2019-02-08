@@ -12,13 +12,19 @@ P:pattern([[
 P:pattern([[
         premiere apparition #w{1,10}? [#fa #W+ ] #w{0,10}? | ( #d | de | "." | "," )
 ]])
+P:pattern([[
+        premiere apparition #w{1,5}? jeux de premiere [#fa generation #W+ ] #w{0,10}? | ( #d | "(" | de | "." | "," )
+]])
+P:pattern([[
+        issu du jeu [#fa #W+ ] #w{0,10}? | ( #d | de | "." | "," )
+]])
 
 ---introduit #w+? [#fa (/[A-Z][a-z]*/)+ ] ( de | . | /,/ )
 ---introduit /^%u/+ [#fa (/[A-Z][a-z]*/)+ ] ( de | . | /,/ ) 
 
 --- Nom du createur du personnage
 P:pattern([[
-        /cre[a-z]*/ #w*? par #w{0,5}? [#cre (/[A-Z][a-z]*/)+ ] #w{0,6}? ( de | "." | "," )
+        /[cC]re[a-z]*/ #w*? par #w{0,5}? [#cre (/[A-Z][a-z]*/)+ ] #w{0,6}? ( de | "." | "," )
 ]])
 
 --- Date de creation du personnage

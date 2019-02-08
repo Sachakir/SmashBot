@@ -1,56 +1,65 @@
 return {
-  Yoshi = {
-    createur = "Kazumi Totaka",
-    ["premiere_apparition"] = "SNES",
-    serie = "Smash",
-    cameo = "Super Mario World",
-  },
-  Link = {
-    ["premiere_apparition"] = "Mario",
-    serie = "The Legend of Zelda",
-    cameo = "Super Mario Bros",
-  },
-  Fox = {
-    cameo = "Super Smash Bros",
-    ["premiere_apparition"] = "Star Fox",
-    serie = "Star Fox",
-    date = "1993",
+  Ness = {
+    ["premiere_apparition"] = "Earthbound",
+    serie = "EarthBound",
+    cameo = "Nintendo jeu",
   },
   ["Donkey Kong"] = {
-    createur = "Donkey Kong",
-    ["premiere_apparition"] = "Kong",
+    date = "1981",
+    ["premiere_apparition"] = "Donkey Kong",
     cameo = "Donkey Kong",
-  },
-  Luigi = {
-    cameo = "Mario Bros",
-    ["premiere_apparition"] = "Luigi",
-  },
-  Pikachu = {
-    ["premiere_apparition"] = "Red",
-    serie = "Pokemon",
-    cameo = "Super Smash Bros",
+    serie = "Mario",
+    createur = "Shigeru Miyamoto",
   },
   Samus = {
     ["premiere_apparition"] = "Metroid",
     serie = "Metroid",
     cameo = "Metroid",
   },
-  Mario = {
-    createur = "Shigeru Miyamoto",
-    serie = "Mario",
-    cameo = "Super Mario Bros",
-  },
-  Ness = {
-    serie = "EarthBound",
-    cameo = "Nintendo jeu",
+  Yoshi = {
+    cameo = "Super Mario World",
+    serie = "Smash",
+    ["premiere_apparition"] = "SNES",
+    createur = "Kazumi Totaka",
   },
   Kirby = {
-    createur = "Masahiro Sakurai",
-    ["premiere_apparition"] = "Game Boy Kirby",
     cameo = "Super Smash Bros",
+    ["premiere_apparition"] = "Game Boy Kirby",
+    createur = "Masahiro Sakurai",
+  },
+  Link = {
+    cameo = "Super Mario Bros",
+    serie = "The Legend of Zelda",
+    ["premiere_apparition"] = "Mario",
+    createur = "Shigeru Miyamoto",
+  },
+  Luigi = {
+    cameo = "Mario Bros",
+    ["premiere_apparition"] = "Luigi",
+    createur = "Shigeru Miyamoto",
+  },
+  Mario = {
+    date = "1981",
+    ["premiere_apparition"] = "Donkey Kong",
+    cameo = "Donkey Kong",
+    serie = "Mario",
+    createur = "Shigeru Miyamoto",
   },
   ["Samus sombre"] = {
     serie = "Metroid",
     cameo = "Super Smash Bros",
+  },
+  Fox = {
+    date = "1993",
+    ["premiere_apparition"] = "Star Fox",
+    cameo = "Super Smash Bros",
+    serie = "Star Fox",
+    createur = "Shigeru Miyamoto",
+  },
+  Pikachu = {
+    cameo = "Super Smash Bros",
+    serie = "Pokemon",
+    ["premiere_apparition"] = "generation Red",
+    createur = "Satoshi Tajiri",
   },
 }
