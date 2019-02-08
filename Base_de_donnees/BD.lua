@@ -1,65 +1,65 @@
 return {
-  Yoshi = {
-    serie = "Smash",
-    createur = "Kazumi Totaka",
-    ["premiere_apparition"] = "SNES",
-    cameo = "Super Mario World",
+  ["Donkey Kong"] = {
+    createur = "Shigeru Miyamoto",
+    ["premiere_apparition"] = "Donkey Kong",
+    date = "1981",
+    cameo = "Donkey Kong",
+    serie = "Mario",
   },
   Mario = {
     createur = "Shigeru Miyamoto",
-    serie = "Mario",
-    cameo = "Donkey Kong",
     ["premiere_apparition"] = "Donkey Kong",
     date = "1981",
-  },
-  Link = {
-    serie = "The Legend of Zelda",
-    createur = "Shigeru Miyamoto",
-    ["premiere_apparition"] = "Mario",
-    cameo = "Super Mario Bros",
-  },
-  ["Donkey Kong"] = {
-    createur = "Shigeru Miyamoto",
-    serie = "Mario",
     cameo = "Donkey Kong",
-    ["premiere_apparition"] = "Donkey Kong",
-    date = "1981",
+    serie = "Mario",
+  },
+  Ness = {
+    cameo = "Nintendo jeu",
+    ["premiere_apparition"] = "Earthbound",
+    serie = "EarthBound",
+  },
+  Samus = {
+    cameo = "Metroid",
+    ["premiere_apparition"] = "Metroid",
+    serie = "Metroid",
   },
   Fox = {
     createur = "Shigeru Miyamoto",
-    serie = "Star Fox",
-    cameo = "Super Smash Bros",
     ["premiere_apparition"] = "Star Fox",
     date = "1993",
-  },
-  ["Samus sombre"] = {
-    serie = "Metroid",
     cameo = "Super Smash Bros",
-  },
-  Samus = {
-    serie = "Metroid",
-    cameo = "Metroid",
-    ["premiere_apparition"] = "Metroid",
-  },
-  Kirby = {
-    createur = "Masahiro Sakurai",
-    ["premiere_apparition"] = "Game Boy Kirby",
-    cameo = "Super Smash Bros",
-  },
-  Luigi = {
-    createur = "Shigeru Miyamoto",
-    ["premiere_apparition"] = "Luigi",
-    cameo = "Mario Bros",
+    serie = "Star Fox",
   },
   Pikachu = {
-    serie = "Pokemon",
+    cameo = "Super Smash Bros",
     createur = "Satoshi Tajiri",
     ["premiere_apparition"] = "generation Red",
-    cameo = "Super Smash Bros",
+    serie = "Pokemon",
   },
-  Ness = {
-    serie = "EarthBound",
-    cameo = "Nintendo jeu",
-    ["premiere_apparition"] = "Earthbound",
+  Kirby = {
+    cameo = "Super Smash Bros",
+    createur = "Masahiro Sakurai",
+    ["premiere_apparition"] = "Game Boy Kirby",
+  },
+  Yoshi = {
+    cameo = "Super Mario World",
+    createur = "Kazumi Totaka",
+    ["premiere_apparition"] = "SNES",
+    serie = "Smash",
+  },
+  ["Samus sombre"] = {
+    cameo = "Super Smash Bros",
+    serie = "Metroid",
+  },
+  Luigi = {
+    cameo = "Mario Bros",
+    createur = "Shigeru Miyamoto",
+    ["premiere_apparition"] = "Luigi",
+  },
+  Link = {
+    cameo = "Super Mario Bros",
+    createur = "Shigeru Miyamoto",
+    ["premiere_apparition"] = "Mario",
+    serie = "The Legend of Zelda",
   },
 }
