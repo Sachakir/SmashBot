@@ -24,19 +24,69 @@ local function traitement_reponse(reponse)
     return reponse
 end
 
-local function preparation_reponse(reponse)
-    if possede_tag(reponse, "#date_de_creation") then
-        nom = string_tag(reponse,"#nom")
-        la_date = data_traitement.obtenir_objet_de_personnage_par_clef(data,nom)
-        la_date = data_traitement.obtenir_objet_de_personnage_par_clef(la_date,"date")
-        return "La date de creation de "..nom.." est "..la_date
-    elseif possede_tag(reponse, "#createur") then
-        nom = string_tag(reponse,"#nom")
-        la_date = data_traitement.obtenir_objet_de_personnage_par_clef(data,nom)
-        la_date = data_traitement.obtenir_objet_de_personnage_par_clef(la_date,"createur")
-        return "Le createur de "..nom.." est "..la_date
+local function obtenir_nom_reponse(reponse, memoire)
+    nom = string_tag(reponse,"#nom")
+    if nom == nil then
+        nom = memoire['perso']
     end
+    return nom
+end
+
+local function obtenir_info_reponse(reponse, nom, info)
+    res = data_traitement.obtenir_objet_de_personnage_par_clef(data,nom)
+    res = data_traitement.obtenir_objet_de_personnage_par_clef(res, info)
+    return res
+end
+
+local function preparation_reponse(reponse, memoire)
+    nom = obtenir_nom_reponse(reponse, memoire)
+    if nom == nil then
+        return "De qui parlez-vous ?!?"
+    end
+    
+    if possede_tag(reponse, "#date_de_creation") then
+        info = obtenir_info_reponse(reponse, nom, "date")
+        if info == nil then
+            return "Je ne sais pas."
+        end
+        return "La date de creation de "..nom.." est "..info
+    elseif possede_tag(reponse, "#createur") then
+        info = obtenir_info_reponse(reponse, nom, "createur")
+        if info == nil then
+            return "Je ne sais pas."
+        end
+        return "Le createur de "..nom.." est "..info
+    end
+    
+    if possede_tag(reponse, "#nom") then
+        if memoire['theme'] == "#date_de_creation" then
+              info = obtenir_info_reponse(reponse, nom, "date")
+            if info == nil then
+                return "Je ne sais pas."
+            end
+            return "La date de creation de "..nom.." est "..info
+        elseif memoire['theme'] == "#createur" then
+            info = obtenir_info_reponse(reponse, nom, "createur")
+            if info == nil then
+                return "Je ne sais pas."
+            end
+            return "Le createur de "..nom.." est "..info
+        end
+    end
+        
     return "Je n'ai pas compris."
+end
+
+local function update_memoire(reponse, memoire)
+    if possede_tag(reponse, "#nom") then
+        memoire['perso'] = string_tag(reponse,"#nom")
+    end
+    if possede_tag(reponse, "#date_de_creation") then
+        memoire['theme'] = "#date_de_creation"
+    elseif possede_tag(reponse, "#createur") then
+        memoire['theme'] = "#createur"
+    end
+    return memoire
 end
 
 function possede_tag(seq, tag)
@@ -59,14 +109,20 @@ function string_tag(seq, tag)
 end
 
 function main()
+    -- Objet qui enregistre un nom de perso ET un thème.
+    memoire = {}
+    
+    -- SmashBot en lui-même
     print("*** SmashBot ***")
     printBot("Salut, je suis SmashBot. Tu as une question pour moi?")
     repeat
         print()
         reponse = io.read()
         reponse = traitement_reponse(reponse)
+        memoire = update_memoire(reponse, memoire)
+        --print(serialize(memoire))
         if not possede_tag(reponse,"#fin") then 
-            printBot(preparation_reponse(reponse))
+            printBot(preparation_reponse(reponse, memoire))
         end
     until possede_tag(reponse,"#fin")
     printBot("Ok, à la prochaine!")
