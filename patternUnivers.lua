@@ -7,16 +7,25 @@ P:lexicon("#unit", { "centimètres", "mètres", "mètres carrés", "kilomètres"
 
 --- Premier jeu ou le personnage a fait une apparition
 P:pattern([[
-        introduit #w{1,10}? [#fa #W+ ] #w{0,10}? | ( #d | de | "." | "," )
+        introduit #w{1,10}? [#fa #W+]
 ]])
 P:pattern([[
-        premiere apparition #w{1,10}? [#fa #W+ ] #w{0,10}? | ( #d | de | "." | "," )
+        premiere apparition #w{1,10}? [#fa #W+]
 ]])
 P:pattern([[
-        premiere apparition #w{1,5}? jeux de premiere [#fa generation #W+ ] #w{0,10}? | ( #d | "(" | de | "." | "," )
+        premiere apparition #w{1,5}? #W+ dans [#fa #W+]
 ]])
 P:pattern([[
-        issu du jeu [#fa #W+ ] #w{0,10}? | ( #d | de | "." | "," )
+        premiere apparition #w{1,5}? jeux de premiere [#fa generation #W+]
+]])
+P:pattern([[
+        premiere fois dans #w{0,5}? [#fa #W+]
+]])
+P:pattern([[
+        debuts dans [#fa #W+]
+]])
+P:pattern([[
+        issu du jeu [#fa #W+]
 ]])
 
 ---introduit #w+? [#fa (/[A-Z][a-z]*/)+ ] ( de | . | /,/ )
@@ -38,6 +47,9 @@ P:pattern([[
         premiere apparition #w{0,12}? "," sorti en [#date #d ] ","
 ]])
 P:pattern([[
+        premiere apparition de #W+ #w{0,5} dans #W+ en [#date #d ] ","
+]])
+P:pattern([[
         apparu #w{0,12}? ( #p | #d )*? #w{0,3}? "(" [#date #d ] 
 ]])
 P:pattern([[
@@ -50,7 +62,7 @@ P:pattern([[
         compagnon de #W+ depuis #W+ "(" [#date #d]
 ]])
 P:pattern([[
-        debuts dans #w{0,4}? #W+ en [#date #d]
+        debuts (dans|en) #w{0,4}? #W+ #w{0,7}? en [#date #d]
 ]])
 P:pattern([[
         celebre #w{0,6}? #W+ "(" [#date #d]

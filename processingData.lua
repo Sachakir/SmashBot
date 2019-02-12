@@ -56,8 +56,8 @@ local taps = {
 
 local data = {}
 local fichiers = obtenir_tous_les_textes()
-local test_nom = "Samus"
 
+---### Apply the patterns on every file ###
 for nom,texte in pairs(fichiers) do
     personage_tab = {}
     texte = texte:gsub("%p", " %0 ")
@@ -77,7 +77,8 @@ end
 
 ecrire_dans_la_bd(data)
 
-
+---### Test to display the analysis of one file ###
+local test_nom = "Captain Falcon"
 test = obtenir_les_lignes_de(test_nom)
 --print(test)
 test = test:gsub("%p", " %0 ")
