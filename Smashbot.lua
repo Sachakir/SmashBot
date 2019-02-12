@@ -3,9 +3,13 @@ data_traitement = require("entree_sortie")
 data = require("Base_de_donnees/BD")
 traitement = require("regle_reponse")
 
--- Jeux principaux
--- Date de création
--- Createur
+local taps = {
+    ["#date_de_creation"] = "yellow",
+    ["#createur"] = "blue",
+    ["#serie"] = "green",
+    ["#nom"] = "red",
+    ["#monde"] = "red",
+}
 
 local regle_au_revoir = dark.pattern([[
     [#fin
@@ -18,6 +22,7 @@ local function printBot(message)
 end
 
 local function traitement_reponse(reponse)
+    reponse = reponse:gsub("%p", " %0 ")
     reponse = dark.sequence(reponse)
     regle_au_revoir(reponse)
     traitement.regles(reponse)
@@ -56,6 +61,24 @@ local function preparation_reponse(reponse, memoire)
             return "Je ne sais pas."
         end
         return "Le createur de "..nom.." est "..info
+    elseif possede_tag(reponse, "#serie") then
+        info = obtenir_info_reponse(reponse, nom, "serie")
+        if info == nil then
+            return "Je ne sais pas."
+        end
+        return "La serie de "..nom.." est "..info
+    elseif possede_tag(reponse, "#cameo") then
+        info = obtenir_info_reponse(reponse, nom, "cameo")
+        if info == nil then
+            return "Je ne sais pas."
+        end
+        return nom.." est venu en caméo dans "..info
+    elseif possede_tag(reponse, "#premiere_apparition") then
+        info = obtenir_info_reponse(reponse, nom, "premiere_apparition")
+        if info == nil then
+            return "Je ne sais pas."
+        end
+        return nom.." est vu pour la première fois dans "..info
     end
     
     if possede_tag(reponse, "#nom") then
@@ -71,6 +94,24 @@ local function preparation_reponse(reponse, memoire)
                 return "Je ne sais pas."
             end
             return "Le createur de "..nom.." est "..info
+        elseif memoire['theme'] == "#serie" then
+            info = obtenir_info_reponse(reponse, nom, "serie")
+            if info == nil then
+                return "Je ne sais pas."
+            end
+            return "La serie de "..nom.." est "..info
+        elseif memoire['theme'] == "#cameo" then
+            info = obtenir_info_reponse(reponse, nom, "cameo")
+            if info == nil then
+                return "Je ne sais pas."
+            end
+            return nom.." est venu en caméo dans "..info
+        elseif memoire['theme'] == "#premiere_apparition" then
+            info = obtenir_info_reponse(reponse, nom, "premiere_apparition")
+            if info == nil then
+                return "Je ne sais pas."
+            end
+            return nom.." est vu pour la première fois dans "..info
         end
     end
         
@@ -85,6 +126,14 @@ local function update_memoire(reponse, memoire)
         memoire['theme'] = "#date_de_creation"
     elseif possede_tag(reponse, "#createur") then
         memoire['theme'] = "#createur"
+    elseif possede_tag(reponse, "#createur") then
+        memoire['theme'] = "#createur"
+    elseif possede_tag(reponse, "#serie") then
+        memoire['theme'] = "#serie"
+    elseif possede_tag(reponse, "#cameo") then
+        memoire['theme'] = "#cameo"
+    elseif possede_tag(reponse, "#premiere_apparition") then
+        memoire['theme'] = "#premiere_apparition"
     end
     return memoire
 end
@@ -120,7 +169,8 @@ function main()
         reponse = io.read()
         reponse = traitement_reponse(reponse)
         memoire = update_memoire(reponse, memoire)
-        --print(serialize(memoire))
+        print(serialize(memoire))
+        print(reponse:tostring(taps))
         if not possede_tag(reponse,"#fin") then 
             printBot(preparation_reponse(reponse, memoire))
         end
