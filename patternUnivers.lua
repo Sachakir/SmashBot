@@ -38,16 +38,19 @@ P:pattern([[
 
 --- Date de creation du personnage
 P:pattern([[
-        introduit #w* en [#date #d ] ( de | . | /,/ )
+        introduit #w* en [#date #d ]
 ]])
 P:pattern([[
-        /^cre[ea][sz]?$/ #w{1,8}? en [#date #d ] ( de | "." | "," )
+        /^cre[ea][sz]?$/ #w{1,8}? en [#date #d ]
 ]])
 P:pattern([[
         premiere apparition #w{0,12}? "," sorti en [#date #d ] ","
 ]])
 P:pattern([[
-        premiere apparition de #W+ #w{0,5} dans #W+ en [#date #d ] ","
+        premiere apparition de #W+ #w{0,5}? dans #W+ en [#date #d ]
+]])
+P:pattern([[
+        premiere apparition dans #W+ en [#date #d ]
 ]])
 P:pattern([[
         apparu #w{0,12}? ( #p | #d )*? #w{0,3}? "(" [#date #d ] 
