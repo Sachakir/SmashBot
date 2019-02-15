@@ -41,6 +41,12 @@ end
 local function obtenir_info_reponse(reponse, nom, info)
     res = data_traitement.obtenir_objet_de_personnage_par_clef(data,nom)
     res = data_traitement.obtenir_objet_de_personnage_par_clef(res, info)
+    if (type(res) == "table") then
+        str = ""
+        for i = 1, #res do
+            str = str .. res[i] .. ","
+        end
+    end
     return res
 end
 

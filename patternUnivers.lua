@@ -13,16 +13,13 @@ P:pattern([[
         -- premiere apparition #w{1,10}? [#fa #W+]
 -- ]])
 P:pattern([[
-        premiere apparition (#w){0,10}? dans [#fa #W+]
+        premiere apparition (#w){0,10}? dans (#w){0,5}? [#fa #W+ (and #W)?]
 ]])
 P:pattern([[
-        premiere apparition #w{1,5}? jeux de premiere [#fa generation #W+]
+        (issu du jeu | premiere (fois | apparition) | debuts) (#d | #w){0,5}? [#fa #W+ (and #W)?]
 ]])
 P:pattern([[
-        (issu du jeu | premiere fois | debuts) #w{0,5}? [#fa #W+]
-]])
-P:pattern([[
-        present dans #w{0,5}? [#fa #W+] depuis
+        present dans #w{0,5}? [#fa #W+ (and #W)?]
 ]])
 ---introduit #w+? [#fa (/[A-Z][a-z]*/)+ ] ( de | . | /,/ )
 ---introduit /^%u/+ [#fa (/[A-Z][a-z]*/)+ ] ( de | . | /,/ ) 
@@ -31,10 +28,13 @@ P:pattern([[
 P:pattern([[
         (/[cC]onc[a-z]*/ | /[cC]re[a-z]*/) #w*? par #w{0,5}? [#cre #W+]
 ]])
+P:pattern([[
+        /[Ff]inalise[e]?/ par [#cre #W+]
+]])
 
 --- Date de creation du personnage
 P:pattern([[
-        (/^cre[ea][sz]?$/ | debuts | vu le jour | issu | premiere (fois | apparition) | introduit | apparu) (#w | "," | #W+){0,12}? (en | "(")? [#date #d ]
+        (/^[Cc]re[ea][sz]?$/ | debuts | vu le jour | issu | premiere (fois | apparition) | introduit | apparu) (#w | "," | #W+){0,12}? (en | "(")? [#date #d ]
 ]])
 
 P:pattern([[

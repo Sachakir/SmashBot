@@ -59,8 +59,8 @@ P:lexicon("#personnage",
 
 P:pattern([[
     [#famille
-    	/[pP]eres?/ | /[mM]eres?/ | /[fF]reres?/ | /[sS]oeurs?/ | /[fF]amilles?/ | /[pP]arents?/ | /[bB]ebes?/ | /[eE]nfants?/ |
-    	/[cC]ousins?/ | /[fF]ils?/ | /[fF]illes?/ | /[oO]ncles?/
+    	/^[pP]eres?$/ | /^[mM]eres?$/ | /^[fF]reres?$/ | /^[sS]oeurs?$/ | /^[fF]amilles?$/ | /^[pP]arents?$/ | /^[bB]ebes?$/ | /^[eE]nfants?$/ |
+    	/^[cC]ousins?$/ | /^[fF]ils?$/ | /^[fF]illes?$/ | /^[oO]ncles?$/
     ]
 ]])
 
