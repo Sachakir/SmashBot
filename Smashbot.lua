@@ -100,6 +100,13 @@ local function preparation_reponse(reponse, memoire)
         end
         return nom.." est vu pour la première fois dans "..info
     end
+    elseif possede_tag(reponse, "#ami") then
+        info = obtenir_info_reponse(reponse, nom, "ami")
+        if info == nil then
+            return "Je ne sais pas."
+        end
+        return nom.." est ami avec "..info
+    end
     
     if possede_tag(reponse, "#nom") then
         if memoire['theme'] == "#date_de_creation" then
