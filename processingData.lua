@@ -3,7 +3,7 @@ entree_sortie = require("entree_sortie")
 -- On recupere les pipelines
 pUnivers = require("patternUnivers")
 pCameoSerie = require("serieCameo")
-relations = require("relations")
+pPhysique = require("physique")
 
 local function have_tag(seq, tag)
     return #seq[tag] ~= 0
@@ -24,6 +24,26 @@ local function string_tag(seq, tag)
     return table.concat(res, " ")
 end
 
+function list_string_tag(seq, tag)
+    if not have_tag(seq, tag) then
+        return
+    end
+    local taille_tag_seq = #seq[tag]
+    local table_res = {}
+    for nString = 1,taille_tag_seq do 
+        local pos = seq[tag][nString]
+        local deb, fin = pos[1], pos[2]
+        
+        local res = {}
+        for i = deb,fin do
+            res[#res+1] = seq[i].token
+        end
+        table_res[#table_res+1] = table.concat(res, " ")
+    end
+    return table_res
+end
+
+
 local function enlever_accents(texte)
     texte = texte:gsub("ä", "a")
     texte = texte:gsub("â", "a")
@@ -41,7 +61,6 @@ local function enlever_accents(texte)
     texte = texte:gsub("ü", "u")
     texte = texte:gsub("û", "u")
     texte = texte:gsub("ù", "u")
-	texte = texte:gsub("'", " ")
     return texte
 end
 
@@ -51,13 +70,13 @@ local taps = {
     ["#fa"] = "green",
     ["#serie"] = "red",
     ["#appearance"] = "purple",
-    ["#lienFamille"] = "red"
+    ["#habitPorte"] = "cyan",
 }
 
 local data = {}
 local fichiers = obtenir_tous_les_textes()
+local test_nom = "Luigi"
 
----### Apply the patterns on every file ###
 for nom,texte in pairs(fichiers) do
     personage_tab = {}
     texte = texte:gsub("%p", " %0 ")
@@ -65,20 +84,20 @@ for nom,texte in pairs(fichiers) do
 	local seq = dark.sequence(texte)
 	pUnivers(seq)
     pCameoSerie(seq)
-    relations(seq)
-    personage_tab["lienFamille"] = string_tag(seq,"#lienF")
+    pPhysique(seq)
     personage_tab["createur"] = string_tag(seq, "#cre")
     personage_tab["date"] = string_tag(seq, "#date")
     personage_tab["premiere_apparition"] = string_tag(seq, "#fa")
     personage_tab["serie"] = string_tag(seq, "#serie")
     personage_tab["cameo"] = string_tag(seq, "#appearance")
+    personage_tab["physique"] = {}
+    personage_tab["physique"]["habitPorte"] = list_string_tag(seq, "#habitPorte")
     data[nom] = personage_tab
 end
 
 ecrire_dans_la_bd(data)
 
----### Test to display the analysis of one file ###
-local test_nom = "Captain Falcon"
+
 test = obtenir_les_lignes_de(test_nom)
 --print(test)
 test = test:gsub("%p", " %0 ")
@@ -86,7 +105,7 @@ test = enlever_accents(test)
 seq_test = dark.sequence(test)
 pUnivers(seq_test)
 pCameoSerie(seq_test)
-relations(seq_test)
---print(seq_test:tostring(taps))
+pPhysique(seq_test)
+print(seq_test:tostring(taps))
 
 
