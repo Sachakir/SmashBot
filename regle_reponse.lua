@@ -84,6 +84,13 @@ P:pattern([[
     ]
 ]])
 
+-- Lien Famille
+P:pattern([[
+    [#ami
+        /[aA]amis?/ |/[aA]amies?/ 
+    ]
+]])
+
 M.regles = P
 
 return M

@@ -2,6 +2,7 @@ dark = require("dark")
 data_traitement = require("entree_sortie")
 data = require("Base_de_donnees/BD")
 traitement = require("regle_reponse")
+lev = require("levenshtein")
 
 local taps = {
     ["#date_de_creation"] = "yellow",
@@ -43,18 +44,37 @@ local function obtenir_info_reponse(reponse, nom, info)
     return res
 end
 
+local function chercheCompatibiliteNom(chaine)
+    local noms = data_traitement.obtenir_tous_les_noms()
+
+    for i = 1, #chaine do
+        for k,v in pairs(noms) do
+            for k = 1, #chaine[i] do
+                if chaine[i][k].name == "#W" then 
+                    if lev.distance_levenshtein(v, chaine[i].token) <= string.len(v)/2 and lev.distance_levenshtein(v, chaine[i].token)  <= string.len(chaine[i].token)/2 and string.len(chaine[i].token) > 3 then
+                        return "Vous voulez dire "..v.." ?"
+                    end
+                end
+            end
+        end
+    end 
+    
+    return "De quel personnage parlez-vous ?"
+end
+
 local function preparation_reponse(reponse, memoire)
     nom = obtenir_nom_reponse(reponse, memoire)
-    if nom == nil then
-        return "De qui parlez-vous ?!?"
-    end
     
     if possede_tag(reponse, "#date_de_creation") then
-        info = obtenir_info_reponse(reponse, nom, "date")
-        if info == nil then
-            return "Je ne sais pas."
+        nom = string_tag(reponse,"#nom")
+        if nom == nil then 
+            local resultat = chercheCompatibiliteNom(reponse)
+            return resultat
+        else
+            la_date = data_traitement.obtenir_objet_de_personnage_par_clef(data,nom)
+            la_date = data_traitement.obtenir_objet_de_personnage_par_clef(la_date,"date")
+            return "La date de creation de "..nom.." est "..la_date
         end
-        return "La date de creation de "..nom.." est "..info
     elseif possede_tag(reponse, "#createur") then
         info = obtenir_info_reponse(reponse, nom, "createur")
         if info == nil then
@@ -79,6 +99,13 @@ local function preparation_reponse(reponse, memoire)
             return "Je ne sais pas."
         end
         return nom.." est vu pour la première fois dans "..info
+    end
+    elseif possede_tag(reponse, "#ami") then
+        info = obtenir_info_reponse(reponse, nom, "ami")
+        if info == nil then
+            return "Je ne sais pas."
+        end
+        return nom.." est ami avec "..info
     end
     
     if possede_tag(reponse, "#nom") then
