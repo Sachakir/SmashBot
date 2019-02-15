@@ -1,0 +1,160 @@
+return {
+  Olimar = {
+    cameo = "Nintendo",
+    ["premiere_apparition"] = "Pikmin",
+    createur = "Shigeru Miyamoto",
+    date = "2001",
+  },
+  Mario = {
+    cameo = "Donkey Kong",
+    serie = "Mario",
+    ["premiere_apparition"] = "Donkey Kong",
+    createur = "Shigeru Miyamoto",
+  },
+  Bowser = {
+    cameo = "Super Mario Bros",
+    ["premiere_apparition"] = "Super Mario Bros",
+    createur = "Shigeru Miyamoto",
+    date = "1985",
+  },
+  ["Captain Falcon"] = {
+    ["premiere_apparition"] = "FZERO",
+    createur = "Shigeru Miyamoto",
+    date = "1991",
+  },
+  Yoshi = {
+    serie = "Smash",
+    createur = "Kazumi Totaka",
+    cameo = "Super Mario World",
+    ["premiere_apparition"] = "Super Mario World",
+    date = "1992",
+  },
+  Rosalina = {
+    createur = "Shigeru Miyamoto",
+    cameo = "Mario Kart recemment",
+  },
+  Ness = {
+    cameo = "Nintendo jeu",
+    serie = "EarthBound",
+    ["premiere_apparition"] = "Earthbound",
+    date = "1994",
+  },
+  Marth = {
+    serie = "Fire Emblem",
+    ["premiere_apparition"] = "Fire Emblem",
+    cameo = "Super Smash Bros",
+  },
+  Cloud = {
+    createur = "Tetsuya Nomura",
+    cameo = "Cloud",
+  },
+  Fox = {
+    cameo = "Super Smash Bros",
+    serie = "Star Fox",
+    ["premiere_apparition"] = "Star Fox",
+    createur = "Shigeru Miyamoto",
+  },
+  Kirby = {
+    serie = "Kirby",
+    createur = "Masahiro Sakurai",
+    cameo = "Super Smash Bros",
+    ["premiere_apparition"] = "Game Boy Kirby",
+    date = "1992",
+  },
+  Isabelle = {
+    ["premiere_apparition"] = "Animal Crossing",
+    cameo = "Super Smash Bros",
+  },
+  Samus = {
+    cameo = "Metroid",
+    serie = "Metroid",
+    ["premiere_apparition"] = "NES Metroid",
+    date = "1986",
+  },
+  Peach = {
+    serie = "Mario",
+    createur = "Shigeru Miyamoto",
+    cameo = "Mario",
+  },
+  Palutena = {
+    ["premiere_apparition"] = "Kid Icarus",
+    createur = "Gunpei Yokoi",
+    date = "1986",
+  },
+  Wario = {
+    serie = "Mario",
+    createur = "Hiroji Kiyotake",
+    cameo = "Game Boy",
+    ["premiere_apparition"] = "Game Boy",
+    date = "1995",
+  },
+  Ike = {
+    cameo = "Super Smash Bros",
+  },
+  Ridley = {
+    cameo = "Super Smash Bros",
+    ["premiere_apparition"] = "Metroid",
+    createur = "Makoto Kano",
+  },
+  Ganon = {
+    cameo = "The Wind Waker",
+    ["premiere_apparition"] = "The Legend Of Zelda",
+    createur = "Shigeru Miyamoto",
+    date = "1986",
+  },
+  ["Donkey Kong"] = {
+    cameo = "Donkey Kong",
+    ["premiere_apparition"] = "Donkey Kong",
+    createur = "Shigeru Miyamoto",
+  },
+  Luigi = {
+    cameo = "Mario Bros",
+    ["premiere_apparition"] = "Mario Bros",
+    createur = "Shigeru Miyamoto",
+    date = "1983",
+  },
+  Pikachu = {
+    serie = "Pokemon",
+    createur = "Satoshi Tajiri",
+    cameo = "Super Smash Bros",
+    ["premiere_apparition"] = "generation Red",
+    date = "1996",
+  },
+  ["Samus sombre"] = {
+    cameo = "Super Smash Bros",
+    serie = "Metroid",
+    ["premiere_apparition"] = "Metroid Prime",
+    date = "2004",
+  },
+  Snake = {
+    cameo = "Scribblenauts",
+    ["premiere_apparition"] = "Metal Gear",
+    createur = "Hideo Kojima",
+    date = "1987",
+  },
+  Rondoudou = {
+    cameo = "Pokemon Red and Blue",
+    serie = "Pokemon",
+    ["premiere_apparition"] = "Pokemon Red",
+    createur = "Ken Sugimori",
+  },
+  ["Meta Knight"] = {
+    serie = "Kirby",
+    ["premiere_apparition"] = "Kirby",
+  },
+  Link = {
+    cameo = "Super Mario Bros",
+    serie = "The Legend of Zelda",
+    date = "1987",
+    createur = "Shigeru Miyamoto",
+  },
+  Mewtwo = {
+    createur = "Ken Sugimori",
+    cameo = "Pokemon Red and Blue",
+  },
+  Shulk = {
+    ["premiere_apparition"] = "Xenoblade Chronicles",
+    createur = "Tetsuya Takahashi",
+    date = "2010",
+  },
+}
