@@ -99,7 +99,6 @@ local function preparation_reponse(reponse, memoire)
             return "Je ne sais pas."
         end
         return nom.." est vu pour la première fois dans "..info
-    end
     elseif possede_tag(reponse, "#ami") then
         info = obtenir_info_reponse(reponse, nom, "ami")
         if info == nil then

@@ -19,13 +19,7 @@ P:pattern([[
         premiere apparition #w{1,5}? jeux de premiere [#fa generation #W+]
 ]])
 P:pattern([[
-        premiere fois dans #w{0,5}? [#fa #W+]
-]])
-P:pattern([[
-        debuts dans [#fa #W+]
-]])
-P:pattern([[
-        issu du jeu [#fa #W+]
+        (issu du jeu | premiere fois | debuts) #w{0,5}? [#fa #W+]
 ]])
 P:pattern([[
         present dans #w{0,5}? [#fa #W+] depuis
