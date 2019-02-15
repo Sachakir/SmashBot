@@ -67,11 +67,49 @@ function obtenir_objet_de_personnage_par_clef(personnage, clef)
     return
 end
 
+function obtenir_personnage_par_nom(data, nom)
+    for k,v in pairs(data) do
+        if k == nom then
+            return v
+        end
+    end
+    return nil
+end
+
+local function obtenir_boolean_par_clef_valeur(noeud, clef, valeur)
+    if type(noeud) == "string" then return false end
+    for k,v in pairs(noeud) do
+        if k == clef then
+            if type(v) == "string" and v == valeur then
+                return true
+            end
+        else
+            resultat = obtenir_boolean_par_clef_valeur(v, clef, valeur)
+            if resultat ~= false then
+                return resultat
+            end
+        end
+    end
+    return false
+end
+
+function obtenir_liste_persos_avec_clef_valeur(data, clef, valeur)
+    liste_persos = {}
+    for k,v in pairs(data) do
+        if obtenir_boolean_par_clef_valeur(v, clef, valeur) then
+            table.insert(liste_persos, k)
+        end
+    end
+    return liste_persos
+end
+
 M.obtenir_tous_les_textes = obtenir_tous_les_textes
 M.obtenir_les_lignes_de = obtenir_les_lignes_de
 M.ecrire_dans_la_bd = ecrire_dans_la_bd
 M.obtenir_objet_de_personnage_par_clef = obtenir_objet_de_personnage_par_clef
 M.obtenir_tous_les_noms = obtenir_tous_les_noms
+M.obtenir_liste_persos_avec_clef_valeur = obtenir_liste_persos_avec_clef_valeur
+M.obtenir_personnage_par_nom = obtenir_personnage_par_nom
 
 test = {
     ["Mario"] = {
@@ -89,6 +127,8 @@ test = {
 }
 
 --ecrire_dans_la_bd(test)
-
+--data = require("Base_de_donnees/BD")
+--print(serialize(obtenir_personnage_par_nom(data, "Mario")))
+--print(serialize(obtenir_liste_persos_avec_clef_valeur(data, "cameo", "Super Smash Bros")))
 
 return M
