@@ -169,8 +169,8 @@ function main()
         reponse = io.read()
         reponse = traitement_reponse(reponse)
         memoire = update_memoire(reponse, memoire)
-        print(serialize(memoire))
-        print(reponse:tostring(taps))
+        --print(serialize(memoire))
+        --print(reponse:tostring(taps))
         if not possede_tag(reponse,"#fin") then 
             printBot(preparation_reponse(reponse, memoire))
         end

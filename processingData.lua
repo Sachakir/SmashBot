@@ -87,6 +87,6 @@ seq_test = dark.sequence(test)
 pUnivers(seq_test)
 pCameoSerie(seq_test)
 relations(seq_test)
-print(seq_test:tostring(taps))
+--print(seq_test:tostring(taps))
 
 

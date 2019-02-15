@@ -1,113 +1,113 @@
 return {
-  Ridley = {
-    cameo = "Super Smash Bros",
-    createur = "Makoto Kano",
-  },
-  ["Meta Knight"] = {
-    ["premiere_apparition"] = "Kirby",
-    serie = "Kirby",
-  },
-  Pikachu = {
-    ["premiere_apparition"] = "generation Red",
-    date = "1996",
-    createur = "Satoshi Tajiri",
-    cameo = "Super Smash Bros",
-    serie = "Pokemon",
-  },
-  ["Captain Falcon"] = {
+  ["Donkey Kong"] = {
+    date = "1981",
     createur = "Shigeru Miyamoto",
-    date = "1991",
-    ["premiere_apparition"] = "FZERO",
-  },
-  Peach = {
-    createur = "Shigeru Miyamoto",
-    cameo = "Mario",
-    serie = "Mario",
+    ["premiere_apparition"] = "Donkey Kong",
+    cameo = "Donkey Kong",
   },
   Ness = {
+    date = "1994",
     cameo = "Nintendo jeu",
     ["premiere_apparition"] = "Earthbound",
-    date = "1994",
     serie = "EarthBound",
   },
-  Samus = {
-    cameo = "Metroid",
-    ["premiere_apparition"] = "Metroid",
-    date = "1986",
-    serie = "Metroid",
+  Kirby = {
+    serie = "Kirby",
+    cameo = "Super Smash Bros",
+    createur = "Masahiro Sakurai",
+    ["premiere_apparition"] = "Game Boy Kirby",
+    date = "1992",
+  },
+  ["Meta Knight"] = {
+    serie = "Kirby",
+    ["premiere_apparition"] = "Kirby",
+  },
+  Link = {
+    serie = "The Legend of Zelda",
+    cameo = "Super Mario Bros",
+    createur = "Shigeru Miyamoto",
+    ["premiere_apparition"] = "Mario",
+    date = "1987",
+  },
+  ["Captain Falcon"] = {
+    date = "1991",
+    createur = "Shigeru Miyamoto",
+    ["premiere_apparition"] = "FZERO",
+  },
+  Cloud = {
+    cameo = "Cloud",
   },
   Ganon = {
     cameo = "The Wind Waker",
   },
-  ["Donkey Kong"] = {
-    cameo = "Donkey Kong",
-    createur = "Shigeru Miyamoto",
-    date = "1981",
-    ["premiere_apparition"] = "Donkey Kong",
+  Samus = {
+    date = "1986",
+    cameo = "Metroid",
+    ["premiere_apparition"] = "Metroid",
+    serie = "Metroid",
   },
-  Yoshi = {
-    ["premiere_apparition"] = "Super Mario World",
-    date = "1992",
-    createur = "Kazumi Totaka",
-    cameo = "Super Mario World",
-    serie = "Smash",
+  Palutena = {
+    date = "1986",
+    createur = "Gunpei Yokoi",
+    ["premiere_apparition"] = "Kid Icarus",
   },
-  Bowser = {
-    cameo = "Super Mario Bros",
-    createur = "Shigeru Miyamoto",
-    date = "1985",
-    ["premiere_apparition"] = "Bowser",
-  },
-  Mario = {
-    ["premiere_apparition"] = "Donkey Kong",
-    date = "1981",
-    createur = "Shigeru Miyamoto",
-    cameo = "Donkey Kong",
-    serie = "Mario",
-  },
-  Fox = {
-    ["premiere_apparition"] = "Star Fox",
-    date = "1993",
-    createur = "Shigeru Miyamoto",
+  Ridley = {
     cameo = "Super Smash Bros",
-    serie = "Star Fox",
-  },
-  Luigi = {
-    cameo = "Mario Bros",
-    createur = "Shigeru Miyamoto",
-    date = "1983",
-    ["premiere_apparition"] = "Mario Bros",
+    createur = "Makoto Kano",
   },
   Mewtwo = {
     cameo = "Pokemon Red and Blue",
     createur = "Ken Sugimori",
   },
-  Cloud = {
-    cameo = "Cloud",
+  Fox = {
+    serie = "Star Fox",
+    cameo = "Super Smash Bros",
+    createur = "Shigeru Miyamoto",
+    ["premiere_apparition"] = "Star Fox",
+    date = "1993",
   },
   ["Samus sombre"] = {
+    date = "2004",
     cameo = "Super Smash Bros",
     ["premiere_apparition"] = "Metroid Prime",
-    date = "2004",
     serie = "Metroid",
   },
-  Kirby = {
-    ["premiere_apparition"] = "Game Boy Kirby",
+  Yoshi = {
+    serie = "Smash",
+    cameo = "Super Mario World",
+    createur = "Kazumi Totaka",
+    ["premiere_apparition"] = "Super Mario World",
     date = "1992",
-    createur = "Masahiro Sakurai",
+  },
+  Pikachu = {
+    serie = "Pokemon",
     cameo = "Super Smash Bros",
-    serie = "Kirby",
+    createur = "Satoshi Tajiri",
+    ["premiere_apparition"] = "generation Red",
+    date = "1996",
   },
-  Palutena = {
-    createur = "Gunpei Yokoi",
-    date = "1986",
-    ["premiere_apparition"] = "Kid Icarus",
-  },
-  Link = {
-    ["premiere_apparition"] = "Mario",
-    date = "1987",
+  Bowser = {
+    date = "1985",
     createur = "Shigeru Miyamoto",
+    ["premiere_apparition"] = "Bowser",
     cameo = "Super Mario Bros",
-    serie = "The Legend of Zelda",
+  },
+  Luigi = {
+    date = "1983",
+    createur = "Shigeru Miyamoto",
+    ["premiere_apparition"] = "Mario Bros",
+    cameo = "Mario Bros",
+  },
+  Mario = {
+    serie = "Mario",
+    cameo = "Donkey Kong",
+    createur = "Shigeru Miyamoto",
+    ["premiere_apparition"] = "Donkey Kong",
+    date = "1981",
+  },
+  Peach = {
+    serie = "Mario",
+    createur = "Shigeru Miyamoto",
+    cameo = "Mario",
   },
 }
