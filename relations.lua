@@ -56,36 +56,19 @@ P:lexicon("#personnage",
 		"Bayonetta","Inkling","Ridley","Simon","Richter",
 		"King K. Rool","Marie","Felinferno","Plante Pirahna"
 	})
-P:lexicon("#famille", { "pere", "mere", "frere","soeur","famille","parents","bebe","Bebe" })--TODO a ajouter plus de mots
 
 P:pattern([[
-    [#phrase
-       	.+? ("." | "?" | "!" | "...")
+    [#famille
+    	/[pP]eres?/ | /[mM]eres?/ | /[fF]reres?/ | /[sS]oeurs?/ | /[fF]amilles?/ | /[pP]arents?/ | /[bB]ebes?/ | /[eE]nfants?/ |
+    	/[cC]ousins?/ | /[fF]ils?/ | /[fF]illes?/ | /[oO]ncles?/
     ]
 ]])
 
 P:pattern([[
     [#family
-       	(.* [#lienFamille #personnage ] .* #famille .* [#lienFamille #personnage ] .* ) | (.* #famille .* [#lienFamille #personnage ] .* [#lienFamille #personnage ] .* ) | (.* [#lienFamille #personnage ] .* [#lienFamille #personnage ] .* famille .* )
+       	(.{0,10}? [#lienFamille #personnage ] .{0,10}? #famille .{0,10}? [#lienFamille #personnage ] .{0,10}? ("." | "?" | "!" | "...")) | (.{0,10}? #famille .{0,10}? [#lienFamille #personnage ] .{0,10}? [#lienFamille #personnage ] .{0,10}? ("." | "?" | "!" | "...")) | (.{0,10}? [#lienFamille #personnage ] .{0,10}? [#lienFamille #personnage ] .{0,10}? famille .{0,10}? ("." | "?" | "!" | "..."))
     ]
 ]])
-
-local taps = {
-    ["#personnage"] = "red",
-    ["#lienFamille"] = "blue"
-}
-
-text = es.obtenir_les_lignes_de("Luigi")
-text = text:gsub("%p"," %0 ")--Separation des virgules et des points...
-
-local seq = dark.sequence(text)
-P(seq)
-local phrases = alltag(seq, "#phrase")--phrases est la liste des phrases du texte
-for i, phrase in ipairs(phrases) do
-	local seq2 = dark.sequence(phrase)
-	P(seq2)
-	--print(seq2:tostring(taps))
-end
 
 return P
 --Tag : #lienFamille

@@ -9,11 +9,11 @@ P:lexicon("#unit", { "centimètres", "mètres", "mètres carrés", "kilomètres"
 P:pattern([[
         introduit #w{1,10}? [#fa #W+]
 ]])
+-- P:pattern([[
+        -- premiere apparition #w{1,10}? [#fa #W+]
+-- ]])
 P:pattern([[
-        premiere apparition #w{1,10}? [#fa #W+]
-]])
-P:pattern([[
-        premiere apparition #w{1,5}? #W+ dans [#fa #W+]
+        premiere apparition (#w){0,10}? dans [#fa #W+]
 ]])
 P:pattern([[
         premiere apparition #w{1,5}? jeux de premiere [#fa generation #W+]
@@ -27,36 +27,26 @@ P:pattern([[
 P:pattern([[
         issu du jeu [#fa #W+]
 ]])
-
+P:pattern([[
+        present dans #w{0,5}? [#fa #W+] depuis
+]])
 ---introduit #w+? [#fa (/[A-Z][a-z]*/)+ ] ( de | . | /,/ )
 ---introduit /^%u/+ [#fa (/[A-Z][a-z]*/)+ ] ( de | . | /,/ ) 
 
 --- Nom du createur du personnage
 P:pattern([[
-        /[cC]re[a-z]*/ #w*? par #w{0,5}? [#cre (/[A-Z][a-z]*/)+ ] #w{0,6}? ( de | "." | "," )
+        (/[cC]onc[a-z]*/ | /[cC]re[a-z]*/) #w*? par #w{0,5}? [#cre #W+]
 ]])
 
 --- Date de creation du personnage
 P:pattern([[
-        introduit #w* en [#date #d ]
-]])
-P:pattern([[
         /^cre[ea][sz]?$/ #w{1,8}? en [#date #d ]
 ]])
 P:pattern([[
-        premiere apparition #w{0,12}? "," sorti en [#date #d ] ","
-]])
-P:pattern([[
-        premiere apparition de #W+ #w{0,5}? dans #W+ en [#date #d ]
-]])
-P:pattern([[
-        premiere apparition dans #W+ en [#date #d ]
+        (premiere apparition | introduit | apparu) (#w | ","){0,10}? en [#date #d ]
 ]])
 P:pattern([[
         apparu #w{0,12}? ( #p | #d )*? #w{0,3}? "(" [#date #d ] 
-]])
-P:pattern([[
-        apparu #w{0,8}? en [#date #d] avec
 ]])
 P:pattern([[
         issu du jeu #W+ "(" [#date #d]
@@ -75,6 +65,9 @@ P:pattern([[
 ]])
 P:pattern([[
         /^[Dd]epuis$/ ses debuts en [#date #d]
+]])
+P:pattern([[
+        #W+ depuis [#date #d]
 ]])
 
 
