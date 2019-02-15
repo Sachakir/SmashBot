@@ -40,34 +40,14 @@ P:pattern([[
 
 --- Date de creation du personnage
 P:pattern([[
-        /^cre[ea][sz]?$/ #w{1,8}? en [#date #d ]
+        (/^cre[ea][sz]?$/ | debuts | vu le jour | issu | premiere (fois | apparition) | introduit | apparu) (#w | "," | #W+){0,12}? (en | "(")? [#date #d ]
 ]])
-P:pattern([[
-        (premiere apparition | introduit | apparu) (#w | ","){0,10}? en [#date #d ]
-]])
-P:pattern([[
-        apparu #w{0,12}? ( #p | #d )*? #w{0,3}? "(" [#date #d ] 
-]])
-P:pattern([[
-        issu du jeu #W+ "(" [#date #d]
-]])
+
 P:pattern([[
         compagnon de #W+ depuis #W+ "(" [#date #d]
 ]])
 P:pattern([[
-        debuts (dans|en) #w{0,4}? #W+ #w{0,7}? en [#date #d]
-]])
-P:pattern([[
         celebre #w{0,6}? #W+ "(" [#date #d]
-]])
-P:pattern([[
-        vu le jour #w{0,6}? #W+ en [#date #d]
-]])
-P:pattern([[
-        /^[Dd]epuis$/ ses debuts en [#date #d]
-]])
-P:pattern([[
-        #W+ depuis [#date #d]
 ]])
 
 
