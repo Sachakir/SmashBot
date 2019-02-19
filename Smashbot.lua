@@ -111,8 +111,23 @@ local function preparation_reponse(reponse)
     elseif possede_tag(reponse, "#premiere_apparition") then
         string_reponse = PremiereApparition(data, nom, string_reponse)
     elseif possede_tag(reponse, "#ami") then
-        string_reponse = Ami(data, nom, string_reponse)
+        for k,v in pairs(nom) do
+            info = creationstring.obtenir_info_reponse(data,v,"ami")
+            if info == nil then
+                string_reponse = string_reponse.."Je ne sais pas qui est l'ami de "..v..". "
+            else
+                amis = ""
+                for i = 1,#info do
+                    if not string.match(amis, info[i]) then
+                        amis = info[i]..", "..amis
+                    end
+                end
+                string_reponse = string_reponse.."l'ami de "..v.." est "..amis..". "
+            end
+        end
     end
+
+
     
     if possede_tag(reponse, "#nom") and string_reponse == "" then
         if obtenir_theme_reponse() == "#date_de_creation" then

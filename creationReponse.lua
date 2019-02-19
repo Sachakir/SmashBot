@@ -87,5 +87,6 @@ M.Serie = Serie
 M.Cameo = Cameo
 M.PremiereApparition = PremiereApparition
 M.Ami = Ami
+M.obtenir_info_reponse = obtenir_info_reponse
 
 return M

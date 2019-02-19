@@ -4,6 +4,7 @@ entree_sortie = require("entree_sortie")
 pUnivers = require("patternUnivers")
 pCameoSerie = require("patternSerieCameo")
 pPhysique = require("physique")
+pAmi = require("relations")
 
 local function have_tag(seq, tag)
     return #seq[tag] ~= 0
@@ -85,6 +86,7 @@ for nom,texte in pairs(fichiers) do
 	pUnivers(seq)
     pCameoSerie(seq)
     pPhysique(seq)
+    pAmi(seq)
     personage_tab["createur"] = string_tag(seq, "#cre")
     personage_tab["date"] = string_tag(seq, "#date")
     personage_tab["premiere_apparition"] = string_tag(seq, "#fa")
@@ -92,6 +94,7 @@ for nom,texte in pairs(fichiers) do
     personage_tab["jeux"] = list_string_tag(seq, "#jeux")
     personage_tab["physique"] = {}
     personage_tab["physique"]["habitPorte"] = list_string_tag(seq, "#habitPorte")
+    personage_tab["ami"] = list_string_tag(seq, "#lienFamille")
     data[nom] = personage_tab
 end
 
