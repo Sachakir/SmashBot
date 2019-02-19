@@ -4,9 +4,26 @@ data_traitement = require("entree_sortie")
 local M = {}
 local P = dark.pipeline()
 
--- Jeux principaux
--- Date de création
--- Createur
+function obtenir_tab_de_mots_par_tag(seq, tag)
+    if not possede_tag(seq, tag) then
+        return
+    end
+    liste = {}
+    for k,v in pairs(seq[tag]) do
+        local pos = v
+        local deb, fin = pos[1], pos[2]
+        
+        local res = {}
+        for i = deb,fin do
+            res[#res+1] = seq[i].token
+        end
+        
+        res = table.concat(res, " ")
+        table.insert(liste, res)
+    end
+    
+    return liste
+end
 
 -- Basic
 P:basic()
@@ -35,7 +52,7 @@ P:pattern([[
 
 P:pattern([[
     [#createur
-        /^[Qq]ui$/ .{0,4} #creation
+        (/^[Qq]ui$/ .{0,4} #creation) | createur
     ]
 ]])
 
@@ -48,7 +65,7 @@ P:pattern([[
 
 P:pattern([[
     [#serie
-        (/^[Qq]uel$/ .{0,4} #monde) | (/^[Oo]u$/ .{0,2} /vien[nst]$/)
+        (/^[Qq]uell?e?$/ .{0,4} #monde) | (/^[Oo]u$/ .{0,2} /vien[nst]$/)
     ]
 ]])
 
@@ -61,7 +78,7 @@ P:pattern([[
 
 P:pattern([[
     [#cameo
-        (/^[Qq]uel$/ #monde .{0,3} #apparaitre) | (/^[Oo]u$/ .{0,3} #apparaitre)
+        (/^[Qq]uel$/ #monde .{0,3} #apparaitre) | (/^[Oo]u$/ .{0,3} #apparaitre) | /^[cC]ameos?$/
     ]
 ]])
 
@@ -91,6 +108,26 @@ P:pattern([[
     ]
 ]])
 
+-- Liste de personnages
+P:pattern([[
+    [#all
+        /^[Tt]ou[st]$/ | /^[Tt]oute?s?$/ 
+    ]
+]])
+
+P:pattern([[
+    [#personnage
+        /^[Pp]ersonnages?$/ | /^[Pp]ersos?$/
+    ]
+]])
+
+P:pattern([[
+    [#question_persos
+        (/^[Qq]uels?$/ .{0,3} #personnage) | (#all .{0,2} #personnage)
+    ]
+]])
+
 M.regles = P
+M.obtenir_tab_de_mots_par_tag = obtenir_tab_de_mots_par_tag
 
 return M
