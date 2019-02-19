@@ -25,22 +25,37 @@ local function string_tag(seq, tag)
 end
 
 function list_string_tag(seq, tag)
+	--On check si tag existe
     if not have_tag(seq, tag) then
         return
     end
     local taille_tag_seq = #seq[tag]
     local table_res = {}
     for nString = 1,taille_tag_seq do 
+		-- on prend le tag en position nString
         local pos = seq[tag][nString]
+		--deb = debut de notre tag, fin = end de ce tag
         local deb, fin = pos[1], pos[2]
-        
         local res = {}
+		-- on recupere char par char l element
         for i = deb,fin do
             res[#res+1] = seq[i].token
         end
-        table_res[#table_res+1] = table.concat(res, " ")
+		if(checkPresence(table.concat(res, " "), table_res)) then
+			-- On ajoute la valeur a la liste
+			table_res[#table_res+1] = table.concat(res, " ")
+		end
     end
     return table_res
+end
+
+function checkPresence(res, table_res)
+	for compteur = 0, #table_res do
+		if (table_res[compteur] == res) then
+			return false
+		end
+	end
+	return true
 end
 
 
@@ -94,10 +109,9 @@ for nom,texte in pairs(fichiers) do
     personage_tab["physique"]["habitPorte"] = list_string_tag(seq, "#habitPorte")
     data[nom] = personage_tab
 end
-
 ecrire_dans_la_bd(data)
 
-
+[[--
 test = obtenir_les_lignes_de(test_nom)
 --print(test)
 test = test:gsub("%p", " %0 ")
@@ -107,5 +121,5 @@ pUnivers(seq_test)
 pCameoSerie(seq_test)
 pPhysique(seq_test)
 print(seq_test:tostring(taps))
-
+--]]
 
