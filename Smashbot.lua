@@ -3,6 +3,16 @@ data_traitement = require("entree_sortie")
 data = require("Base_de_donnees/BD")
 traitement = require("regle_reponse")
 lev = require("levenshtein")
+creationstring = require("creationReponse")
+
+-- Objet qui enregistre un nom de perso ET un thème.
+local memoire = {
+    [1] = {},
+    [2] = {},
+    [3] = {},
+}
+local ultra_memoire = {}
+
 
 local taps = {
     ["#date_de_creation"] = "yellow",
@@ -10,6 +20,8 @@ local taps = {
     ["#serie"] = "green",
     ["#nom"] = "red",
     ["#monde"] = "red",
+    ["#question_persos"] = "red",
+    ["#all"] = "red",
 }
 
 local regle_au_revoir = dark.pattern([[
@@ -30,24 +42,31 @@ local function traitement_reponse(reponse)
     return reponse
 end
 
-local function obtenir_nom_reponse(reponse, memoire)
-    nom = string_tag(reponse,"#nom")
+local function obtenir_nom_reponse(reponse)
+    nom = obtenir_tab_de_mots_par_tag(reponse,"#nom")
     if nom == nil then
-        nom = memoire['perso']
+        nom = memoire[1]['perso']
+    end
+    if nom == nil then
+        nom = memoire[2]['perso']
+    end
+    if nom == nil then
+        nom = memoire[3]['perso']
     end
     return nom
 end
 
-local function obtenir_info_reponse(reponse, nom, info)
-    res = data_traitement.obtenir_objet_de_personnage_par_clef(data,nom)
-    res = data_traitement.obtenir_objet_de_personnage_par_clef(res, info)
-    if (type(res) == "table") then
-        str = ""
-        for i = 1, #res do
-            str = str .. res[i] .. ","
-        end
+local function obtenir_theme_reponse()
+    if memoire[1]['theme'] ~= nil then
+        return memoire[1]['theme']
     end
-    return res
+    if memoire[2]['theme'] ~= nil then
+        nom = memoire[2]['theme']
+    end
+    if memoire[3]['theme'] ~= nil then
+        return memoire[3]['theme']
+    end
+    return nil
 end
 
 local function chercheCompatibiliteNom(chaine)
@@ -64,109 +83,101 @@ local function chercheCompatibiliteNom(chaine)
             end
         end
     end 
-    
-    return "De quel personnage parlez-vous ?"
+    return nil
 end
 
-local function preparation_reponse(reponse, memoire)
-    nom = obtenir_nom_reponse(reponse, memoire)
+local function preparation_reponse(reponse)
+    string_reponse = ""
+    nom = obtenir_nom_reponse(reponse)
+
+    if nom == nil then
+        return chercheCompatibiliteNom(reponse)
+    end
+
+    if nom == nil then
+        return "De quel personnage parlez-vous ?"
+    end
+    
+    if possede_tag(reponse, "#question_persos") then
+        info = obtenir_tous_les_noms()
+        liste = ""
+        for k,v in pairs(info) do
+            liste = liste..", "..v
+        end
+        return "Voilà tous les persos que je connais "..liste
+    end
     
     if possede_tag(reponse, "#date_de_creation") then
-        nom = string_tag(reponse,"#nom")
-        if nom == nil then 
-            local resultat = chercheCompatibiliteNom(reponse)
-            return resultat
-        else
-            la_date = data_traitement.obtenir_objet_de_personnage_par_clef(data,nom)
-            la_date = data_traitement.obtenir_objet_de_personnage_par_clef(la_date,"date")
-            return "La date de creation de "..nom.." est "..la_date
-        end
+        string_reponse = dateCreation(data, nom, string_reponse)
     elseif possede_tag(reponse, "#createur") then
-        info = obtenir_info_reponse(reponse, nom, "createur")
-        if info == nil then
-            return "Je ne sais pas."
-        end
-        return "Le createur de "..nom.." est "..info
+        string_reponse = Createur(data, nom, string_reponse)
     elseif possede_tag(reponse, "#serie") then
-        info = obtenir_info_reponse(reponse, nom, "serie")
-        if info == nil then
-            return "Je ne sais pas."
-        end
-        return "La serie de "..nom.." est "..info
+        string_reponse = Serie(data, nom, string_reponse)
     elseif possede_tag(reponse, "#cameo") then
-        info = obtenir_info_reponse(reponse, nom, "cameo")
-        if info == nil then
-            return "Je ne sais pas."
-        end
-        return nom.." est venu en caméo dans "..info
+        string_reponse = Cameo(data, nom, string_reponse)
     elseif possede_tag(reponse, "#premiere_apparition") then
-        info = obtenir_info_reponse(reponse, nom, "premiere_apparition")
-        if info == nil then
-            return "Je ne sais pas."
-        end
-        return nom.." est vu pour la première fois dans "..info
+        string_reponse = PremiereApparition(data, nom, string_reponse)
     elseif possede_tag(reponse, "#ami") then
-        info = obtenir_info_reponse(reponse, nom, "ami")
-        if info == nil then
-            return "Je ne sais pas."
-        end
-        return nom.." est ami avec "..info
+        string_reponse = Ami(data, nom, string_reponse)
     end
     
-    if possede_tag(reponse, "#nom") then
-        if memoire['theme'] == "#date_de_creation" then
-              info = obtenir_info_reponse(reponse, nom, "date")
-            if info == nil then
-                return "Je ne sais pas."
-            end
-            return "La date de creation de "..nom.." est "..info
-        elseif memoire['theme'] == "#createur" then
-            info = obtenir_info_reponse(reponse, nom, "createur")
-            if info == nil then
-                return "Je ne sais pas."
-            end
-            return "Le createur de "..nom.." est "..info
-        elseif memoire['theme'] == "#serie" then
-            info = obtenir_info_reponse(reponse, nom, "serie")
-            if info == nil then
-                return "Je ne sais pas."
-            end
-            return "La serie de "..nom.." est "..info
-        elseif memoire['theme'] == "#cameo" then
-            info = obtenir_info_reponse(reponse, nom, "cameo")
-            if info == nil then
-                return "Je ne sais pas."
-            end
-            return nom.." est venu en caméo dans "..info
-        elseif memoire['theme'] == "#premiere_apparition" then
-            info = obtenir_info_reponse(reponse, nom, "premiere_apparition")
-            if info == nil then
-                return "Je ne sais pas."
-            end
-            return nom.." est vu pour la première fois dans "..info
+    if possede_tag(reponse, "#nom") and string_reponse == "" then
+
+        if obtenir_theme_reponse() == "#date_de_creation" then
+            string_reponse = dateCreation(data, nom, string_reponse)
+        elseif obtenir_theme_reponse() == "#createur" then
+            string_reponse = Createur(data, nom, string_reponse)
+        elseif obtenir_theme_reponse() == "#serie" then
+            string_reponse = Serie(data, nom, string_reponse)
+        elseif obtenir_theme_reponse() == "#cameo" then
+            string_reponse = Cameo(data, nom, string_reponse)
+        elseif obtenir_theme_reponse() == "#premiere_apparition" then
+            string_reponse = PremiereApparition(data, nom, string_reponse)
+        elseif obtenir_theme_reponse() == "#premiere_apparition" then
+            string_reponse = Ami(data, nom, string_reponse)
         end
     end
-        
-    return "Je n'ai pas compris."
+    
+
+    if string_reponse == "" then 
+        return "Je n'ai pas compris votre question."
+    end
+    return string_reponse
 end
 
-local function update_memoire(reponse, memoire)
+local function creation_reponse(reponse, nom, string_reponse)
+
+end
+
+local function update_memoire(reponse)
+    memoire[3]['perso'] = memoire[2]['perso']
+    memoire[3]['theme'] = memoire[2]['theme']
+    memoire[2]['perso'] = memoire[1]['perso']
+    memoire[2]['theme'] = memoire[1]['theme']
+
     if possede_tag(reponse, "#nom") then
-        memoire['perso'] = string_tag(reponse,"#nom")
+        memoire[1]['perso'] = obtenir_tab_de_mots_par_tag(reponse,"#nom")
     end
     if possede_tag(reponse, "#date_de_creation") then
-        memoire['theme'] = "#date_de_creation"
+        memoire[1]['theme'] = "#date_de_creation"
     elseif possede_tag(reponse, "#createur") then
-        memoire['theme'] = "#createur"
+        memoire[1]['theme'] = "#createur"
     elseif possede_tag(reponse, "#createur") then
-        memoire['theme'] = "#createur"
+        memoire[1]['theme'] = "#createur"
     elseif possede_tag(reponse, "#serie") then
-        memoire['theme'] = "#serie"
+        memoire[1]['theme'] = "#serie"
     elseif possede_tag(reponse, "#cameo") then
-        memoire['theme'] = "#cameo"
+        memoire[1]['theme'] = "#cameo"
     elseif possede_tag(reponse, "#premiere_apparition") then
-        memoire['theme'] = "#premiere_apparition"
+        memoire[1]['theme'] = "#premiere_apparition"
     end
+    
+    tempo = {
+        ["perso"] = memoire[3]['perso'],
+        ["theme"] = memoire[3]['theme'],
+    }
+    table.insert(ultra_memoire, tempo)
+    
     return memoire
 end
 
@@ -189,10 +200,7 @@ function string_tag(seq, tag)
     return table.concat(res, " ")
 end
 
-function main()
-    -- Objet qui enregistre un nom de perso ET un thème.
-    memoire = {}
-    
+function main()    
     -- SmashBot en lui-même
     print("*** SmashBot ***")
     printBot("Salut, je suis SmashBot. Tu as une question pour moi?")
@@ -200,11 +208,13 @@ function main()
         print()
         reponse = io.read()
         reponse = traitement_reponse(reponse)
-        memoire = update_memoire(reponse, memoire)
+        memoire = update_memoire(reponse)
         --print(serialize(memoire))
+        --print(serialize(ultra_memoire))
         --print(reponse:tostring(taps))
+        print(serialize(obtenir_tab_de_mots_par_tag(reponse, "#nom")))
         if not possede_tag(reponse,"#fin") then 
-            printBot(preparation_reponse(reponse, memoire))
+            printBot(preparation_reponse(reponse))
         end
     until possede_tag(reponse,"#fin")
     printBot("Ok, à la prochaine!")
