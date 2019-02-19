@@ -104,7 +104,7 @@ P:pattern([[
 -- Lien Famille
 P:pattern([[
     [#ami
-        /[aA]amis?/ |/[aA]amies?/ 
+        /^[aA]mie?s?$/
     ]
 ]])
 

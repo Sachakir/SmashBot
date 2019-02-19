@@ -1,6 +1,13 @@
 dark = require("dark")
+data_traitement = require("entree_sortie")
 
 local M = {}
+
+local function obtenir_info_reponse(reponse, nom, info)
+    res = data_traitement.obtenir_personnage_par_nom(data,nom)
+    res = data_traitement.obtenir_objet_de_personnage_par_clef(res, info)
+    return res
+end
 
 function dateCreation(data, nom, string_reponse)
     for k,v in pairs(nom) do
@@ -68,23 +75,23 @@ function Ami(data, nom, string_reponse)
         if info == nil then
             string_reponse = string_reponse.."Je ne sais pas qui est l'ami de "..v..". "
         else
-            string_reponse = string_reponse.."l'ami de "..v.." est "..info..". "
+            amis = ""
+            for i = 1,#info do
+                if not string.match(amis, info[i]) then
+                    amis = info[i]..", "..amis
+                end
+            end
+            string_reponse = string_reponse.."l'ami de "..v.." est "..amis..". "
         end
     end
     return string_reponse
 end
 
-
-    elseif possede_tag(reponse, "#serie") then
-
-    elseif possede_tag(reponse, "#cameo") then
-
-    elseif possede_tag(reponse, "#premiere_apparition") then
-
-    elseif possede_tag(reponse, "#ami") then
-
-
-
 M.dateCreation = dateCreation
+M.Createur = Createur
+M.Serie = Serie
+M.Cameo = Cameo
+M.PremiereApparition = PremiereApparition
+M.Ami = Ami
 
 return M
