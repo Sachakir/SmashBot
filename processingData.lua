@@ -87,8 +87,8 @@ local taps = {
     ["#fa"] = "green",
     ["#serie"] = "red",
     ["#appearance"] = "purple", 
-    ["#habitPorte"] = "cyan",
-    ["#caracCorps"] = "red", 
+    ["#caracGlobal"] = "cyan",
+    ["#caracCorps"] = "red",
 }
 
 local data = {}
@@ -116,7 +116,8 @@ for nom,texte in pairs(fichiers) do
     personage_tab["jeux"] = list_string_tag(seq, "#jeux")
     personage_tab["physique"] = {}
     personage_tab["physique"]["habitPorte"] = list_string_tag(seq, "#habitPorte")    
-    personage_tab["physique"]["caracteristiques"] = list_string_tag(seq, "#caracCorps")
+    personage_tab["physique"]["corps"] = list_string_tag(seq, "#caracCorps")
+    personage_tab["physique"]["caracteristiques"] = list_string_tag(seq, "#caracGlobal")
     personage_tab["ami"] = list_string_tag(seq, "#lienFamille")
     data[nom] = personage_tab
 end

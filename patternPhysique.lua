@@ -120,11 +120,14 @@ Pphysique:pattern([[[#Rcorps (#POS=ADJ #Lcorps | #Lcorps #POS=ADJ)] ]])
 
 Pphysique:pattern([[ (#personnage|/[Ii]l/|/[Ee]lle/) a #POS=DET [#caracCorps #Rcorps] ]])
 
-Pphysique:pattern([[ (#personnage|C "'") est (un|une) [#caracCorps (#Lcouleur|#POS=ADJ)? (#POS=NNC|#POS=NNP) (#Lcouleur|#POS=ADJ)? ] ]])
-
 Pphysique:pattern([[ (/[Ss][eoa][ns]?/) [#formuleCorps #Lcorps (#w){0,2} #POS=VRB (#w){0,2} (#POS|ADJ|#Rcouleur)] ]])
 
 Pphysique:pattern([[ #caracCorps (.{1,9}? [#caracCorps #Rcorps]){1,6} ]])
+
+
+-- caracteristiques
+-- TODO VOIR SI ON SEPARE CACARECRETISUREIQUES CORPS ET CARACATEREISQUEES NORMALES
+Pphysique:pattern([[ (#personnage|C "'") est (un|une) [#caracGlobal (#Lcouleur|#POS=ADJ)? (#POS=NNC|#POS=NNP) (#Lcouleur|#POS=ADJ)? ] ]])
 
 --(#personnage|/[Ii]l/|/[Ee]lle/)
 
@@ -132,6 +135,7 @@ Pphysique:pattern([[ #caracCorps (.{1,9}? [#caracCorps #Rcorps]){1,6} ]])
 local tags = {
     ["#habitPorte"] = "red",
     ["#caracCorps"] = "green",
+    ["#caracGlobal"] = "cyan",
     ["#Rcorps"] = "blue",
     --["#POS=ADJ"] = "yellow",
     ["#formuleCorps"] = "magenta",
