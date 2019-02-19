@@ -3,7 +3,9 @@ entree_sortie = require("entree_sortie")
 -- On recupere les pipelines
 pUnivers = require("patternUnivers")
 pCameoSerie = require("patternSerieCameo")
-pPhysique = require("physique")
+pPhysique = require("patternPhysique")
+pAmi = require("relations")
+
 
 local function have_tag(seq, tag)
     return #seq[tag] ~= 0
@@ -69,43 +71,51 @@ local taps = {
     ["#date"] = "blue",
     ["#fa"] = "green",
     ["#serie"] = "red",
-    ["#appearance"] = "purple",
+    ["#appearance"] = "purple", 
     ["#habitPorte"] = "cyan",
+    ["#caracCorps"] = "red", 
 }
 
 local data = {}
 local fichiers = obtenir_tous_les_textes()
 local test_nom = "Luigi"
 
+local main = dark.pipeline()
+main:basic()
+main:model("postag-fr")
+main:add(pUnivers)
+main:add(pCameoSerie)
+main:add(pPhysique)
+main:add(pAmi)
+
 for nom,texte in pairs(fichiers) do
     personage_tab = {}
     texte = texte:gsub("%p", " %0 ")
     texte = enlever_accents(texte)
 	local seq = dark.sequence(texte)
-	pUnivers(seq)
-    pCameoSerie(seq)
-    pPhysique(seq)
+	main(seq)
     personage_tab["createur"] = string_tag(seq, "#cre")
     personage_tab["date"] = string_tag(seq, "#date")
     personage_tab["premiere_apparition"] = string_tag(seq, "#fa")
     personage_tab["serie"] = string_tag(seq, "#serie")
     personage_tab["jeux"] = list_string_tag(seq, "#jeux")
     personage_tab["physique"] = {}
-    personage_tab["physique"]["habitPorte"] = list_string_tag(seq, "#habitPorte")
+    personage_tab["physique"]["habitPorte"] = list_string_tag(seq, "#habitPorte")    
+    personage_tab["physique"]["caracteristiques"] = list_string_tag(seq, "#caracCorps")
+    personage_tab["ami"] = list_string_tag(seq, "#lienFamille")
+
     data[nom] = personage_tab
 end
 
 ecrire_dans_la_bd(data)
 
-
+--[[
 test = obtenir_les_lignes_de(test_nom)
 --print(test)
 test = test:gsub("%p", " %0 ")
 test = enlever_accents(test)
 seq_test = dark.sequence(test)
-pUnivers(seq_test)
-pCameoSerie(seq_test)
-pPhysique(seq_test)
+main(seq_test)
 print(seq_test:tostring(taps))
-
+]]--
 

@@ -70,7 +70,13 @@ Pphysique:lexicon("#Lcouleur", {"bleu", "bleue", "bleus", "bleues", "rouge", "ro
 								 "noirs", "noire", "noires", "gris",  "grise", "grises", "marron", "indigo",
 								 "ecarlate", "dore", "dores", "argente"})
 
-Pphysique:lexicon("#Lcorps", {}) -- #TODO
+Pphysique:lexicon("#Lcorps", {"corps", "oreilles", "queue", "yeux", "oeil", "oreille", "nez",
+                               "bouche", "dent", "dents", "cheveux", "tete", "museau", "fourrure",
+                               "joues", "cou", "epaule", "epaules", "joue", "bras", "avant-bras", "poignet",
+                               "main", "doigt", "mains", "poignets", "doigts", "griffe", "griffes",
+                               "ongle", "ongles", "cuisse", "cuisses", "ventre", "dos", "jambe", "jambes",
+                               "pied", "pieds", "cheville", "chevilles", "orteil", "orteils", "genou", "genoux",
+                                }) 
 
 Pphysique:lexicon("#LcouleurAdjectif", {"clair", "fonce", "clairs", "fonces"})
 
@@ -101,26 +107,38 @@ Pphysique:pattern([[ (/[Ss][eoa][ns]?/) [#formuleHabitPorte (#Rvetement|#Lveteme
 
 
 -- physique
-Pphysique:pattern([[ #personnage est un [#caracteristiques #POS=ADJ? (#POS=NNC|#POS=NNP) #POS=ADJ?] ]])
+--[=[Pphysique:pattern([[ #personnage est un [#caracteristiques #POS=ADJ? (#POS=NNC|#POS=NNP) #POS=ADJ?] ]])
 Pphysique:pattern([[ #personnage est #w{1,3} [#caracteristiques #POS=ADJ{1,3}] ]])
 
 Pphysique:pattern([[ #caracteristiques .{0,2}? [#caracteristiques #POS=ADJ] ]])
 
 Pphysique:pattern([[ #personnage a #w{1,3}? [#caracteristiques #POS=NNC #POS=ADJ] ]])
+]=]--
+
+-- corps
+Pphysique:pattern([[[#Rcorps (#POS=ADJ #Lcorps | #Lcorps #POS=ADJ)] ]])
+
+Pphysique:pattern([[ (#personnage|/[Ii]l/|/[Ee]lle/) a #POS=DET [#caracCorps #Rcorps] ]])
+
+Pphysique:pattern([[ (#personnage|C "'") est (un|une) [#caracCorps (#Lcouleur|#POS=ADJ)? (#POS=NNC|#POS=NNP) (#Lcouleur|#POS=ADJ)? ] ]])
+
+Pphysique:pattern([[ (/[Ss][eoa][ns]?/) [#formuleCorps #Lcorps (#w){0,2} #POS=VRB (#w){0,2} (#POS|ADJ|#Rcouleur)] ]])
+
+Pphysique:pattern([[ #caracCorps (.{1,9}? [#caracCorps #Rcorps]){1,6} ]])
 
 --(#personnage|/[Ii]l/|/[Ee]lle/)
 
 -- couleurs possibles : black, red, green, yellow, blue, magenta, cyan, white
 local tags = {
     ["#habitPorte"] = "red",
-    --["#caracteristiques"] = "green",
-    ["#Rvetement"] = "blue",
---    ["#POS=ADP"] = "yellow",
-    ["#formuleHabitPorte"] = "magenta",
+    ["#caracCorps"] = "green",
+    ["#Rcorps"] = "blue",
+    --["#POS=ADJ"] = "yellow",
+    ["#formuleCorps"] = "magenta",
     --["#LmotHabit"] = "cyan",
 }
 
-local file = io.open("textes/Fox.txt", "r")
+local file = io.open("textes/Pikachu.txt", "r")
 --local line = "La tour Eiffel mesure 324 mètres ."
 
 local lines = file:read("*all") 
@@ -133,7 +151,14 @@ mem:label(seq)
 Pphysique(seq)
 
 --print(serialize(seq[3]))
-print(seq:tostring(tags))
+
+
+-- LE PRINT EST ICI
+--print(seq:tostring(tags))
+-- LE PRINT EST LA
+
+
+--[[
 print(serialize(seq["#formuleHabitPorte"]))
 local formules = serialize(seq["#formuleHabitPorte"])
 
@@ -142,12 +167,17 @@ print("#########################")
 --print(serialize(es.obtenir_tous_les_noms()))
 --[[for k,v in pairs(seq[3]) do
     print(k, serialize(v))
-end]]--
+end] ]--
 
-local bail = serialize(list_string_tag(seq, "#formuleHabitPorte"))
+print()
+
+local bail = serialize(list_string_tag(seq, "#formuleHabitPorte"))..serialize(list_string_tag(seq, "#formuleCorps"))
 print(bail)
-bail = bail:gsub("est", "\b")
-bail = bail:gsub("a", "\b")
+bail = bail:gsub(" est ", " ")
+bail = bail:gsub(" a ", " ")
+bail = bail:gsub(" ont ", " ")
+bail = bail:gsub(" sont ", " ")
 print(bail)
+]]
 
 return Pphysique
