@@ -49,7 +49,33 @@ function list_string_tag(seq, tag)
     end
     return table_res
 end
+function listRelations_string_tag(nom, seq, tag)
+	--On check si tag existe
+    if not have_tag(seq, tag) then
+        return
+    end
+    local taille_tag_seq = #seq[tag]
+    local table_res = {}
+    for nString = 1,taille_tag_seq do 
+		-- on prend le tag en position nString
+        local pos = seq[tag][nString]
+		--deb = debut de notre tag, fin = end de ce tag
+        local deb, fin = pos[1], pos[2]
+        local res = {}
+		-- on recupere char par char l element
+        for i = deb,fin do
+            res[#res+1] = seq[i].token
+        end
+		if(checkPresenceSelf(nom, table.concat(res, " "), table_res)) then
+			-- On ajoute la valeur a la liste
+			table_res[#table_res+1] = table.concat(res, " ")
+		end
+    end
+    return table_res
+end
 
+
+-- Verifie si la valeur n est pas deja presente
 function checkPresence(res, table_res)
 	for compteur = 0, #table_res do
 		if (table_res[compteur] == res) then
@@ -58,7 +84,19 @@ function checkPresence(res, table_res)
 	end
 	return true
 end
-
+-- supprime son propre nom des relations
+function checkPresenceSelf(name, res, table_res)
+	for compteur = 0, #table_res do
+		print(name)
+		print(table_res[compteur])
+		print(res)
+		print("NOOOOOOOOOO")
+		if ((table_res[compteur] == res)or(res == name)) then
+			return false
+		end
+	end
+	return true
+end
 
 local function enlever_accents(texte)
     texte = texte:gsub("ä", "a")
@@ -109,7 +147,7 @@ for nom,texte in pairs(fichiers) do
     personage_tab["jeux"] = list_string_tag(seq, "#jeux")
     personage_tab["physique"] = {}
     personage_tab["physique"]["habitPorte"] = list_string_tag(seq, "#habitPorte")
-    personage_tab["ami"] = list_string_tag(seq, "#lienFamille")
+    personage_tab["ami"] = listRelations_string_tag(nom, seq, "#lienFamille")
     data[nom] = personage_tab
 end
 ecrire_dans_la_bd(data)

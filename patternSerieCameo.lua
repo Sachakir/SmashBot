@@ -34,7 +34,7 @@ P:pattern([[
 
 -- Apparition du personnage dans des jeux
 P:pattern([[
-        (/^jeu[x]?$/ | /^apparition[s]?$/ | cameo dans) #w{0,5}? ( Nintendo DS | Electronic Arts | Game Boy | Entertainment System)* [#jeux #W+ (#W+ | of #W | #d)?]
+        (/^jeu[x]?$/ | /^apparition[s]?$/ | cameo dans) #w{0,5}? (Wii | Nintendo DS | Electronic Arts | Game Boy | Entertainment System)* [#jeux #W+ (#W+ | of #W | #d)]
 ]])
 P:pattern([[
         Dans [#jeux #W+ (#W+ | (of | et ) #W | #d)+]
