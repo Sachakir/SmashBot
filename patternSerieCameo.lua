@@ -29,15 +29,15 @@ P:basic()
 
 -- Serie principale du personnage
 P:pattern([[
-        serie [#serie #W+ ]
+        serie [#serie #W+ (of #W)* ]
 ]])
 
 -- Apparition du personnage dans des jeux
 P:pattern([[
-        (/^jeu[x]?$/ ^(par) | /^apparition[s]?$/ | cameo dans) #w{0,5}? (Nintendo DS | Game Boy | Entertainment System)* [#jeux #W+ (#W+ | of | #d)+]
+        (/^jeu[x]?$/ | /^apparition[s]?$/ | cameo dans) #w{0,5}? ( Nintendo DS | Electronic Arts | Game Boy | Entertainment System)* [#jeux #W+ (#W+ | of #W | #d)?]
 ]])
 P:pattern([[
-        Dans [#jeux #W+ (#W+ | of | #d)+]
+        Dans [#jeux #W+ (#W+ | (of | et ) #W | #d)+]
 ]])
 
 

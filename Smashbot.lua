@@ -47,10 +47,10 @@ local function obtenir_nom_reponse(reponse)
     if nom == nil then
         nom = memoire[1]['perso']
     end
-    if next(nom) == nil then
+    if nom == nil then
         nom = memoire[2]['perso']
     end
-    if next(nom) == nil then
+    if nom == nil then
         nom = memoire[3]['perso']
     end
     return nom
@@ -83,13 +83,20 @@ local function chercheCompatibiliteNom(chaine)
             end
         end
     end 
-    
-    return "De quel personnage parlez-vous ?"
+    return nil
 end
 
 local function preparation_reponse(reponse)
     string_reponse = ""
     nom = obtenir_nom_reponse(reponse)
+
+    if nom == nil then
+        return chercheCompatibiliteNom(reponse)
+    end
+
+    if nom == nil then
+        return "De quel personnage parlez-vous ?"
+    end
     
     if possede_tag(reponse, "#question_persos") then
         info = obtenir_tous_les_noms()
@@ -115,6 +122,7 @@ local function preparation_reponse(reponse)
     end
     
     if possede_tag(reponse, "#nom") and string_reponse == "" then
+
         if obtenir_theme_reponse() == "#date_de_creation" then
             string_reponse = dateCreation(data, nom, string_reponse)
         elseif obtenir_theme_reponse() == "#createur" then
@@ -125,9 +133,12 @@ local function preparation_reponse(reponse)
             string_reponse = Cameo(data, nom, string_reponse)
         elseif obtenir_theme_reponse() == "#premiere_apparition" then
             string_reponse = PremiereApparition(data, nom, string_reponse)
+        elseif obtenir_theme_reponse() == "#premiere_apparition" then
+            string_reponse = Ami(data, nom, string_reponse)
         end
     end
     
+
     if string_reponse == "" then 
         return "Je n'ai pas compris votre question."
     end
