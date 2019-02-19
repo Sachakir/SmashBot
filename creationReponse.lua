@@ -75,7 +75,13 @@ function Ami(data, nom, string_reponse)
         if info == nil then
             string_reponse = string_reponse.."Je ne sais pas qui est l'ami de "..v..". "
         else
-            string_reponse = string_reponse.."l'ami de "..v.." est "..info..". "
+            amis = ""
+            for i = 1,#info do
+                if not string.match(amis, info[i]) then
+                    amis = info[i]..", "..amis
+                end
+            end
+            string_reponse = string_reponse.."l'ami de "..v.." est "..amis..". "
         end
     end
     return string_reponse
@@ -87,6 +93,5 @@ M.Serie = Serie
 M.Cameo = Cameo
 M.PremiereApparition = PremiereApparition
 M.Ami = Ami
-M.obtenir_info_reponse = obtenir_info_reponse
 
 return M
