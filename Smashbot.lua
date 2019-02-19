@@ -46,10 +46,10 @@ local function obtenir_nom_reponse(reponse)
     if nom == nil then
         nom = memoire[1]['perso']
     end
-    if next(nom) == nil then
+    if nom == nil then
         nom = memoire[2]['perso']
     end
-    if next(nom) == nil then
+    if nom == nil then
         nom = memoire[3]['perso']
     end
     return nom
@@ -88,13 +88,20 @@ local function chercheCompatibiliteNom(chaine)
             end
         end
     end 
-    
-    return "De quel personnage parlez-vous ?"
+    return nil
 end
 
 local function preparation_reponse(reponse)
     string_reponse = ""
     nom = obtenir_nom_reponse(reponse)
+
+    if nom == nil then
+        return chercheCompatibiliteNom(reponse)
+    end
+
+    if nom == nil then
+        return "De quel personnage parlez-vous ?"
+    end
     
     if possede_tag(reponse, "#question_persos") then
         info = obtenir_tous_les_noms()
@@ -160,7 +167,7 @@ local function preparation_reponse(reponse)
             end
         end
     end
-    
+    --[[
     if possede_tag(reponse, "#nom") then
         if obtenir_theme_reponse() == "#date_de_creation" then
             for k,v in pairs(nom) do
@@ -197,7 +204,8 @@ local function preparation_reponse(reponse)
             return nom.." est vu pour la première fois dans "..info
         end
     end
-    
+    ]]--
+
     if string_reponse == "" then 
         return "Je n'ai pas compris votre question."
     end
