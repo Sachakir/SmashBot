@@ -127,6 +127,13 @@ P:pattern([[
     ]
 ]])
 
+-- Regle pluralité persos
+P:pattern([[
+    [#ET
+        #nom et #nom
+    ]
+]])
+
 M.regles = P
 M.obtenir_tab_de_mots_par_tag = obtenir_tab_de_mots_par_tag
 
