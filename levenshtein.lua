@@ -1,5 +1,7 @@
 local M = {}
 
+
+
 function distance_levenshtein(chaine1, chaine2)
     d = {}
     tailleChaine1 = string.len(chaine1)
@@ -34,7 +36,13 @@ function distance_levenshtein(chaine1, chaine2)
     return d[tailleChaine1][tailleChaine2]
 end
 
+function estProcheDe(chaine1, chaine2)
+    return (string.len(chaine1)+string.len(chaine2))/math.max(string.len(chaine1),string.len(chaine2)) / 2
+end
+
+
 
 M.distance_levenshtein = distance_levenshtein
+M.estProcheDe = estProcheDe
 
 return M

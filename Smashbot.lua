@@ -69,26 +69,48 @@ local function obtenir_theme_reponse()
     return nil
 end
 
+
+
 local function chercheCompatibiliteNom(chaine)
     local noms = data_traitement.obtenir_tous_les_noms()
 
     for i = 1, #chaine do
         for k,v in pairs(noms) do
             for k = 1, #chaine[i] do
-                if chaine[i][k].name == "#W" then 
-                    if lev.distance_levenshtein(v, chaine[i].token) <= string.len(v)/2 and lev.distance_levenshtein(v, chaine[i].token)  <= string.len(chaine[i].token)/2 and string.len(chaine[i].token) > 3 then
+                if chaine[i][k].name == "#W" then
+                    local boucle = 0
+                    local ok = 1
+                    for word in v:gmatch("%w+") do
+                        if ok == 1 and lev.distance_levenshtein(word, chaine[i+boucle].token) <= string.len(word)/2 and lev.distance_levenshtein(word, chaine[i+boucle].token) <= string.len(chaine[i+boucle].token)/2 and string.len(chaine[i+boucle].token) >= 3 then
+                            print(word)
+                            print(chaine[i+boucle].token)
+                            ok = 1
+                            boucle = boucle +1
+                        else 
+                            ok = 0
+                            boucle = 0
+                        end
+
+                    end
+
+                    if ok == 1 then
                         return "Vous voulez dire "..v.." ?"
                     end
                 end
             end
         end
     end 
+
     return nil
 end
 
+
+
 local function preparation_reponse(reponse)
+
     string_reponse = ""
     nom = obtenir_nom_reponse(reponse)
+
 
     if nom == nil then
         return chercheCompatibiliteNom(reponse)
@@ -202,6 +224,7 @@ end
 
 function main()    
     -- SmashBot en lui-même
+
     print("*** SmashBot ***")
     printBot("Salut, je suis SmashBot. Tu as une question pour moi?")
     repeat
