@@ -47,12 +47,17 @@ local function obtenir_nom_reponse(reponse)
     if nom == nil then
         nom = memoire[1]['perso']
     end
-    if next(nom) == nil then
-        nom = memoire[2]['perso']
+    -- Le nom ~= nil car necessaire pour la 1ère itération de la mémoire
+    if nom ~= nil then
+        if next(nom) == nil then
+            nom = memoire[2]['perso']
+        end
     end
-    if next(nom) == nil then
-        nom = memoire[3]['perso']
-    end
+    if nom ~= nil then
+        if next(nom) == nil then
+                nom = memoire[3]['perso']
+        end
+    end  
     return nom
 end
 
