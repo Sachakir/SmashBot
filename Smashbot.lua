@@ -97,6 +97,7 @@ end
 
 local function preparation_reponse(reponse)
     string_reponse = ""
+    info_reponse_bot = nil
     nom = obtenir_nom_reponse(reponse)
     
     if possede_tag(reponse, "#question_persos") then
@@ -124,10 +125,10 @@ local function preparation_reponse(reponse)
         string_reponse = PremiereApparition(data, nom, string_reponse)
     end
     if possede_tag(reponse, "#ami") then
-        string_reponse = Ami(data, nom, string_reponse)
+        string_reponse, info_reponse_bot = Ami(data, nom, string_reponse)
     end
     
-    print(obtenir_theme_reponse("#date_de_creation"))
+    --print(obtenir_theme_reponse("#date_de_creation"))
     
     if possede_tag(reponse, "#nom") and string_reponse == "" then
         if obtenir_theme_reponse("#date_de_creation") then
@@ -146,22 +147,24 @@ local function preparation_reponse(reponse)
             string_reponse = PremiereApparition(data, nom, string_reponse)
         end
         if obtenir_theme_reponse("#ami") then
-            string_reponse = Ami(data, nom, string_reponse)
+            string_reponse, info_reponse_bot = Ami(data, nom, string_reponse, memoire)
         end
     end
     
     if string_reponse == "" then 
         return "Je n'ai pas compris votre question."
     end
-    return string_reponse
+    -- print(serialize(info_reponse_bot))
+    return string_reponse, info_reponse_bot
 end
 
-local function update_memoire(reponse)
+local function update_memoire(reponse, info_reponse_bot)
     memoire[3]['perso'] = memoire[2]['perso']
     memoire[3]['theme'] = memoire[2]['theme']
     memoire[2]['perso'] = memoire[1]['perso']
     memoire[2]['theme'] = memoire[1]['theme']
     memoire[1]['theme'] = {}
+    memoire[1]['perso'] = {}
 
     if possede_tag(reponse, "#nom") then
         memoire[1]['perso'] = obtenir_tab_de_mots_par_tag(reponse,"#nom")
@@ -190,6 +193,13 @@ local function update_memoire(reponse)
         ["theme"] = memoire[3]['theme'],
     }
     table.insert(ultra_memoire, tempo)
+    
+    --[[if info_reponse_bot ~= nil then
+        print("ok")
+        for k,v in pairs(info_reponse_bot) do
+            table.insert(memoire[1]['perso'], v)
+        end
+    end]]--
     
     return memoire
 end
@@ -221,14 +231,16 @@ function main()
         print()
         reponse = io.read()
         reponse = traitement_reponse(reponse)
-        memoire = update_memoire(reponse)
+        memoire = update_memoire(reponse, info_reponse_bot)
         print(serialize(memoire))
         --print(serialize(ultra_memoire))
         --print(reponse:tostring(taps))
         --print(serialize(obtenir_tab_de_mots_par_tag(reponse, "#nom")))
-        if not possede_tag(reponse,"#fin") then 
-            printBot(preparation_reponse(reponse))
+        if not possede_tag(reponse,"#fin") then
+            reponse_bot, info_reponse_bot = preparation_reponse(reponse)
+            printBot(reponse_bot)
         end
+        
     until possede_tag(reponse,"#fin")
     printBot("Ok, à la prochaine!")
 end
