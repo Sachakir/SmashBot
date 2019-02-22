@@ -3,8 +3,9 @@ entree_sortie = require("entree_sortie")
 -- On recupere les pipelines
 pUnivers = require("patternUnivers")
 pCameoSerie = require("patternSerieCameo")
-pPhysique = require("physique")
+pPhysique = require("patternPhysique")
 pAmi = require("relations")
+
 
 local function have_tag(seq, tag)
     return #seq[tag] ~= 0
@@ -16,34 +17,83 @@ local function string_tag(seq, tag)
     end
     local pos = seq[tag][1]
     local deb, fin = pos[1], pos[2]
-    
+
     local res = {}
     for i = deb,fin do
         res[#res+1] = seq[i].token
     end
-    
+
     return table.concat(res, " ")
 end
 
 function list_string_tag(seq, tag)
+	--On check si tag existe
     if not have_tag(seq, tag) then
         return
     end
     local taille_tag_seq = #seq[tag]
     local table_res = {}
-    for nString = 1,taille_tag_seq do 
+    for nString = 1,taille_tag_seq do
+		-- on prend le tag en position nString
         local pos = seq[tag][nString]
+		--deb = debut de notre tag, fin = end de ce tag
         local deb, fin = pos[1], pos[2]
-        
         local res = {}
+		-- on recupere char par char l element
         for i = deb,fin do
             res[#res+1] = seq[i].token
         end
-        table_res[#table_res+1] = table.concat(res, " ")
+		if(checkPresence(table.concat(res, " "), table_res)) then
+			-- On ajoute la valeur a la liste
+			table_res[#table_res+1] = table.concat(res, " ")
+		end
+    end
+    return table_res
+end
+function listRelations_string_tag(nom, seq, tag)
+	--On check si tag existe
+    if not have_tag(seq, tag) then
+        return
+    end
+    local taille_tag_seq = #seq[tag]
+    local table_res = {}
+    for nString = 1,taille_tag_seq do
+		-- on prend le tag en position nString
+        local pos = seq[tag][nString]
+		--deb = debut de notre tag, fin = end de ce tag
+        local deb, fin = pos[1], pos[2]
+        local res = {}
+		-- on recupere char par char l element
+        for i = deb,fin do
+            res[#res+1] = seq[i].token
+        end
+		if(checkPresenceSelf(nom, table.concat(res, " "), table_res)) then
+			-- On ajoute la valeur a la liste
+			table_res[#table_res+1] = table.concat(res, " ")
+		end
     end
     return table_res
 end
 
+
+-- Verifie si la valeur n est pas deja presente
+function checkPresence(res, table_res)
+	for compteur = 0, #table_res do
+		if (table_res[compteur] == res) then
+			return false
+		end
+	end
+	return true
+end
+-- supprime son propre nom des relations
+function checkPresenceSelf(name, res, table_res)
+	for compteur = 0, #table_res do
+		if ((table_res[compteur] == res)or(res == name)) then
+			return false
+		end
+	end
+	return true
+end
 
 local function enlever_accents(texte)
     texte = texte:gsub("ä", "a")
@@ -70,45 +120,50 @@ local taps = {
     ["#date"] = "blue",
     ["#fa"] = "green",
     ["#serie"] = "red",
+
     ["#appearance"] = "purple",
     ["#habitPorte"] = "cyan",
+    ["#caracCorps"] = "red",
 }
 
 local data = {}
 local fichiers = obtenir_tous_les_textes()
 local test_nom = "Luigi"
 
+local main = dark.pipeline()
+main:basic()
+main:model("postag-fr")
+main:add(pUnivers)
+main:add(pCameoSerie)
+main:add(pPhysique)
+main:add(pAmi)
+
 for nom,texte in pairs(fichiers) do
     personage_tab = {}
     texte = texte:gsub("%p", " %0 ")
     texte = enlever_accents(texte)
 	local seq = dark.sequence(texte)
-	pUnivers(seq)
-    pCameoSerie(seq)
-    pPhysique(seq)
-    pAmi(seq)
+	main(seq)
     personage_tab["createur"] = string_tag(seq, "#cre")
     personage_tab["date"] = string_tag(seq, "#date")
     personage_tab["premiere_apparition"] = string_tag(seq, "#fa")
     personage_tab["serie"] = string_tag(seq, "#serie")
     personage_tab["jeux"] = list_string_tag(seq, "#jeux")
     personage_tab["physique"] = {}
-    personage_tab["physique"]["habitPorte"] = list_string_tag(seq, "#habitPorte")
-    personage_tab["ami"] = list_string_tag(seq, "#lienFamille")
+    personage_tab["physique"]["habitPorte"] = list_string_tag(seq, "#habitPorte")    
+    personage_tab["physique"]["corps"] = list_string_tag(seq, "#caracCorps")
+    personage_tab["physique"]["caracteristiques"] = list_string_tag(seq, "#caracGlobal")
+    personage_tab["ami"] = listRelations_string_tag(nom, seq, "#lienFamille")
     data[nom] = personage_tab
 end
-
 ecrire_dans_la_bd(data)
 
-
+--[[
 test = obtenir_les_lignes_de(test_nom)
 --print(test)
 test = test:gsub("%p", " %0 ")
 test = enlever_accents(test)
 seq_test = dark.sequence(test)
-pUnivers(seq_test)
-pCameoSerie(seq_test)
-pPhysique(seq_test)
+main(seq_test)
 print(seq_test:tostring(taps))
-
-
+]]--
