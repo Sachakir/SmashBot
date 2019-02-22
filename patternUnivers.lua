@@ -9,20 +9,13 @@ P:lexicon("#unit", { "centimètres", "mètres", "mètres carrés", "kilomètres"
 P:pattern([[
         introduit #w{1,10}? [#fa #W+]
 ]])
--- P:pattern([[
-        -- premiere apparition #w{1,10}? [#fa #W+]
--- ]])
 P:pattern([[
-        premiere apparition (#w){0,10}? dans (#w){0,5}? [#fa #W+ (and #W)?]
+        premiere apparition (#w|"'")){0,10}? dans (#w|"'"){0,5}? [#fa #W+ (and #W)?]
 ]])
 P:pattern([[
-        (issu du jeu | premiere (fois | apparition) | debuts) (#d | #w){0,5}? [#fa #W+ (and #W)?]
+        (issu du jeu | premiere (fois | apparition | /^apparu[es]?$/) | debuts | present dans) (#d | #w | "'"){0,5}? [#fa #W+ (and #W)?]
 ]])
-P:pattern([[
-        present dans #w{0,5}? [#fa #W+ (and #W)?]
-]])
----introduit #w+? [#fa (/[A-Z][a-z]*/)+ ] ( de | . | /,/ )
----introduit /^%u/+ [#fa (/[A-Z][a-z]*/)+ ] ( de | . | /,/ ) 
+
 
 --- Nom du createur du personnage
 P:pattern([[
