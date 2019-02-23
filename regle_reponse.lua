@@ -134,6 +134,34 @@ P:pattern([[
     ]
 ]])
 
+--Question sur le monde : Quels sont les personnages du monde Mario ?
+
+P:pattern([[
+    [#persoMonde
+        #question_persos du monde de? #w
+    ]
+]])
+
+P:pattern([[
+    [#porter
+        ([pP]orter?) | ([pP]ortent)
+    ]
+]])
+
+P:pattern([[
+    [#preposition
+        ([lL][ea]) | ([uU]ne?) | ([dD]e [lL][ea]) | ([dD]u)
+    ]
+]])
+
+--Question sur le physique : Quels sont les personnages qui portent une cape ?
+
+P:pattern([[
+    [#persoPhysique
+        #question_persos qui? #porter (#preposition)? #w
+    ]
+]])
+
 M.regles = P
 M.obtenir_tab_de_mots_par_tag = obtenir_tab_de_mots_par_tag
 
