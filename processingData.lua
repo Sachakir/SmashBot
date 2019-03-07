@@ -123,6 +123,9 @@ local taps = {
     ["#caracGlobal"] = "cyan",
     ["#appearance"] = "purple",
     ["#habitPorte"] = "cyan",
+
+    ["#appearance"] = "purple",
+    ["#caracGlobal"] = "cyan",
     ["#caracCorps"] = "red",
 }
 
