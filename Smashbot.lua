@@ -142,6 +142,22 @@ local function chercheCompatibiliteNom(chaine)
     return nil
 end
 
+local function chercheCompatibiliteNom2(chaine)
+  local noms = data_traitement.obtenir_tous_les_noms()
+
+  for i = 1, #chaine do
+      for k,v in pairs(noms) do
+          for k = 1, #chaine[i] do
+              if chaine[i][k].name == "#W" then
+                  if lev.distance_levenshtein(v, chaine[i].token) <= string.len(v)/2 and lev.distance_levenshtein(v, chaine[i].token)  <= string.len(chaine[i].token)/2 and string.len(chaine[i].token) > 3 then
+                      return "Vous voulez dire "..v.." ?"
+                  end
+              end
+          end
+      end
+  end
+  return nil
+end
 
 local function preparation_reponse(reponse)
 
