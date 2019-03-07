@@ -102,7 +102,7 @@ Pphysique:pattern([[ #LmotHabit .{0,3} [#habitPorte #Rvetement] ]])
 
 Pphysique:pattern([[ #habitPorte (.{1,9}? [#habitPorte #Rvetement]){1,6} ]])
 
-Pphysique:pattern([[ (/[Ss][eoa][ns]?/) [#formuleHabitPorte (#Rvetement|#LvetementCompose) (#w){0,2} #POS=VRB (#w){0,2} #Rcouleur] ]])
+Pphysique:pattern([[ (/^[Ss][eoa][ns]?$/) [#formuleHabitPorte (#Rvetement|#LvetementCompose) (#w){0,2} #POS=VRB (#w){0,2} #Rcouleur] ]])
 
 
 
@@ -118,9 +118,9 @@ Pphysique:pattern([[ #personnage a #w{1,3}? [#caracteristiques #POS=NNC #POS=ADJ
 -- corps
 Pphysique:pattern([[[#Rcorps (#POS=ADJ #Lcorps | #Lcorps #POS=ADJ)] ]])
 
-Pphysique:pattern([[ (#personnage|/[Ii]l/|/[Ee]lle/) a #POS=DET [#caracCorps #Rcorps] ]])
+Pphysique:pattern([[ (#personnage|/^[Ii]l$/|/^[Ee]lle$/) a #POS=DET [#caracCorps #Rcorps] ]])
 
-Pphysique:pattern([[ (/[Ss][eoa][ns]?/) [#formuleCorps #Lcorps (#w){0,2} #POS=VRB (#w){0,2} (#POS|ADJ|#Rcouleur)] ]])
+Pphysique:pattern([[ (/^[Ss][eoa][ns]?$/) [#formuleCorps #Lcorps (#w){0,2} #POS=VRB (#w){0,2} (#POS|ADJ|#Rcouleur)] ]])
 
 Pphysique:pattern([[ #caracCorps (.{1,9}? [#caracCorps #Rcorps]){1,6} ]])
 

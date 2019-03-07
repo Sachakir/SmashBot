@@ -95,11 +95,62 @@ function Ami(data, nom, string_reponse, memoire)
     return string_reponse, info
 end
 
+function Physique(data, nom, string_reponse)
+    for k,v in pairs(nom) do
+        info = obtenir_info_reponse(data,v,"physique")
+        if info == nil then
+            string_reponse = string_reponse.."Désolé, je ne saurais pas vous décrire "..v..". "
+        else
+            if info["caracteristiques"] ~= nil then
+                caracs = ""
+                --print(info["caracteristiques"][1])
+                for i,e in pairs(info["caracteristiques"]) do
+                    caracs = "un "..e..", "..caracs
+                end
+
+                string_reponse = string_reponse..v.." est "..caracs
+            end
+            
+            if info["habitPorte"] ~= nil then
+                habits = ""
+                for i,e in pairs(info["habitPorte"]) do
+                    habits = "un "..e..", "..habits
+                end
+
+                if string_reponse == '' then
+                    string_reponse = string_reponse..v.." porte "..habits
+                else
+                    string_reponse = string_reponse..". Il porte "..habits
+                end
+            end
+
+            if info["corps"] ~= nil then
+                corps = ""
+                for i,e in pairs(info["corps"]) do
+                    corps = "un "..e..", "..corps
+                end
+
+                if string_reponse == '' then
+                    string_reponse = string_reponse..v.." a "..corps
+                else 
+                    string_reponse = string_reponse..". Il a "..corps
+                end
+            end
+        end
+    end
+    return string_reponse
+end
+
+
+
+            
+
 M.dateCreation = dateCreation
 M.Createur = Createur
 M.Serie = Serie
 M.Cameo = Cameo
 M.PremiereApparition = PremiereApparition
 M.Ami = Ami
+M.Physique = Physique
 
 return M
