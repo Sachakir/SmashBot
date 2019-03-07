@@ -62,17 +62,18 @@ local function obtenir_nom_reponse(reponse)
 end
 
 local function obtenir_theme_reponse(theme)
-    res = {}
-    if memoire[1]['theme'] == nil then
-        return false
+    res = memoire[1]['theme']
+    if res ~= nil then
+        if next(res) == nil then
+            res = memoire[2]['theme']
+        end
     end
-    if next(memoire[1]['theme']) ~= nil then
-        res = memoire[1]['theme']
-    elseif next(memoire[2]['theme']) ~= nil then
-        res = memoire[2]['theme']
-    elseif next(memoire[3]['theme']) ~= nil then
-        res = memoire[3]['theme']
-    end
+    if res ~= nil then
+        if next(res) == nil then
+            res = memoire[3]['theme']
+        end
+    end  
+    if res == nil then return false end
     if next(res) == nil then return false end
     for k,v in pairs(res) do
         if v == theme then
