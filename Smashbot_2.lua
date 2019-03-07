@@ -75,7 +75,7 @@ local function obtenir_nom_reponse(reponse)
         if next(nom) == nil then
                 nom = memoire[3]['perso']
         end
-    end
+    end  
     return nom, isMemoire
 end
 
@@ -133,13 +133,13 @@ local function chercheCompatibiliteNom(chaine)
                     end
 
                     if ok == 1 then
-                        return "Vous voulez dire "..v.." ?"
+                        return nil
                     end
                 end
             end
         end
     end
-    return nil
+    return null
 end
 
 
@@ -148,14 +148,14 @@ local function preparation_reponse(reponse)
     string_reponse = ""
     info_reponse_bot = nil
     nom, isMemoire = obtenir_nom_reponse(reponse)
-
-    --[[if obtenir_nom_reponse_sans_memoire(reponse) == nil then
+    
+    --[[if isMemoire then
         recherche = chercheCompatibiliteNom(reponse)
+        print(recherche)
         if recherche ~= nil then
           return recherche
         end
     end]]--
-    
 
     if nom == nil then
         return "De quel personnage parlez-vous ?"
@@ -191,8 +191,6 @@ local function preparation_reponse(reponse)
     if possede_tag(reponse, "#physiqueGeneral") then
         string_reponse = Physique(data, nom, string_reponse)
     end
-
-    --print(obtenir_theme_reponse("#date_de_creation"))
 
     if possede_tag(reponse, "#nom") and string_reponse == "" then
         if obtenir_theme_reponse("#date_de_creation") then
@@ -320,10 +318,9 @@ function main()
         reponse = io.read()
         reponse = traitement_reponse(reponse)
         memoire = update_memoire(reponse, info_reponse_bot)
-        -- print(serialize(memoire))
-        --print(serialize(ultra_memoire))
-        --print(reponse:tostring(taps))
-        --print(serialize(obtenir_tab_de_mots_par_tag(reponse, "#nom")))
+        
+        print(serialize(memoire))
+        
         if not possede_tag(reponse,"#fin") then
             reponse_bot, info_reponse_bot = preparation_reponse(reponse)
             ajoutReponseBotDansMemoire(info_reponse_bot)
