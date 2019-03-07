@@ -97,7 +97,7 @@ function Physique(data, nom, string_reponse)
         else
             if info["caracteristiques"] ~= nil then
                 caracs = ""
-                print(info["caracteristiques"][1])
+                --print(info["caracteristiques"][1])
                 for i,e in pairs(info["caracteristiques"]) do
                     caracs = "un "..e..", "..caracs
                 end

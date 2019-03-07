@@ -165,7 +165,6 @@ local function preparation_reponse(reponse)
         string_reponse = Physique(data, nom, string_reponse)
     end
 
-    print(obtenir_theme_reponse("#date_de_creation"))
     --print(obtenir_theme_reponse("#date_de_creation"))
     
     if possede_tag(reponse, "#nom") and string_reponse == "" then
