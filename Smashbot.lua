@@ -42,10 +42,28 @@ local function traitement_reponse(reponse)
     return reponse
 end
 
+local function dialogue_quention_nom(nom)
+    print("ici")
+    if nom ~= nil then
+        if #nom <= 4 then
+            str = "De qui parlez-vous? de "
+            for i = 1,#nom-1 do
+                str = str..nom[i].." ou "
+            end
+            str = str..nom[#nom].."."
+        else
+            str = "Hm, mais de qui parlez-vous? de "..nom[1].."? de "..nom[2].."? ou des autres?"
+        end
+        return str, nil
+    end
+end
+
 local function obtenir_nom_reponse(reponse)
     nom = obtenir_tab_de_mots_par_tag(reponse,"#nom")
+    isMemoire = false
     if nom == nil then
         nom = memoire[1]['perso']
+        isMemoire = true
     end
     -- Le nom ~= nil car necessaire pour la 1ère itération de la mémoire
     if nom ~= nil then
@@ -58,7 +76,7 @@ local function obtenir_nom_reponse(reponse)
                 nom = memoire[3]['perso']
         end
     end  
-    return nom
+    return nom, isMemoire
 end
 
 local function obtenir_theme_reponse(theme)
@@ -123,7 +141,7 @@ local function preparation_reponse(reponse)
 
     string_reponse = ""
     info_reponse_bot = nil
-    nom = obtenir_nom_reponse(reponse)
+    nom, isMemoire = obtenir_nom_reponse(reponse)
     
     if nom == nil then
         return chercheCompatibiliteNom(reponse)
@@ -187,7 +205,13 @@ local function preparation_reponse(reponse)
     if string_reponse == "" then 
         return "Je n'ai pas compris votre question."
     end
-    -- print(serialize(info_reponse_bot))
+
+    if nom ~= nil and isMemoire then
+        if #nom ~= 1 or nom[-1] ~= nil then
+            return dialogue_quention_nom(nom)
+        end
+    end
+
     return string_reponse, info_reponse_bot
 end
 
@@ -237,6 +261,14 @@ local function update_memoire(reponse, info_reponse_bot)
     return memoire
 end
 
+local function ajoutReponseBotDansMemoire(info_reponse_bot)
+    if info_reponse_bot ~= nil then
+        for k,v in pairs(info_reponse_bot) do
+            memoire[1]['perso'][k+1] = v
+        end
+    end
+end
+
 function possede_tag(seq, tag)
     return #seq[tag] ~= 0
 end
@@ -272,6 +304,7 @@ function main()
         --print(serialize(obtenir_tab_de_mots_par_tag(reponse, "#nom")))
         if not possede_tag(reponse,"#fin") then
             reponse_bot, info_reponse_bot = preparation_reponse(reponse)
+            ajoutReponseBotDansMemoire(info_reponse_bot)
             printBot(reponse_bot)
         end
         

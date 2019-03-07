@@ -47,11 +47,17 @@ end
 
 function Cameo(data, nom, string_reponse)
     for k,v in pairs(nom) do
-        info = obtenir_info_reponse(data,v,"cameo")
+        info = obtenir_info_reponse(data,v,"jeux")
         if info == nil then
             string_reponse = string_reponse.."Je ne connais pas le(s) cameo(s) de "..v..". "
         else
-            string_reponse = string_reponse.."le(s) cameo(s) de "..v.." est/sont "..info..". "
+            cameos = ""
+            for i = 1,#info do
+                if not string.match(cameos, info[i]) then
+                    cameos = info[i]..", "..cameos
+                end
+            end
+            string_reponse = string_reponse.."le(s) cameo(s) de "..v.." est/sont "..cameos..". "
         end
     end
     return string_reponse
