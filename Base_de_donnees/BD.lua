@@ -1,143 +1,55 @@
 return {
-  Ike = {
+  Richter = {
+    serie = "Super Smash Bros",
     jeux = {
-      [1] = "Fire Emblem",
-      [2] = "Super Smash Bros",
-      [3] = "Path of Radiance",
+      [1] = "Symphony of The Night",
+      [2] = "Castlevania",
     },
     physique = {
       caracteristiques = {
-        [1] = "personnage",
-        [2] = "personne",
-      },
-    },
-  },
-  ["Diddy Kong"] = {
-    ["premiere_apparition"] = "Donkey Kong Country",
-    jeux = {
-      [1] = "Donkey Kong Country",
-      [2] = "Donkey Kong Country 2",
-      [3] = "Donkey Kong",
-      [4] = "Donkey Kong Land III",
-      [5] = "Extra Life Balloons",
-      [6] = "Diddy Kong Racing",
-      [7] = "Super Mario Party",
-      [8] = "Mario Party",
-      [9] = "Diddy Kong",
-    },
-    date = "1994",
-    ami = {
-      [1] = "Donkey Kong",
-    },
-    physique = {
-      caracteristiques = {
-        [1] = "personnage",
-        [2] = "jeune singe",
-      },
-    },
-    serie = "Donkey Kong",
-  },
-  Olimar = {
-    ["premiere_apparition"] = "Pikmin",
-    jeux = {
-      [1] = "Shigeru Miyamoto",
-      [2] = "Super Smash Bros",
-      [3] = "Pikmin 2",
-    },
-    date = "2001",
-    physique = {
-      corps = {
-        [1] = "cheveux courts",
+        [1] = "patron",
       },
       habitPorte = {
-        [1] = "combinaison spatiale",
-      },
-      caracteristiques = {
-        [1] = "personnage",
+        [1] = "tunique bleu",
+        [2] = "costume",
+        [3] = "combinaison de fleches directionnelles",
       },
     },
-    createur = "Shigeru Miyamoto",
+    ["premiere_apparition"] = "Castlevania",
   },
-  Fox = {
-    ["premiere_apparition"] = "Star Fox",
-    jeux = {
-      [1] = "Star Fox",
-      [2] = "Super Smash Bros",
-      [3] = "Star Fox Adventures",
-      [4] = "Star Fox Command",
-    },
-    date = "1993",
-    physique = {
-      caracteristiques = {
-        [1] = "personnage",
-        [2] = "Renard",
-      },
-    },
-    serie = "Star Fox",
-  },
-  Daisy = {
-    ["premiere_apparition"] = "Super Mario Land",
-    jeux = {
-      [1] = "Mario Kart Wii",
-      [2] = "Mario Party DS",
-      [3] = "Mario Party 9",
-      [4] = "Mario Kart",
-      [5] = "Mario Kart DS",
-      [6] = "Mario Kart 7",
-      [7] = "Mario Kart 8",
-      [8] = "Super Smash Bros",
-      [9] = "Mario Power Tennis",
-      [10] = "Mario Tennis Open",
-      [11] = "NES Open Tournament Golf",
-      [12] = "Mario Golf",
-      [13] = "Mario Party 4",
-      [14] = "Super Mario Land",
-      [15] = "Smash Bros",
-      [16] = "Mario Party 3",
-      [17] = "Mario Sports Superstars",
-    },
-    date = "3",
-    ami = {
-      [1] = "Peach",
-      [2] = "Mario",
-      [3] = "Luigi",
-    },
+  Bayonetta = {
+    createur = "Kenichiro Yoshimura",
+    serie = "Bayonetta",
     physique = {
       habitPorte = {
-        [1] = "tenue moulante",
-        [2] = "tenue de tennis",
-        [3] = "robe",
-        [4] = "gants oranges",
-      },
-      caracteristiques = {
-        [1] = "competitrice nee",
+        [1] = "tenue noire",
       },
     },
-    serie = "Mario Party",
   },
-  ["Bowser Jr"] = {
-    ["premiere_apparition"] = "Super Mario Sunshine",
+  Lucina = {
+    serie = "Fire Emblem",
+    ["premiere_apparition"] = "Fire Emblem Awakening",
     jeux = {
-      [1] = "Super Mario Sunshine",
-      [2] = "Mario Baseball",
-      [3] = "Mario Super Sluggers",
+      [1] = "Super Smash Bros",
+      [2] = "Fates",
+      [3] = "Fire Emblem Fates",
     },
-    ami = {
-      [1] = "Bowser",
-      [2] = "Mario",
-      [3] = "Peach",
-    },
+    date = "2012",
     physique = {
+      caracteristiques = {
+        [1] = "personnage",
+        [2] = "femme",
+      },
+      habitPorte = {
+        [1] = "cape",
+      },
     },
-    serie = "Mario",
+    createur = "Yusuke Kozaki",
   },
   ["Dr Mario"] = {
     ami = {
       [1] = "Luigi",
       [2] = "Mario",
-    },
-    jeux = {
-      [1] = "WiiWare Dr",
     },
     physique = {
       habitPorte = {
@@ -145,113 +57,46 @@ return {
       },
     },
     serie = "Super Smash Bros",
-  },
-  Samus = {
-    ["premiere_apparition"] = "Metroid",
     jeux = {
-      [1] = "Metroid Prime",
-      [2] = "Metroid II",
-      [3] = "Nintendo Entertainment System",
-      [4] = "Metroid Zero",
-      [5] = "Super Metroid",
-      [6] = "NES Metroid",
-      [7] = "Gene Kohler",
+      [1] = "WiiWare Dr",
+    },
+  },
+  Ganon = {
+    ["premiere_apparition"] = "The Legend Of Zelda",
+    jeux = {
+      [1] = "Ocarina of Time",
+      [2] = "The Wind Waker",
+      [3] = "Twilight Princess",
     },
     date = "1986",
     physique = {
-      habitPorte = {
-        [1] = "combinaison de protection dans la plupart des series de Metroid",
-        [2] = "combinaison de protection",
-        [3] = "costume bleu",
-      },
-    },
-    serie = "Metroid",
-  },
-  ["Donkey Kong"] = {
-    ["premiere_apparition"] = "Donkey Kong",
-    jeux = {
-      [1] = "Donkey Kong",
-      [2] = "Nintendo Entertainment System",
-      [3] = "Donkey Kong Classics",
-      [4] = "Nintendo EAD Tokyo",
-      [5] = "Donkey Kong Country Returns",
-    },
-    date = "1981",
-    ami = {
-    },
-    serie = "Donkey Kong Country",
-    physique = {
-      habitPorte = {
-        [1] = "cravate rouge",
-      },
       caracteristiques = {
-        [1] = "personnage",
-        [2] = "grand singe muscle",
+        [1] = "guerrier redoutable",
+      },
+      habitPorte = {
+        [1] = "cape",
+        [2] = "armure",
       },
     },
     createur = "Shigeru Miyamoto",
-  },
-  Richter = {
-    ["premiere_apparition"] = "Castlevania",
-    jeux = {
-      [1] = "Symphony of The Night",
-      [2] = "Portrait of Ruin",
-      [3] = "Maria Renard",
-      [4] = "Super Smash Bros",
-    },
-    physique = {
-      habitPorte = {
-        [1] = "tunique bleu",
-        [2] = "costume",
-        [3] = "combinaison de fleches directionnelles",
-      },
-      caracteristiques = {
-        [1] = "patron",
-      },
-    },
-    serie = "Super Smash Bros",
-  },
-  Lucina = {
-    ["premiere_apparition"] = "Fire Emblem Awakening",
-    jeux = {
-      [1] = "Super Smash Bros",
-    },
-    physique = {
-      habitPorte = {
-        [1] = "cape",
-      },
-      caracteristiques = {
-        [1] = "personnage",
-      },
-    },
   },
   Isabelle = {
     ["premiere_apparition"] = "Animal Crossing",
     jeux = {
       [1] = "Animal Crossing",
-      [2] = "Super Smash Bros",
-      [3] = "Mario Kart 8 Isabelle",
+      [2] = "Capcom",
+      [3] = "Super Smash Bros",
+      [4] = "Mario Kart 8 Isabelle",
     },
     date = "2012",
     physique = {
-      habitPorte = {
-        [1] = "costume",
-      },
       caracteristiques = {
         [1] = "chienne jaune",
         [2] = "personnage",
         [3] = "chienne",
       },
-    },
-  },
-  ["Samus sans armure"] = {
-    jeux = {
-      [1] = "Super Smash Bros",
-    },
-    physique = {
       habitPorte = {
-        [1] = "armure",
-        [2] = "combinaison bleue",
+        [1] = "costume",
       },
     },
   },
@@ -264,60 +109,95 @@ return {
     },
     date = "2004",
     physique = {
+      caracteristiques = {
+        [1] = "personnage",
+        [2] = "nouveau combattant",
+        [3] = "concentration",
+      },
       habitPorte = {
         [1] = "costume",
       },
-      caracteristiques = {
-        [1] = "nouveau combattant",
-        [2] = "personnage",
-        [3] = "concentration",
-      },
     },
     serie = "Super Smash Bros",
+  },
+  Roy = {
+    physique = {
+      caracteristiques = {
+        [1] = "personnage",
+        [2] = "combattant",
+      },
+      habitPorte = {
+        [1] = "cape rouge",
+        [2] = "armure bleue",
+        [3] = "vetements bleus",
+      },
+    },
+    ["premiere_apparition"] = "Fire Emblem",
+    jeux = {
+      [1] = "Super Smash Bros",
+    },
   },
   Link = {
     ["premiere_apparition"] = "Mario",
     jeux = {
-      [1] = "Super Smash Bros",
-      [2] = "Super Mario Bros",
-      [3] = "Nintendo Entertainment System",
-      [4] = "Nintendo 64",
-      [5] = "The Legend of Zelda",
-      [6] = "Adventure of Link",
-      [7] = "Oracle L",
+      [1] = "Entertainment System",
+      [2] = "Nintendo 64",
+      [3] = "The Legend of Zelda",
+      [4] = "Adventure of Link",
+      [5] = "Oracle L",
     },
-    date = "1987",
     ami = {
       [1] = "Zelda",
     },
+    date = "1987",
     physique = {
-      habitPorte = {
-        [1] = "bonnet vert",
-        [2] = "tunique verte",
-      },
       caracteristiques = {
         [1] = "Hylien",
         [2] = "Hylian normal",
       },
+      habitPorte = {
+        [1] = "bonnet vert",
+        [2] = "tunique verte",
+      },
     },
     serie = "The Legend of Zelda",
   },
+  Sonic = {
+    serie = "Sonic",
+    ["premiere_apparition"] = "Sonic",
+    jeux = {
+      [1] = "Sonic",
+      [2] = "Sonic Colours",
+      [3] = "Sega",
+      [4] = "Super Smash Bros",
+    },
+    date = "1991",
+    physique = {
+      caracteristiques = {
+        [1] = "herisson",
+        [2] = "menace",
+      },
+    },
+    createur = "Yuji Naka",
+  },
   Kirby = {
+    serie = "Super Smash Bros",
     ["premiere_apparition"] = "Game Boy Kirby",
     jeux = {
-      [1] = "Super Smash Bros",
-      [2] = "Kirby Dream",
-      [3] = "Masahiro Sakurai",
-      [4] = "Game Boy Kirby",
+      [1] = "Mario And Luigi",
+      [2] = "Super Mario",
+      [3] = "Kirby Dream ' s Land",
+      [4] = "Kirby ' s Dream Land",
       [5] = "HAL Laboratory",
-      [6] = "Kirby Super Star",
-      [7] = "Kirby Canvas Curse",
-      [8] = "Kirby Squeak Squad",
+      [6] = "Kirby ' s Adventure",
+      [7] = "Kirby",
+      [8] = "Kirby Super Star",
+      [9] = "Kirby Canvas Curse",
+      [10] = "Kirby Squeak Squad",
     },
-    date = "1992",
     ami = {
     },
-    serie = "Super Smash Bros",
+    date = "1992",
     physique = {
       caracteristiques = {
         [1] = "petite boule",
@@ -327,24 +207,80 @@ return {
     },
     createur = "Masahiro Sakurai",
   },
+  Olimar = {
+    ["premiere_apparition"] = "Pikmin",
+    jeux = {
+      [1] = "Pikmin",
+      [2] = "Nintendo",
+      [3] = "Pikmin 2",
+      [4] = "Olimar",
+      [5] = "Super Smash Bros",
+      [6] = "Melee",
+    },
+    date = "2001",
+    physique = {
+      habitPorte = {
+        [1] = "combinaison spatiale",
+      },
+      caracteristiques = {
+        [1] = "personnage",
+      },
+      corps = {
+        [1] = "cheveux courts",
+      },
+    },
+    createur = "Shigeru Miyamoto",
+  },
+  Mario = {
+    serie = "Mario",
+    jeux = {
+      [1] = "Nintendo",
+      [2] = "Super Mario Bros",
+      [3] = "Entertainment System",
+      [4] = "Donkey Kong",
+      [5] = "Mario",
+      [6] = "Super Mario Land",
+      [7] = "NES Mario",
+    },
+    ami = {
+      [1] = "Luigi",
+      [2] = "Bowser",
+      [3] = "Peach",
+      [4] = "Donkey Kong",
+      [5] = "Wario",
+    },
+    createur = "Shigeru Miyamoto",
+    physique = {
+      caracteristiques = {
+        [1] = "humain",
+      },
+      habitPorte = {
+        [1] = "casquette",
+        [2] = "bonnet rouge",
+        [3] = "gants blancs",
+        [4] = "chemise rouge",
+        [5] = "combinaison bleue",
+        [6] = "chaussures marron",
+      },
+    },
+    date = "1997",
+  },
   Yoshi = {
+    serie = "Smash",
     ["premiere_apparition"] = "Super Mario World",
     jeux = {
-      [1] = "Super Mario Sunshine",
+      [1] = "SNES",
       [2] = "Super Mario World",
-      [3] = "Donkey Kong Country",
-      [4] = "Nintendo Entertainment System",
-      [5] = "Super Scope",
-      [6] = "Super Mario RPG",
-      [7] = "Virtual Boy",
-      [8] = "Nintendo 64",
-      [9] = "Paper Mario",
-      [10] = "Super Mario Bros",
-      [11] = "Yoshi Eggs",
-      [12] = "Super Mario Advance",
+      [3] = "Pikmin",
+      [4] = "Entertainment System",
+      [5] = "Puzzle",
+      [6] = "Super Scope",
+      [7] = "Mario",
+      [8] = "Paper Mario",
+      [9] = "Super Mario Bros",
+      [10] = "Super Mario Advance",
     },
     date = "1992",
-    serie = "Smash",
     physique = {
       caracteristiques = {
         [1] = "personnage",
@@ -352,65 +288,356 @@ return {
     },
     createur = "Kazumi Totaka",
   },
+  ["Donkey Kong"] = {
+    serie = "Donkey Kong Country",
+    ["premiere_apparition"] = "Donkey Kong",
+    jeux = {
+      [1] = "Donkey Kong",
+      [2] = "Punch",
+      [3] = "Entertainment System",
+      [4] = "SNES",
+    },
+    ami = {
+    },
+    date = "1981",
+    physique = {
+      caracteristiques = {
+        [1] = "personnage",
+        [2] = "grand singe muscle",
+      },
+      habitPorte = {
+        [1] = "cravate rouge",
+      },
+    },
+    createur = "Shigeru Miyamoto",
+  },
+  Shulk = {
+    serie = "Super Smash Bros",
+    ["premiere_apparition"] = "Xenoblade Chronicles",
+    jeux = {
+      [1] = "Xenoblade Chronicles",
+      [2] = "Xenoblade Chronicles Shulk",
+    },
+    date = "2010",
+    physique = {
+      caracteristiques = {
+        [1] = "jeune homme",
+      },
+    },
+    createur = "Tetsuya Takahashi",
+  },
+  Lucas = {
+    serie = "EarthBound",
+    ["premiere_apparition"] = "Mother",
+    jeux = {
+      [1] = "Advance",
+      [2] = "Super Smash Bros",
+    },
+    date = "3",
+    physique = {
+      caracteristiques = {
+        [1] = "garcon",
+        [2] = "personnage",
+      },
+    },
+    createur = "Doctor Andonuts",
+  },
+  Ness = {
+    ["premiere_apparition"] = "Earthbound",
+    jeux = {
+      [1] = "Earthbound",
+      [2] = "Nintendo",
+      [3] = "Kirby",
+    },
+    date = "1994",
+    physique = {
+      caracteristiques = {
+        [1] = "personnage",
+        [2] = "enfant",
+        [3] = "garcon",
+      },
+    },
+    serie = "Mother",
+  },
+  Felinferno = {
+    physique = {
+      habitPorte = {
+        [1] = "ceinture",
+        [2] = "chemise",
+      },
+      corps = {
+        [1] = "museau court",
+        [2] = "yeux vert",
+        [3] = "petites oreilles",
+        [4] = "yeux verts",
+        [5] = "griffes acerees",
+      },
+    },
+    serie = "Sun",
+    ["premiere_apparition"] = "VII",
+  },
+  ["Captain Falcon"] = {
+    serie = "Smash Bros",
+    ["premiere_apparition"] = "FZERO",
+    jeux = {
+      [1] = "F",
+    },
+    date = "1991",
+    physique = {
+      caracteristiques = {
+        [1] = "chasseur",
+        [2] = "homme",
+        [3] = "attaque polyvalente",
+      },
+      habitPorte = {
+        [1] = "combinaison de vol bleue avec une armure corporelle",
+        [2] = "armure",
+        [3] = "gants jaunes",
+        [4] = "bottes",
+        [5] = "ceinture",
+      },
+    },
+    createur = "Shigeru Miyamoto",
+  },
+  Pichu = {
+    serie = "Diamond",
+    ["premiere_apparition"] = "Pokemon Or",
+    jeux = {
+      [1] = "Pokemon",
+      [2] = "Pokemon Or",
+      [3] = "Magical Pokemon Journey",
+      [4] = "All About Arceus IX",
+      [5] = "Pangoro Poses",
+      [6] = "Pokemon Gold et Silver",
+      [7] = "Ball",
+      [8] = "Super Smash Bros",
+    },
+    ami = {
+      [1] = "Pikachu",
+    },
+    date = "1999",
+    physique = {
+      caracteristiques = {
+        [1] = "Pokemon social",
+      },
+    },
+    createur = "Ken Sugimori",
+  },
+  Simon = {
+    ["premiere_apparition"] = "Castlevania",
+    jeux = {
+      [1] = "Castlevania II",
+      [2] = "Super Smash Bros",
+      [3] = "Smash Bros",
+    },
+    createur = "Ayami Kojima",
+    physique = {
+      caracteristiques = {
+        [1] = "chasseur",
+      },
+      habitPorte = {
+        [1] = "armure marron",
+        [2] = "bottes",
+        [3] = "cape",
+        [4] = "armure rouge",
+        [5] = "ceinture",
+        [6] = "armure",
+        [7] = "gants",
+      },
+    },
+    serie = "Super Smash Bros",
+  },
+  ["Diddy Kong"] = {
+    ["premiere_apparition"] = "Donkey Kong Country",
+    jeux = {
+      [1] = "Donkey Kong Country",
+      [2] = "Mario",
+      [3] = "Donkey Kong Country 2",
+      [4] = "Donkey Kong",
+      [5] = "Donkey Kong Land III",
+      [6] = "Nintendo",
+      [7] = "Donkey Kong Barrel Blast",
+      [8] = "Donkey Kong Country Returns",
+      [9] = "Mario Party",
+    },
+    ami = {
+      [1] = "Donkey Kong",
+    },
+    date = "1994",
+    physique = {
+      caracteristiques = {
+        [1] = "personnage",
+        [2] = "jeune singe",
+      },
+    },
+    serie = "Donkey Kong",
+  },
+  Rondoudou = {
+    serie = "Pokemon",
+    ["premiere_apparition"] = "Pokemon Red and Blue",
+    jeux = {
+      [1] = "Pokemon Red",
+      [2] = "Pocket Monsters",
+      [3] = "Jigglypuff",
+      [4] = "Pokemon Gold",
+      [5] = "Pokemon Mystery Dungeon",
+      [6] = "Pokemon Ranger",
+      [7] = "Pokemon Rumble",
+      [8] = "Super Smash Bros",
+    },
+    date = "1996",
+    physique = {
+    },
+    createur = "Ken Sugimori",
+  },
+  Marth = {
+    ["premiere_apparition"] = "Fire Emblem",
+    jeux = {
+      [1] = "Fire Emblem",
+      [2] = "Fire Emblem Awakening",
+      [3] = "Super Smash Bros",
+      [4] = "Smash",
+    },
+    date = "1990",
+    physique = {
+      caracteristiques = {
+        [1] = "personnage",
+      },
+    },
+    serie = "Fire Emblem",
+  },
+  ["Bowser Jr"] = {
+    serie = "Mario",
+    jeux = {
+      [1] = "Super Mario Sunshine",
+      [2] = "Mario Baseball",
+      [3] = "Mario Super Sluggers",
+    },
+    ami = {
+      [1] = "Bowser",
+      [2] = "Mario",
+      [3] = "Peach",
+    },
+    physique = {
+    },
+    ["premiere_apparition"] = "Super Mario Sunshine",
+  },
+  ["Pit malefique"] = {
+    physique = {
+      caracteristiques = {
+        [1] = "personnage",
+      },
+      habitPorte = {
+        [1] = "tunique noire",
+      },
+    },
+    serie = "Super Smash Bros",
+    ["premiere_apparition"] = "Kid Icarus",
+  },
   Cloud = {
+    serie = "Kingdom Hearts",
     jeux = {
       [1] = "Final Fantasy VII",
     },
-    serie = "Kingdom Hearts",
+    createur = "Tetsuya Nomura",
     physique = {
       caracteristiques = {
         [1] = "mercenaire",
       },
     },
-    createur = "Tetsuya Nomura",
   },
-  Palutena = {
-    ["premiere_apparition"] = "Kid Icarus",
-    jeux = {
-      [1] = "Kid Icarus",
-      [2] = "Smash Smash Bros",
-    },
-    date = "1986",
+  Corrin = {
     physique = {
-      habitPorte = {
-        [1] = "robe bleue",
-        [2] = "robe blanche",
+      caracteristiques = {
+        [1] = "personnage",
       },
     },
-    createur = "Gunpei Yokoi",
+    serie = "Super Smash Bros",
+    ["premiere_apparition"] = "Fire Emblem Fates",
+  },
+  Chrom = {
+    serie = "Super Smash Bros",
+    jeux = {
+      [1] = "Fire Emblem Awakening",
+    },
+    ami = {
+      [1] = "Lucina",
+    },
+    physique = {
+      caracteristiques = {
+        [1] = "personnage",
+        [2] = "descendant",
+      },
+      habitPorte = {
+        [1] = "armure",
+        [2] = "cape bleue",
+      },
+    },
+    ["premiere_apparition"] = "Fire Emblem",
+  },
+  ken = {
+    ["premiere_apparition"] = "Street Fighter",
+    jeux = {
+      [1] = "Street Fighter",
+      [2] = "Street Fighter IV",
+    },
+    ami = {
+      [1] = "Ken",
+      [2] = "Ryu",
+    },
+    date = "1987",
+    physique = {
+    },
+    serie = "Street Fighter",
+  },
+  Luigi = {
+    serie = "Mario Kart",
+    ["premiere_apparition"] = "Mario Bros",
+    jeux = {
+      [1] = "Joust",
+      [2] = "Super Mario Bros",
+      [3] = "Mario Bros",
+      [4] = "Game",
+    },
+    ami = {
+      [1] = "Mario",
+    },
+    date = "1983",
+    physique = {
+      caracteristiques = {
+        [1] = "personnage secondaire",
+      },
+      habitPorte = {
+        [1] = "chaussures",
+        [2] = "combinaison verte",
+        [3] = "maillot vert",
+        [4] = "combinaison bleu",
+        [5] = "chemise verte",
+      },
+    },
+    createur = "Shigeru Miyamoto",
   },
   Wario = {
+    serie = "Mario",
     ["premiere_apparition"] = "Game Boy",
     jeux = {
       [1] = "Wrecking Crew",
-      [2] = "Super Mario Land 2",
-      [3] = "Hiroji Kiyotake",
-      [4] = "Wario Serie Wario Land Wario",
-      [5] = "Game Boy",
-      [6] = "Wario Land",
-      [7] = "WarioWare DIY",
-      [8] = "WarioWare Gold",
-      [9] = "Dans Wario",
-      [10] = "Wario Blast",
-      [11] = "Stafy 3",
-      [12] = "Nintendo Power",
-      [13] = "Super Smash Bros",
-      [14] = "Mario Party 3",
-      [15] = "Mario Kart 8",
-      [16] = "Super Mario Land 3",
-      [17] = "Mario Party 2",
-      [18] = "Mario Tennis Aces",
-      [19] = "Wario Landtitres",
+      [2] = "Wario Serie Wario Land Wario",
+      [3] = "WarioWare",
+      [4] = "WarioWare DIY",
+      [5] = "WarioWare Gold",
+      [6] = "Dans Wario ' s Woods",
+      [7] = "Wario Blast",
+      [8] = "Densetsu No Stafy 3",
+      [9] = "Super Mario Maker",
+      [10] = "Super Smash Bros",
+      [11] = "Mario",
+      [12] = "Super Mario Land 3",
+      [13] = "Mario Party 2",
+      [14] = "Mario Tennis Aces",
     },
     date = "1992",
-    serie = "Mario",
     physique = {
-      corps = {
-        [1] = "grosse tete",
-        [2] = "bras larges",
-        [3] = "large ventre",
-        [4] = "yeux noirs",
-      },
       habitPorte = {
         [1] = "tenue de plombier avec une palette de couleurs jaune",
         [2] = "chemise jaune",
@@ -440,43 +667,88 @@ return {
         [3] = "homme",
         [4] = "creation",
       },
+      corps = {
+        [1] = "grosse tete",
+        [2] = "bras larges",
+        [3] = "large ventre",
+        [4] = "yeux noirs",
+      },
     },
     createur = "Hiroji Kiyotake",
   },
-  Luigi = {
-    ["premiere_apparition"] = "Mario Bros",
+  Mewtwo = {
+    ["premiere_apparition"] = "Mewtwo",
     jeux = {
-      [1] = "Super Mario Bros",
-      [2] = "Mario Bros",
-      [3] = "NES Remix",
-      [4] = "Mario Kart",
+      [1] = "Pokemon Red",
+      [2] = "Pokemon",
+      [3] = "Pocket Monsters",
+      [4] = "Dans Pokemon Rouge",
+      [5] = "Pokemon Rouge et Bleu",
+      [6] = "Pokedex",
+      [7] = "Nintendo",
+      [8] = "Pokemon Stadium et Pokemon Pinball",
+      [9] = "Pokemon Puzzle League",
     },
-    date = "1983",
-    ami = {
-      [1] = "Mario",
-    },
-    serie = "Mario Kart",
+    createur = "Ken Sugimori",
     physique = {
-      habitPorte = {
-        [1] = "chaussures",
-        [2] = "combinaison verte",
-        [3] = "maillot vert",
-        [4] = "combinaison bleu",
-        [5] = "chemise verte",
-      },
       caracteristiques = {
-        [1] = "personnage secondaire",
+        [1] = "creature fictive",
+        [2] = "clone",
+        [3] = "psychique extremement",
       },
     },
-    createur = "Shigeru Miyamoto",
+  },
+  Falco = {
+    ["premiere_apparition"] = "Super Nintendo Star Fox",
+    jeux = {
+      [1] = "Super Nintendo Star Fox",
+    },
+    date = "1993",
+    physique = {
+      caracteristiques = {
+        [1] = "faucon bleu",
+        [2] = "membre",
+        [3] = "clone",
+      },
+      habitPorte = {
+        [1] = "chemise blanche",
+        [2] = "combinaison marron",
+        [3] = "bottes grises",
+      },
+    },
+  },
+  Fox = {
+    ["premiere_apparition"] = "Star Fox",
+    jeux = {
+      [1] = "Star Fox",
+      [2] = "Super Smash Bros",
+      [3] = "Star Fox Command",
+    },
+    date = "1993",
+    physique = {
+      caracteristiques = {
+        [1] = "personnage",
+        [2] = "Renard",
+      },
+    },
+    serie = "Star Fox",
+  },
+  ["Mr Game & Watch"] = {
+    serie = "Super Smash Bros",
+    jeux = {
+      [1] = "Game",
+    },
+    physique = {
+    },
+    ["premiere_apparition"] = "Super Smash Bros",
   },
   ["Meta Knight"] = {
-    ["premiere_apparition"] = "Kirby",
+    serie = "Kirby",
     jeux = {
       [1] = "Kirby Air Ride",
       [2] = "Super Smash Bros",
       [3] = "Meta Knightmare Ultra",
-      [4] = "Revenge of Meta",
+      [4] = "Revenge of Meta Knight",
     },
     physique = {
       habitPorte = {
@@ -485,291 +757,60 @@ return {
         [3] = "gants",
       },
     },
-    serie = "Kirby",
+    ["premiere_apparition"] = "Kirby",
   },
-  Marth = {
-    ["premiere_apparition"] = "Fire Emblem",
-    jeux = {
-      [1] = "Super Smash Bros",
-      [2] = "Katsuyoshi Koya",
-      [3] = "Emblem Awakening",
-      [4] = "Fire Emblem",
-      [5] = "Fire Emblem Awakening",
-      [6] = "Hikaru Midorikawa",
-    },
-    date = "1990",
+  Ike = {
     physique = {
       caracteristiques = {
         [1] = "personnage",
+        [2] = "personne",
       },
     },
-    serie = "Fire Emblem",
-  },
-  Bowser = {
-    ["premiere_apparition"] = "Bowser",
     jeux = {
-      [1] = "Super Mario Bros",
-      [2] = "New Super Mario Bros",
-      [3] = "Super Mario Galaxy",
-      [4] = "Wooly World",
-      [5] = "Super Mario Maker",
-      [6] = "Super Paper Mario",
-      [7] = "Super Mario Galaxy et Mario Party 9",
-      [8] = "Super Mario Galaxy 2 et Super Mario",
-      [9] = "Mario Party 2",
-      [10] = "Paper Mario",
-      [11] = "Super Mario World",
+      [1] = "Fire Emblem",
+      [2] = "Path of Radiance",
     },
-    date = "1985",
-    ami = {
-      [1] = "Mario",
-      [2] = "Yoshi",
-      [3] = "Luigi",
-    },
-    serie = "Mario Party",
-    physique = {
-      habitPorte = {
-        [1] = "costume noir",
-        [2] = "cravate",
-      },
-      caracteristiques = {
-        [1] = "creature",
-      },
-    },
-    createur = "Shigeru Miyamoto",
-  },
-  ["Link enfant"] = {
-    ["premiere_apparition"] = "Super Smash Bros",
-    jeux = {
-      [1] = "The Legend of Zelda",
-      [2] = "Super Smash Bros",
-      [3] = "Ocarina of Time",
-      [4] = "WarioWare Gold",
-    },
-    ami = {
-      [1] = "Zelda",
-      [2] = "Link",
-    },
-    physique = {
-      caracteristiques = {
-        [1] = "personnage",
-      },
-    },
-    serie = "Super Smash Bros",
-  },
-  Lucas = {
-    ["premiere_apparition"] = "Mother",
-    jeux = {
-      [1] = "Game Boy Advance",
-      [2] = "Super Smash Bros",
-    },
-    date = "3",
-    serie = "EarthBound",
-    physique = {
-      caracteristiques = {
-        [1] = "garcon",
-        [2] = "personnage",
-      },
-    },
-    createur = "Doctor Andonuts",
   },
   ["King K. Rool"] = {
+    serie = "Donkey Kong",
+    ["premiere_apparition"] = "Donkey Kong Country",
+    jeux = {
+      [1] = "Donkey Kong Country",
+      [2] = "Mario Super Sluggers",
+      [3] = "DK Jungle Climber",
+      [4] = "Donkey Kong Land",
+      [5] = "Donkey Kong",
+      [6] = "Super Smash Bros",
+    },
     ami = {
       [1] = "Donkey Kong",
     },
-    jeux = {
-      [1] = "Mario Super Sluggers",
-    },
+    date = "1994",
     physique = {
+      caracteristiques = {
+        [1] = "tentative",
+      },
       habitPorte = {
         [1] = "combinaison bleue",
         [2] = "gants",
         [3] = "ceinture",
         [4] = "chaussures",
+        [5] = "cape rouge",
       },
     },
-    serie = "Donkey Kong",
+    createur = "Steve Mayles",
   },
-  Ness = {
-    ["premiere_apparition"] = "Earthbound",
+  ["Dresseur de Pokemon"] = {
+    serie = "Super Smash Bros",
     jeux = {
-      [1] = "Super Smash Bros",
+      [1] = "Pokemon Version Rouge et Version Bleu",
     },
-    date = "1994",
     physique = {
       caracteristiques = {
         [1] = "personnage",
-        [2] = "enfant",
-        [3] = "garcon",
       },
     },
-    serie = "Mother",
-  },
-  Ridley = {
-    ["premiere_apparition"] = "Metroid",
-    jeux = {
-      [1] = "Super Metroid",
-      [2] = "Other M",
-      [3] = "Nintendo Entertainment System",
-      [4] = "Super Smash Bros",
-      [5] = "Metroid Blast",
-    },
-    date = "1986",
-    ami = {
-      [1] = "Samus",
-    },
-    physique = {
-    },
-    createur = "Makoto Kano",
-  },
-  Mario = {
-    jeux = {
-      [1] = "Donkey Kong",
-      [2] = "Super Mario Bros",
-      [3] = "Nintendo Entertainment System",
-      [4] = "Super Mario Land",
-      [5] = "NES Mario",
-    },
-    date = "1997",
-    ami = {
-      [1] = "Luigi",
-      [2] = "Bowser",
-      [3] = "Peach",
-      [4] = "Donkey Kong",
-      [5] = "Wario",
-    },
-    serie = "Mario",
-    physique = {
-      habitPorte = {
-        [1] = "casquette",
-        [2] = "bonnet rouge",
-        [3] = "gants blancs",
-        [4] = "chemise rouge",
-        [5] = "combinaison bleue",
-        [6] = "chaussures marron",
-      },
-      caracteristiques = {
-        [1] = "humain",
-      },
-    },
-    createur = "Shigeru Miyamoto",
-  },
-  Ganon = {
-    ["premiere_apparition"] = "The Legend Of Zelda",
-    jeux = {
-      [1] = "Ocarina of Time",
-      [2] = "The Wind Waker",
-      [3] = "Twilight Princess",
-    },
-    date = "1986",
-    physique = {
-      habitPorte = {
-        [1] = "cape",
-        [2] = "armure",
-      },
-      caracteristiques = {
-        [1] = "guerrier redoutable",
-      },
-    },
-    createur = "Shigeru Miyamoto",
-  },
-  Rondoudou = {
-    ["premiere_apparition"] = "Pokemon Red and Blue",
-    jeux = {
-      [1] = "Pokemon Red",
-      [2] = "Pocket Monsters",
-      [3] = "Pokemon Gold",
-      [4] = "Pokemon Mystery Dungeon",
-      [5] = "Pokemon Ranger",
-      [6] = "Pokemon Rumble",
-      [7] = "Super Smash Bros",
-    },
-    date = "1996",
-    serie = "Pokemon",
-    physique = {
-    },
-    createur = "Ken Sugimori",
-  },
-  Peach = {
-    jeux = {
-      [1] = "NBA Street",
-      [2] = "The Legend of Zelda",
-    },
-    ami = {
-      [1] = "Mario",
-      [2] = "Bowser",
-    },
-    serie = "Bayonetta",
-    physique = {
-      habitPorte = {
-        [1] = "robe",
-      },
-      caracteristiques = {
-        [1] = "personnage principal",
-        [2] = "jolie princesse",
-      },
-    },
-    createur = "Shigeru Miyamoto",
-  },
-  Dedede = {
-    ["premiere_apparition"] = "Kirby",
-    jeux = {
-      [1] = "Super Smash Bros",
-      [2] = "Gourmet Race",
-      [3] = "Kirby Battle Royale",
-    },
-    physique = {
-      habitPorte = {
-        [1] = "bonnet",
-        [2] = "manteau rouge",
-      },
-    },
-    serie = "Kirby",
-  },
-  LittleMac = {
-    jeux = {
-      [1] = "Little Mac",
-      [2] = "Super Smash Bros",
-    },
-    serie = "Fight Night",
-    physique = {
-    },
-    createur = "Nintendo",
-  },
-  ["Pit malefique"] = {
-    ["premiere_apparition"] = "Kid Icarus",
-    jeux = {
-      [1] = "Super Smash Bros",
-    },
-    physique = {
-      habitPorte = {
-        [1] = "tunique noire",
-      },
-    },
-    serie = "Super Smash Bros",
-  },
-  ["Captain Falcon"] = {
-    ["premiere_apparition"] = "FZERO",
-    jeux = {
-      [1] = "Super Smash Bros",
-    },
-    date = "1991",
-    serie = "Smash Bros",
-    physique = {
-      habitPorte = {
-        [1] = "combinaison de vol bleue avec une armure corporelle",
-        [2] = "armure",
-        [3] = "gants jaunes",
-        [4] = "bottes",
-        [5] = "ceinture",
-      },
-      caracteristiques = {
-        [1] = "chasseur",
-        [2] = "homme",
-        [3] = "attaque polyvalente",
-      },
-    },
-    createur = "Shigeru Miyamoto",
+    ["premiere_apparition"] = "Green",
   },
   Zelda = {
     ["premiere_apparition"] = "The Legend",
@@ -780,24 +821,23 @@ return {
       [4] = "Ocarina of Time",
       [5] = "Spirit Tracks",
     },
-    serie = "The Legend of Zelda",
+    createur = "Shigeru Miyamoto",
     physique = {
       caracteristiques = {
         [1] = "personne",
       },
     },
-    createur = "Shigeru Miyamoto",
+    serie = "The Legend of Zelda",
   },
   Pikachu = {
-    ["premiere_apparition"] = "Red and Blue",
-    jeux = {
-      [1] = "Pokemon Pikachu",
-      [2] = "Generation IV",
-      [3] = "Pokemon Rouge et Bleu",
-      [4] = "Nintendo DS",
-    },
-    date = "1996",
     serie = "Pokemon",
+    jeux = {
+      [1] = "Pokemon",
+      [2] = "Pokemon Pikachu",
+      [3] = "Pokemon Rouge et Bleu",
+      [4] = "He Toi Pikachu",
+    },
+    createur = "Satoshi Tajiri",
     physique = {
       caracteristiques = {
         [1] = "souris jaune",
@@ -810,166 +850,9 @@ return {
         [3] = "joues rouges",
       },
     },
-    createur = "Satoshi Tajiri",
-  },
-  Mewtwo = {
-    ["premiere_apparition"] = "Mewtwo",
-    jeux = {
-      [1] = "Pokemon Red",
-      [2] = "Ken Sugimori",
-      [3] = "Pocket Monsters",
-      [4] = "Dans Pokemon Rouge",
-      [5] = "Pokemon Rouge et Bleu",
-      [6] = "Pokemon Stadium et Pokemon Pinball",
-      [7] = "Pokemon Puzzle League",
-      [8] = "Super Smash Bros",
-    },
-    physique = {
-      caracteristiques = {
-        [1] = "clone",
-        [2] = "psychique extremement",
-      },
-    },
-    createur = "Ken Sugimori",
-  },
-  ken = {
-    ["premiere_apparition"] = "Street Fighter",
-    jeux = {
-      [1] = "Street Fighter",
-      [2] = "Street Fighter IV",
-      [3] = "Combo Crew",
-    },
-    date = "1987",
-    ami = {
-      [1] = "Ken",
-      [2] = "Ryu",
-    },
-    physique = {
-    },
-    serie = "Street Fighter",
-  },
-  Pichu = {
-    ["premiere_apparition"] = "Pokemon Or",
-    jeux = {
-      [1] = "Pokemon Or",
-      [2] = "Magical Pokemon Journey",
-      [3] = "All About Arceus IX",
-      [4] = "Pangoro Poses",
-      [5] = "Pokemon Gold et Silver",
-    },
-    date = "1999",
-    ami = {
-      [1] = "Pikachu",
-    },
-    serie = "Diamond",
-    physique = {
-      caracteristiques = {
-        [1] = "Pokemon social",
-      },
-    },
-    createur = "Ken Sugimori",
-  },
-  ["Mr Game & Watch"] = {
-    ["premiere_apparition"] = "Super Smash Bros",
-    jeux = {
-      [1] = "Donkey Kong Country Returns",
-      [2] = "Fumeuse Fabrique",
-    },
-    physique = {
-    },
-    serie = "Super Smash Bros",
-  },
-  Snake = {
-    ["premiere_apparition"] = "Metal Gear",
-    jeux = {
-      [1] = "Metal Gear",
-      [2] = "Boktai 2",
-      [3] = "Metal Gear Solid 2",
-      [4] = "Metal Gear Solid",
-      [5] = "Naked Snake",
-      [6] = "DreamMix TV Fighters",
-      [7] = "Super Smash Bros",
-    },
-    date = "1987",
-    physique = {
-    },
-    createur = "Hideo Kojima",
-  },
-  Chrom = {
-    ["premiere_apparition"] = "Fire Emblem",
-    jeux = {
-      [1] = "Fire Emblem Awakening",
-    },
-    ami = {
-      [1] = "Lucina",
-    },
-    physique = {
-      habitPorte = {
-        [1] = "armure",
-        [2] = "cape bleue",
-      },
-      caracteristiques = {
-        [1] = "personnage",
-        [2] = "descendant",
-      },
-    },
-    serie = "Super Smash Bros",
-  },
-  Sonic = {
-    ["premiere_apparition"] = "Sonic",
-    jeux = {
-      [1] = "Masato Nakamura",
-      [2] = "Sonic Colours",
-      [3] = "Sonic Drift",
-      [4] = "Sonic Jump",
-      [5] = "Sonic Chronicles",
-      [6] = "Mean Bean Machine",
-      [7] = "Walk of Game",
-      [8] = "Super Smash Bros",
-    },
-    date = "1991",
-    serie = "Sonic",
-    physique = {
-      caracteristiques = {
-        [1] = "herisson",
-        [2] = "menace",
-      },
-    },
-    createur = "Yuji Naka",
-  },
-  Bayonetta = {
-    serie = "Bayonetta",
-    physique = {
-      habitPorte = {
-        [1] = "tenue noire",
-      },
-    },
-    createur = "Kenichiro Yoshimura",
-  },
-  Pit = {
-    ["premiere_apparition"] = "Super Smash Bros",
-    jeux = {
-      [1] = "Kid Icarus",
-    },
-    physique = {
-      corps = {
-        [1] = "cheveux bruns",
-      },
-      habitPorte = {
-        [1] = "tunique blanche",
-      },
-      caracteristiques = {
-        [1] = "ange",
-      },
-    },
-    serie = "Kid Icarus",
+    date = "1996",
   },
   ["Ice Climbers"] = {
-    jeux = {
-      [1] = "NES Ice Climber",
-      [2] = "Super Smash Bros",
-      [3] = "Heros 8",
-    },
     physique = {
       habitPorte = {
         [1] = "vetements de couleur bleu alors que",
@@ -977,52 +860,101 @@ return {
       },
     },
     serie = "Smash Bros",
-  },
-  Roy = {
-    ["premiere_apparition"] = "Fire Emblem",
     jeux = {
-      [1] = "Super Smash Bros",
+      [1] = "NES Ice Climber",
+      [2] = "Super Smash Bros",
+      [3] = "Heros 8",
     },
+  },
+  Peach = {
+    serie = "Bayonetta",
+    jeux = {
+      [1] = "NBA Street",
+      [2] = "The Legend of Zelda",
+    },
+    ami = {
+      [1] = "Mario",
+      [2] = "Bowser",
+    },
+    createur = "Shigeru Miyamoto",
     physique = {
-      habitPorte = {
-        [1] = "cape rouge",
-        [2] = "armure bleue",
-        [3] = "vetements bleus",
-      },
       caracteristiques = {
-        [1] = "personnage",
-        [2] = "combattant",
+        [1] = "personnage principal",
+        [2] = "jolie princesse",
+      },
+      habitPorte = {
+        [1] = "robe",
       },
     },
   },
-  Felinferno = {
-    ["premiere_apparition"] = "VII",
-    physique = {
-      corps = {
-        [1] = "museau court",
-        [2] = "yeux vert",
-        [3] = "petites oreilles",
-        [4] = "yeux verts",
-        [5] = "griffes acerees",
-      },
-      habitPorte = {
-        [1] = "ceinture",
-        [2] = "chemise",
-      },
-    },
-    serie = "Sun",
-  },
-  Corrin = {
-    ["premiere_apparition"] = "Fire Emblem Fates",
-    physique = {
-      caracteristiques = {
-        [1] = "personnage",
-      },
-    },
+  ["Link enfant"] = {
     serie = "Super Smash Bros",
+    jeux = {
+      [1] = "The Legend of Zelda",
+      [2] = "Ocarina of Time",
+      [3] = "Breath",
+    },
+    ami = {
+      [1] = "Zelda",
+      [2] = "Link",
+    },
+    physique = {
+      caracteristiques = {
+        [1] = "personnage",
+      },
+    },
+    ["premiere_apparition"] = "Super Smash Bros",
+  },
+  Bowser = {
+    serie = "Mario Party",
+    ["premiere_apparition"] = "Bowser",
+    jeux = {
+      [1] = "Super Mario Bros",
+      [2] = "New Super Mario Bros",
+      [3] = "Super Mario Galaxy",
+      [4] = "Wooly World",
+      [5] = "Super Mario Maker",
+      [6] = "Super Paper Mario",
+      [7] = "Super Mario Galaxy et Mario Party 9",
+      [8] = "Super Mario Galaxy 2 et Super Mario",
+      [9] = "Mario Party 2",
+      [10] = "Mario",
+      [11] = "Super Mario World",
+    },
+    ami = {
+      [1] = "Mario",
+      [2] = "Yoshi",
+      [3] = "Luigi",
+    },
+    date = "1985",
+    physique = {
+      caracteristiques = {
+        [1] = "creature",
+      },
+      habitPorte = {
+        [1] = "costume noir",
+        [2] = "cravate",
+      },
+    },
+    createur = "Shigeru Miyamoto",
+  },
+  Palutena = {
+    ["premiere_apparition"] = "Kid Icarus",
+    jeux = {
+      [1] = "Kid Icarus",
+      [2] = "Smash Smash Bros",
+    },
+    date = "1986",
+    physique = {
+      habitPorte = {
+        [1] = "robe bleue",
+        [2] = "robe blanche",
+      },
+    },
+    createur = "Gunpei Yokoi",
   },
   Sheik = {
-    ["premiere_apparition"] = "The Legend",
+    serie = "Super Smash Bros",
     jeux = {
       [1] = "Super Smash Bros",
       [2] = "The Legend of Zelda",
@@ -1034,28 +966,53 @@ return {
         [2] = "femme",
       },
     },
-    serie = "Super Smash Bros",
+    ["premiere_apparition"] = "The Legend",
   },
-  Falco = {
-    ["premiere_apparition"] = "Super Nintendo Star Fox",
-    jeux = {
-      [1] = "Super Nintendo Star Fox",
-      [2] = "WarioWare Gold",
-      [3] = "Super Smash Bros",
+  ["Samus sans armure"] = {
+    physique = {
+      caracteristiques = {
+        [1] = "personnage jouable",
+      },
+      habitPorte = {
+        [1] = "armure",
+        [2] = "combinaison bleue",
+      },
     },
-    date = "1993",
+    jeux = {
+      [1] = "Super Smash Bros",
+    },
+  },
+  Dedede = {
+    serie = "Kirby",
+    jeux = {
+      [1] = "Super Smash Bros",
+      [2] = "Kirby ' s Dream Land",
+      [3] = "Gourmet Race",
+      [4] = "Kirby Battle Royale",
+    },
     physique = {
       habitPorte = {
-        [1] = "chemise blanche",
-        [2] = "combinaison marron",
-        [3] = "bottes grises",
-      },
-      caracteristiques = {
-        [1] = "faucon bleu",
-        [2] = "membre",
-        [3] = "clone",
+        [1] = "bonnet",
+        [2] = "manteau rouge",
       },
     },
+    ["premiere_apparition"] = "Kirby",
+  },
+  Ridley = {
+    ["premiere_apparition"] = "Metroid",
+    jeux = {
+      [1] = "Metroid",
+      [2] = "Super Metroid",
+      [3] = "Prime",
+      [4] = "Metroid Blast",
+    },
+    ami = {
+      [1] = "Samus",
+    },
+    date = "1986",
+    physique = {
+    },
+    createur = "Makoto Kano",
   },
   Rosalina = {
     ["premiere_apparition"] = "Super Mario Galaxy",
@@ -1063,12 +1020,15 @@ return {
       [1] = "Super Mario Galaxy",
       [2] = "Super Mario Galaxy 2",
       [3] = "Super Mario",
-      [4] = "Mario Kart Wii",
+      [4] = "Galaxy",
+      [5] = "Rosalina",
+      [6] = "Mario Kart Wii",
+      [7] = "Super Mario Maker",
     },
-    date = "2007",
     ami = {
       [1] = "Mario",
     },
+    date = "2007",
     physique = {
       caracteristiques = {
         [1] = "personnage recurrent",
@@ -1077,32 +1037,121 @@ return {
     },
     createur = "Shigeru Miyamoto",
   },
-  ["Dresseur de Pokemon"] = {
-    ["premiere_apparition"] = "Green",
+  Snake = {
+    ["premiere_apparition"] = "Metal Gear",
     jeux = {
-      [1] = "Pokemon Version Rouge et Version Bleu",
+      [1] = "Metal Gear",
+      [2] = "Konami",
+      [3] = "Boktai 2",
+      [4] = "Metal Gear Solid",
+      [5] = "DreamMix TV Fighters",
     },
+    date = "1987",
+    physique = {
+    },
+    createur = "Hideo Kojima",
+  },
+  Ryu = {
+    ["premiere_apparition"] = "Street Fighter",
+    jeux = {
+      [1] = "Combo",
+    },
+    date = "1987",
     physique = {
       caracteristiques = {
         [1] = "personnage",
+        [2] = "homme",
       },
     },
-    serie = "Super Smash Bros",
+    createur = "Manabu Takemura",
   },
-  Shulk = {
-    ["premiere_apparition"] = "Xenoblade Chronicles",
+  Pit = {
+    serie = "Kid Icarus",
     jeux = {
-      [1] = "Xenoblade Chronicles",
+      [1] = "Kid Icarus",
       [2] = "Super Smash Bros",
-      [3] = "Xenoblade Chronicles Shulk",
     },
-    date = "2010",
-    serie = "Super Smash Bros",
+    physique = {
+      habitPorte = {
+        [1] = "tunique blanche",
+      },
+      caracteristiques = {
+        [1] = "ange",
+      },
+      corps = {
+        [1] = "cheveux bruns",
+      },
+    },
+    ["premiere_apparition"] = "Super Smash Bros",
+  },
+  LittleMac = {
+    serie = "Fight Night",
+    jeux = {
+      [1] = "Punch",
+      [2] = "NES",
+      [3] = "Super Smash Bros",
+    },
+    createur = "Nintendo",
+    physique = {
+    },
+  },
+  Samus = {
+    ["premiere_apparition"] = "Metroid",
+    jeux = {
+      [1] = "Metroid",
+      [2] = "Metroid Prime",
+      [3] = "Super Metroid",
+      [4] = "NES Metroid",
+    },
+    date = "1986",
+    physique = {
+      habitPorte = {
+        [1] = "combinaison de protection dans la plupart des series de Metroid",
+        [2] = "combinaison de protection",
+        [3] = "costume bleu",
+      },
+    },
+    serie = "Metroid",
+  },
+  Daisy = {
+    ["premiere_apparition"] = "Super Mario Land",
+    jeux = {
+      [1] = "Mario",
+      [2] = "Mario Party DS",
+      [3] = "Mario Party 9",
+      [4] = "Mario Kart",
+      [5] = "Mario Kart DS",
+      [6] = "Mario Kart Wii",
+      [7] = "Mario Kart 7",
+      [8] = "Mario Kart 8",
+      [9] = "Mario Superstar Baseball",
+      [10] = "Super Smash Bros",
+      [11] = "Mario Power Tennis",
+      [12] = "Mario Tennis Open",
+      [13] = "NES Open Tournament Golf",
+      [14] = "Mario Golf",
+      [15] = "Mario Party 4",
+      [16] = "Super Mario Land",
+      [17] = "Mario Party 3",
+      [18] = "Mario Sports Superstars",
+    },
+    ami = {
+      [1] = "Peach",
+      [2] = "Mario",
+      [3] = "Luigi",
+    },
+    date = "3",
     physique = {
       caracteristiques = {
-        [1] = "jeune homme",
+        [1] = "competitrice nee",
+      },
+      habitPorte = {
+        [1] = "tenue moulante",
+        [2] = "tenue de tennis",
+        [3] = "robe",
+        [4] = "gants oranges",
       },
     },
-    createur = "Tetsuya Takahashi",
+    serie = "Mario Party",
   },
 }

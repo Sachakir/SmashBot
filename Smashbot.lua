@@ -43,10 +43,28 @@ local function traitement_reponse(reponse)
     return reponse
 end
 
+local function dialogue_quention_nom(nom)
+    print("ici")
+    if nom ~= nil then
+        if #nom <= 4 then
+            str = "De qui parlez-vous? de "
+            for i = 1,#nom-1 do
+                str = str..nom[i].." ou "
+            end
+            str = str..nom[#nom].."."
+        else
+            str = "Hm, mais de qui parlez-vous? de "..nom[1].."? de "..nom[2].."? ou des autres?"
+        end
+        return str, nil
+    end
+end
+
 local function obtenir_nom_reponse(reponse)
     nom = obtenir_tab_de_mots_par_tag(reponse,"#nom")
+    isMemoire = false
     if nom == nil then
         nom = memoire[1]['perso']
+        isMemoire = true
     end
     -- Le nom ~= nil car necessaire pour la 1ère itération de la mémoire
     if nom ~= nil then
@@ -58,9 +76,18 @@ local function obtenir_nom_reponse(reponse)
         if next(nom) == nil then
                 nom = memoire[3]['perso']
         end
-    end  
+    end
+    return nom, isMemoire
+end
+
+local function obtenir_nom_reponse_sans_memoire(reponse)
+    nom = obtenir_tab_de_mots_par_tag(reponse,"#nom")
+    if nom == nil then
+        nom = nil
+    end
     return nom
 end
+
 
 local function obtenir_theme_reponse(theme)
     res = memoire[1]['theme']
@@ -73,7 +100,7 @@ local function obtenir_theme_reponse(theme)
         if next(res) == nil then
             res = memoire[3]['theme']
         end
-    end  
+    end
     if res == nil then return false end
     if next(res) == nil then return false end
     for k,v in pairs(res) do
@@ -97,11 +124,9 @@ local function chercheCompatibiliteNom(chaine)
                     local ok = 1
                     for word in v:gmatch("%w+") do
                         if ok == 1 and lev.distance_levenshtein(word, chaine[i+boucle].token) <= string.len(word)/2 and lev.distance_levenshtein(word, chaine[i+boucle].token) <= string.len(chaine[i+boucle].token)/2 and string.len(chaine[i+boucle].token) >= 3 then
-                            print(word)
-                            print(chaine[i+boucle].token)
                             ok = 1
                             boucle = boucle +1
-                        else 
+                        else
                             ok = 0
                             boucle = 0
                         end
@@ -109,31 +134,49 @@ local function chercheCompatibiliteNom(chaine)
                     end
 
                     if ok == 1 then
-                        return "Vous voulez dire "..v.." ?"
+                        "Vous voulez dire "..v.." ?"
                     end
                 end
             end
         end
-    end 
-    return "De quel personnage parlez-vous ?"
+    end
+    return nil
 end
 
+local function chercheCompatibiliteNom2(chaine)
+  local noms = data_traitement.obtenir_tous_les_noms()
 
+  for i = 1, #chaine do
+      for k,v in pairs(noms) do
+          for k = 1, #chaine[i] do
+              if chaine[i][k].name == "#W" then
+                  if lev.distance_levenshtein(v, chaine[i].token) <= string.len(v)/2 and lev.distance_levenshtein(v, chaine[i].token)  <= string.len(chaine[i].token)/2 and string.len(chaine[i].token) > 3 then
+                      return "Vous voulez dire "..v.." ?"
+                  end
+              end
+          end
+      end
+  end
+  return nil
+end
 
 local function preparation_reponse(reponse)
 
     string_reponse = ""
     info_reponse_bot = nil
-    nom = obtenir_nom_reponse(reponse)
-    
-    if nom == nil then
-        return chercheCompatibiliteNom(reponse)
-    end
+    nom, isMemoire = obtenir_nom_reponse(reponse)
+
+    --[[if obtenir_nom_reponse_sans_memoire(reponse) == nil then
+        recherche = chercheCompatibiliteNom(reponse)
+        if recherche ~= nil then
+          return recherche
+        end
+    end]]--
 
     if nom == nil then
         return "De quel personnage parlez-vous ?"
     end
-    
+
     if possede_tag(reponse, "#question_persos") then
         info = obtenir_tous_les_noms()
         liste = ""
@@ -142,7 +185,7 @@ local function preparation_reponse(reponse)
         end
         return "Voilà tous les persos que je connais "..liste
     end
-    
+
     if possede_tag(reponse, "#date_de_creation") then
         string_reponse = dateCreation(data, nom, string_reponse)
     end
@@ -165,9 +208,8 @@ local function preparation_reponse(reponse)
         string_reponse = Physique(data, nom, string_reponse)
     end
 
-    print(obtenir_theme_reponse("#date_de_creation"))
     --print(obtenir_theme_reponse("#date_de_creation"))
-    
+
     if possede_tag(reponse, "#nom") and string_reponse == "" then
         if obtenir_theme_reponse("#date_de_creation") then
             string_reponse = dateCreation(data, nom, string_reponse)
@@ -193,11 +235,17 @@ local function preparation_reponse(reponse)
     	end
 
     end
-    
-    if string_reponse == "" then 
+
+    if string_reponse == "" then
         return "Je n'ai pas compris votre question."
     end
-    -- print(serialize(info_reponse_bot))
+
+    if nom ~= nil and isMemoire then
+        if #nom ~= 1 or nom[-1] ~= nil then
+            return dialogue_quention_nom(nom)
+        end
+    end
+
     return string_reponse, info_reponse_bot
 end
 
@@ -234,21 +282,29 @@ local function update_memoire(reponse, info_reponse_bot)
     if possede_tag(reponse, "#physiqueGeneral") then
         table.insert(memoire[1]['theme'], "#physiqueGeneral")
     end
-    
+
     tempo = {
         ["perso"] = memoire[3]['perso'],
         ["theme"] = memoire[3]['theme'],
     }
     table.insert(ultra_memoire, tempo)
-    
+
     --[[if info_reponse_bot ~= nil then
         print("ok")
         for k,v in pairs(info_reponse_bot) do
             table.insert(memoire[1]['perso'], v)
         end
     end]]--
-    
+
     return memoire
+end
+
+local function ajoutReponseBotDansMemoire(info_reponse_bot)
+    if info_reponse_bot ~= nil then
+        for k,v in pairs(info_reponse_bot) do
+            memoire[1]['perso'][k+1] = v
+        end
+    end
 end
 
 function possede_tag(seq, tag)
@@ -261,16 +317,16 @@ function string_tag(seq, tag)
     end
     local pos = seq[tag][1]
     local deb, fin = pos[1], pos[2]
-    
+
     local res = {}
     for i = deb,fin do
         res[#res+1] = seq[i].token
     end
-    
+
     return table.concat(res, " ")
 end
 
-function main()    
+function main()
     -- SmashBot en lui-même
 
     print("*** SmashBot ***")
@@ -286,9 +342,10 @@ function main()
         --print(serialize(obtenir_tab_de_mots_par_tag(reponse, "#nom")))
         if not possede_tag(reponse,"#fin") then
             reponse_bot, info_reponse_bot = preparation_reponse(reponse)
+            ajoutReponseBotDansMemoire(info_reponse_bot)
             printBot(reponse_bot)
         end
-        
+
     until possede_tag(reponse,"#fin")
     printBot("Ok, à la prochaine!")
 end
