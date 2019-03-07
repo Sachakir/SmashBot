@@ -72,16 +72,18 @@ end
 function Ami(data, nom, string_reponse, memoire)
     for k,v in pairs(nom) do
         info = obtenir_info_reponse(data,v,"ami")
-        if next(info) == nil then
-            string_reponse = string_reponse.."Je ne sais pas qui est l'ami de "..v..". "
-        else
-            amis = ""
-            for i = 1,#info do
-                if not string.match(amis, info[i]) then
-                    amis = info[i]..", "..amis
+        if(info  ~= nil) then
+            if next(info) == nil then
+                string_reponse = string_reponse.."Je ne sais pas qui est l'ami de "..v..". "
+            else
+                amis = ""
+                for i = 1,#info do
+                    if not string.match(amis, info[i]) then
+                        amis = info[i]..", "..amis
+                    end
                 end
+                string_reponse = string_reponse.."l/les ami(s) de "..v.." est/sont "..amis..". "
             end
-            string_reponse = string_reponse.."l/les ami(s) de "..v.." est/sont "..amis..". "
         end
     end
     return string_reponse, info
