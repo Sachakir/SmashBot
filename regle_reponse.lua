@@ -148,19 +148,19 @@ P:pattern([[
 
 P:pattern([[
     [#persoMonde
-        #question_persos du monde de? #w
+        #question_persos du monde /^de$/? #w
     ]
 ]])
 
 P:pattern([[
     [#porter
-        ([pP]orter?) | ([pP]ortent)
+        /^[pP]orter?^$/ | /^[pP]ortent$/
     ]
 ]])
 
 P:pattern([[
     [#preposition
-        ([lL][ea]) | ([uU]ne?) | ([dD]e [lL][ea]) | ([dD]u)
+        /^[lL][ea]$/ | /^[uU]ne?$/ | /^[dD]e [lL][ea]$/ | /^[dD]u$/
     ]
 ]])
 
@@ -168,7 +168,7 @@ P:pattern([[
 
 P:pattern([[
     [#persoPhysique
-        #question_persos qui? #porter (#preposition)? #w
+        #question_persos /^qui$/? #porter (#preposition)? #w
     ]
 ]])
 
