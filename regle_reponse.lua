@@ -40,7 +40,7 @@ P:pattern([[
 
 P:pattern([[
     [#creation
-        /^cree?e?s?$/ | creation | createur
+        /^cree?e?s?$/ | creation | /^createurs?$/
     ]
 ]])
 
@@ -107,6 +107,16 @@ P:pattern([[
         /^[aA]mie?s?$/
     ]
 ]])
+
+
+-- Physique
+P:pattern([[
+    [#physiqueGeneral
+        /^[Dd][ée]cri[ts]?$/ moi #nom    
+    ]
+]])
+-- /^[Dd][ée]cri[ts]?$/
+
 
 -- Liste de personnages
 P:pattern([[

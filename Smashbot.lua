@@ -22,6 +22,7 @@ local taps = {
     ["#monde"] = "red",
     ["#question_persos"] = "red",
     ["#all"] = "red",
+    ["#physiqueGeneral"] = "cyan",
 }
 
 local regle_au_revoir = dark.pattern([[
@@ -127,6 +128,10 @@ local function preparation_reponse(reponse)
         string_reponse = Ami(data, nom, string_reponse)
     end
     
+    if possede_tag(reponse, "#physiqueGeneral") then
+        string_reponse = Physique(data, nom, string_reponse)
+    end
+
     print(obtenir_theme_reponse("#date_de_creation"))
     
     if possede_tag(reponse, "#nom") and string_reponse == "" then
@@ -148,6 +153,11 @@ local function preparation_reponse(reponse)
         if obtenir_theme_reponse("#ami") then
             string_reponse = Ami(data, nom, string_reponse)
         end
+
+        if obtenir_theme_reponse("#physiqueGeneral") then
+        	string_reponse = Physique(data, nom, string_reponse)
+    	end
+
     end
     
     if string_reponse == "" then 
@@ -183,6 +193,10 @@ local function update_memoire(reponse)
     end
     if possede_tag(reponse, "#ami") then
         table.insert(memoire[1]['theme'], "#ami")
+    end
+
+    if possede_tag(reponse, "#physiqueGeneral") then
+        table.insert(memoire[1]['theme'], "#physiqueGeneral")
     end
     
     tempo = {

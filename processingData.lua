@@ -120,13 +120,9 @@ local taps = {
     ["#date"] = "blue",
     ["#fa"] = "green",
     ["#serie"] = "red",
-<<<<<<< HEAD
-    ["#appearance"] = "purple", 
     ["#caracGlobal"] = "cyan",
-=======
     ["#appearance"] = "purple",
     ["#habitPorte"] = "cyan",
->>>>>>> 23e26c8ad8b1f8ff034aaf4ee2b81d221919600f
     ["#caracCorps"] = "red",
 }
 
