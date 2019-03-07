@@ -97,8 +97,8 @@ local function chercheCompatibiliteNom(chaine)
                     local ok = 1
                     for word in v:gmatch("%w+") do
                         if ok == 1 and lev.distance_levenshtein(word, chaine[i+boucle].token) <= string.len(word)/2 and lev.distance_levenshtein(word, chaine[i+boucle].token) <= string.len(chaine[i+boucle].token)/2 and string.len(chaine[i+boucle].token) >= 3 then
-                            print(word)
-                            print(chaine[i+boucle].token)
+                            --print(word)
+                            --print(chaine[i+boucle].token)
                             ok = 1
                             boucle = boucle +1
                         else 
