@@ -89,6 +89,17 @@ function Ami(data, nom, string_reponse, memoire)
     return string_reponse, info
 end
 
+local function determinant(str_in)
+    terminaison = string.sub(str_in, -1)
+    if terminaison == "s" then
+        return "des"
+    elseif terminaison == "e" then
+        return "une"
+    else
+        return "un"
+    end
+end
+
 function Physique(data, nom, string_reponse)
     for k,v in pairs(nom) do
         info = obtenir_info_reponse(data,v,"physique")
@@ -97,9 +108,30 @@ function Physique(data, nom, string_reponse)
         else
             if info["caracteristiques"] ~= nil then
                 caracs = ""
-                print(info["caracteristiques"][1])
-                for i,e in pairs(info["caracteristiques"]) do
-                    caracs = "un "..e..", "..caracs
+
+                if #info["caracteristiques"] <= 5 then
+                    for i,e in pairs(info["caracteristiques"]) do
+
+                        if i ~= #info["caracteristiques"] or #info["caracteristiques"] <= 1 then
+                            caracs = determinant(e).." "..e..", "..caracs
+                        else
+                            caracs = caracs.."et "..determinant(e).." "..e.."."
+                        end
+                    end
+                else
+                    caracs = "entre autres"
+                    for i=1,3 do
+                        rand = math.random(#info["caracteristiques"])
+                        elem = info["caracteristiques"][rand]
+                        det = determinant(elem)
+
+                        caracs = caracs.." "..det.." "..elem..","
+                    end
+                    rand = math.random(#info["caracteristiques"])
+                    elem = info["caracteristiques"][rand]
+                    det = determinant(elem)
+
+                    caracs = caracs.." et "..det.." "..elem.."."
                 end
 
                 string_reponse = string_reponse..v.." est "..caracs
@@ -108,26 +140,66 @@ function Physique(data, nom, string_reponse)
             if info["habitPorte"] ~= nil then
                 habits = ""
                 for i,e in pairs(info["habitPorte"]) do
-                    habits = "un "..e..", "..habits
+                    if #info["habitPorte"] <= 5 then
+                        if i ~= #info["habitPorte"] or #info["habitPorte"] <= 1 then
+                            habits = determinant(e).." "..e..", "..habits
+                        else
+                            habits = habits.."et "..determinant(e).." "..e.."."
+                        end
+                    else
+                        habits = "entre autres"
+                        for i=1,3 do
+                            rand = math.random(#info["habitPorte"])
+                            elem = info["habitPorte"][rand]
+                            det = determinant(elem)
+
+                            habits = habits.." "..det.." "..elem..","
+                        end
+                        rand = math.random(#info["habitPorte"])
+                        elem = info["habitPorte"][rand]
+                        det = determinant(elem)
+
+                        habits = habits.." et "..det.." "..elem.."."
+                    end
                 end
 
                 if string_reponse == '' then
                     string_reponse = string_reponse..v.." porte "..habits
                 else
-                    string_reponse = string_reponse..". Il porte "..habits
+                    string_reponse = string_reponse.." Il porte "..habits
                 end
             end
 
             if info["corps"] ~= nil then
                 corps = ""
                 for i,e in pairs(info["corps"]) do
-                    corps = "un "..e..", "..corps
+                    if #info["corps"] <= 5 then
+                        if i ~= #info["corps"] or #info["corps"] <= 1 then
+                            corps = determinant(e).." "..e..", "..corps
+                        else
+                            corps = corps.."et "..determinant(e).." "..e.."."
+                        end
+                    else
+                        corps = "entre autres"
+                        for i=1,3 do
+                            rand = math.random(#info["corps"])
+                            elem = info["corps"][rand]
+                            det = determinant(elem)
+
+                            corps = corps.." "..det.." "..elem..","
+                        end
+                        rand = math.random(#info["corps"])
+                        elem = info["corps"][rand]
+                        det = determinant(elem)
+
+                        corps = corps.." et "..det.." "..elem.."."
+                    end
                 end
 
                 if string_reponse == '' then
                     string_reponse = string_reponse..v.." a "..corps
                 else 
-                    string_reponse = string_reponse..". Il a "..corps
+                    string_reponse = string_reponse.." Il a "..corps
                 end
             end
         end
