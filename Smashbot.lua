@@ -76,7 +76,7 @@ local function obtenir_nom_reponse(reponse)
         if next(nom) == nil then
                 nom = memoire[3]['perso']
         end
-    end  
+    end
     return nom, isMemoire
 end
 
@@ -134,13 +134,13 @@ local function chercheCompatibiliteNom(chaine)
                     end
 
                     if ok == 1 then
-                        return nil
+                        "Vous voulez dire "..v.." ?"
                     end
                 end
             end
         end
     end
-    return null
+    return nil
 end
 
 
@@ -149,7 +149,7 @@ local function preparation_reponse(reponse)
     string_reponse = ""
     info_reponse_bot = nil
     nom, isMemoire = obtenir_nom_reponse(reponse)
-    
+
     --[[if obtenir_nom_reponse_sans_memoire(reponse) == nil then
         recherche = chercheCompatibiliteNom(reponse)
         if recherche ~= nil then
