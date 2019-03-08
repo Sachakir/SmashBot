@@ -82,10 +82,10 @@ function Ami(data, nom, string_reponse, memoire)
             if next(info) == nil then
                 string_reponse = string_reponse.."Je ne sais pas qui est l'ami de "..v..". "
             else
-                amis = ""
-                for i = 1,#info do
+                amis = info[1]
+                for i = 2,#info do
                     if not string.match(amis, info[i]) then
-                        amis = info[i]..", "..amis
+                       	amis = amis..", "..info[i]
                     end
                 end
                 string_reponse = string_reponse.."l/les ami(s) de "..v.." est/sont "..amis..". "
