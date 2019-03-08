@@ -80,11 +80,11 @@ local function obtenir_nom_reponse(reponse)
 end
 
 local function obtenir_nom_reponse_sans_memoire(reponse)
-    nom = obtenir_tab_de_mots_par_tag(reponse,"#nom")
-    if nom == nil then
-        nom = nil
+    name = obtenir_tab_de_mots_par_tag(reponse,"#nom")
+    if name == nil then
+        name = nil
     end
-    return nom
+    return name
 end
 
 
@@ -149,7 +149,7 @@ local function chercheCompatibiliteNom2(chaine)
       for k,v in pairs(noms) do
           for k = 1, #chaine[i] do
               if chaine[i][k].name == "#W" then
-                  if lev.distance_levenshtein(v, chaine[i].token) <= string.len(v)/2 and lev.distance_levenshtein(v, chaine[i].token)  <= string.len(chaine[i].token)/2 and string.len(chaine[i].token) > 3 then
+                  if i > 1 and lev.distance_levenshtein(v, chaine[i].token) <= string.len(v)/2 and lev.distance_levenshtein(v, chaine[i].token)  <= string.len(chaine[i].token)/2 and string.len(chaine[i].token) > 3 then
                       return "Vous voulez dire "..v.." ?"
                   end
               end
@@ -165,12 +165,12 @@ local function preparation_reponse(reponse)
     info_reponse_bot = nil
     nom, isMemoire = obtenir_nom_reponse(reponse)
 
-    --[[if obtenir_nom_reponse_sans_memoire(reponse) == nil then
-        recherche = chercheCompatibiliteNom(reponse)
+    if obtenir_nom_reponse_sans_memoire(reponse) == nil then
+        recherche = chercheCompatibiliteNom2(reponse)
         if recherche ~= nil then
           return recherche
         end
-    end]]--
+    end
     
 
     if nom == nil then
