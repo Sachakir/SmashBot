@@ -51,10 +51,10 @@ function Cameo(data, nom, string_reponse)
         if info == nil then
             string_reponse = string_reponse.."Je ne connais pas le(s) cameo(s) de "..v..". "
         else
-            cameos = ""
-            for i = 1,#info do
+            cameos = info[1]
+            for i = 2,#info do
                 if not string.match(cameos, info[i]) then
-                    cameos = info[i]..", "..cameos
+                    cameos = cameos..", "..info[i]
                 end
             end
             string_reponse = string_reponse.."le(s) cameo(s) de "..v.." est/sont "..cameos..". "
